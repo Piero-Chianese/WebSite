@@ -136,8 +136,44 @@ nav .container {
     height: 100vh;
     display: flex;
     align-items: center;
+    justify-content: center; /* Center horizontally */
+    text-align: center;      /* Center text */
     position: relative;
     overflow: hidden;
+    perspective: 2000px;
+    transform-style: preserve-3d;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 100;
+    transform: translateZ(200px);
+    pointer-events: none;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.subtitle {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent-blue); /* Changed to brand color */
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(var(--accent-blue-rgb), 0.5);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(10, 10, 20, 0.4) 0%, rgba(10, 10, 20, 0.8) 100%);
+    backdrop-filter: blur(2px); /* Subtle blur to separate planes */
+    z-index: 50;
+    pointer-events: none;
 }
 
 .hero::before {
@@ -211,6 +247,176 @@ nav .container {
     left: 0;
     z-index: 1;
     content: "";
+}
+
+/* Atomic 3D Orbit Animation */
+.hero {
+    perspective: 2000px;
+    transform-style: preserve-3d;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 100;
+    transform: translateZ(200px);
+    pointer-events: none;
+}
+
+.hero-content * {
+    pointer-events: auto;
+}
+
+.hero-visuals {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.bubble-orbit-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-style: preserve-3d;
+    pointer-events: none;
+}
+
+.project-bubble {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin-top: -60px;
+    margin-left: -60px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 
+        0 15px 35px rgba(0,0,0,0.6),
+        inset -15px -15px 30px rgba(0,0,0,0.7),
+        inset 10px 10px 30px rgba(255,255,255,0.4);
+    pointer-events: auto;
+    cursor: pointer;
+    overflow: hidden;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease-out, box-shadow 0.3s ease;
+}
+
+.project-bubble::before {
+    content: '';
+    position: absolute;
+    top: var(--reflect-y, 15%);
+    left: var(--reflect-x, 15%);
+    width: 30%;
+    height: 30%;
+    background: radial-gradient(circle, rgba(255,255,255,0.95) 0%, transparent 80%);
+    border-radius: 50%;
+    z-index: 5;
+    pointer-events: none;
+    transition: top 0.1s ease-out, left 0.1s ease-out;
+}
+
+.project-bubble:hover {
+    box-shadow: 0 0 50px var(--accent-blue), inset 0 0 30px var(--accent-blue);
+    border-color: var(--accent-blue);
+}
+
+/* Centered Atomic Orbits with Billboard Effect */
+.hero-visuals {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    transform-style: preserve-3d;
+    pointer-events: none;
+    z-index: 10; /* Between background and text */
+}
+
+.bubble-orbit-container {
+    position: absolute;
+    transform-style: preserve-3d;
+    pointer-events: none;
+}
+
+.bubble-orbit-path {
+    transform-style: preserve-3d;
+    /* This handles the path rotation */
+    animation: rotateOrbit linear infinite;
+}
+
+@keyframes rotateOrbit {
+    from { transform: rotate(0deg) translateX(320px); }
+    to { transform: rotate(360deg) translateX(320px); }
+}
+
+/* Individual Orbits - Tilt angles (Nucleus centered) */
+.bubble-1 { transform: rotateX(65deg) rotateZ(0deg); }
+.bubble-2 { transform: rotateX(-65deg) rotateZ(30deg); }
+.bubble-3 { transform: rotateY(75deg) rotateX(20deg); }
+.bubble-4 { transform: rotateY(-75deg) rotateX(-20deg); }
+.bubble-5 { transform: rotateZ(45deg) rotateX(55deg); }
+.bubble-6 { transform: rotateZ(-45deg) rotateX(55deg); }
+
+/* Apply durations */
+.bubble-1 .bubble-orbit-path { animation-duration: 20s; }
+.bubble-2 .bubble-orbit-path { animation-duration: 25s; animation-direction: reverse; }
+.bubble-3 .bubble-orbit-path { animation-duration: 18s; }
+.bubble-4 .bubble-orbit-path { animation-duration: 22s; animation-direction: reverse; }
+.bubble-5 .bubble-orbit-path { animation-duration: 28s; }
+.bubble-6 .bubble-orbit-path { animation-duration: 32s; }
+
+.project-bubble {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    margin: -70px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 
+        0 15px 40px rgba(0,0,0,0.6),
+        inset -15px -15px 35px rgba(0,0,0,0.7),
+        inset 10px 10px 35px rgba(255,255,255,0.4);
+    pointer-events: none; /* Disabled interaction */
+    cursor: default;
+    overflow: hidden;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    display: block;
+    
+    /* BILLBOARD EFFECT: Counteract orbit rotation */
+    animation: billboard linear infinite;
+    animation-duration: inherit;
+    animation-direction: inherit;
+}
+
+@keyframes billboard {
+    /* We rotate opposite to orbit and ADD the interactive tilt from JS variables */
+    from { transform: rotate(0deg) rotateX(calc(var(--revX, 0deg) + var(--tilt-x, 0deg))) rotateY(calc(var(--revY, 0deg) + var(--tilt-y, 0deg))); }
+    to { transform: rotate(-360deg) rotateX(calc(var(--revX, 0deg) + var(--tilt-x, 0deg))) rotateY(calc(var(--revY, 0deg) + var(--tilt-y, 0deg))); }
+}
+
+/* Set reverse tilts for each bubble to keep them perfectly upright */
+.bubble-1 .project-bubble { --revX: -65deg; animation-duration: 20s; }
+.bubble-2 .project-bubble { --revX: 65deg; animation-duration: 25s; animation-direction: reverse; }
+.bubble-3 .project-bubble { --revY: -75deg; --revX: -20deg; animation-duration: 18s; }
+.bubble-4 .project-bubble { --revY: 75deg; --revX: 20deg; animation-duration: 22s; animation-direction: reverse; }
+.bubble-5 .project-bubble { --revX: -55deg; animation-duration: 28s; }
+.bubble-6 .project-bubble { --revX: -55deg; animation-duration: 32s; }
+
+.project-bubble:hover {
+    box-shadow: 0 0 60px var(--accent-blue), inset 0 0 40px var(--accent-blue);
+    border-color: var(--accent-blue);
+}
+
+@media (max-width: 1200px) {
+    .hero-visuals { display: none; }
 }
 
 .card:hover {
