@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtHiss | Piero Chianese</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">Piero.Dev</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="project-hero" style="background-image: url('assets/images/arthiss_hero.png');">
+        <div class="container">
+            <div class="reveal">
+                <h1 style="font-size: 4.5rem; line-height: 1;">ArtHiss</h1>
+                <p style="color: var(--accent-blue); font-weight: 600; margin-top: 1rem;">Unity | Creative Puzzle | Solo Programmer</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="padding-bottom: 8rem;">
+        <div class="project-layout">
+            <div class="project-content">
+                <section class="content-section reveal">
+                    <h2>Description</h2>
+                    <p>
+                        <strong>ArtHiss</strong> is a single player top-down game where the player controls a painter snake who must complete drawings on a canvas. By collecting paints, avoiding oil stains and obstacles, the snake grows longer and harder to control. 
+                    </p>
+                    <p>
+                        The gameplay combines classic Snake mechanics with creative painting and scoring combos, offering a unique blend of arcade challenge and artistic expression.
+                    </p>
+                    
+                    <div class="video-container" style="margin-top: 2rem;">
+                        <iframe src="https://www.youtube.com/embed/mAw8gx_4Fag" title="ArtHiss Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div style="margin-top: 2rem;">
+                        <a href="#" class="btn btn-primary">Download (Coming Soon)</a>
+                    </div>
+                </section>
+
+                <section class="content-section reveal">
+                    <h2>My Role</h2>
+                    <p>
+                        This was my first Unity project and my first time working within a large team. I was fully responsible for the programming of all core systems:
+                    </p>
+                    
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="color: var(--accent-blue);">Core Gameplay</h4>
+                        <p>Implemented snake movement, wrap-around logic, growth systems, and death conditions.</p>
+                    </div>
+
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="color: var(--accent-blue);">Coloring System</h4>
+                        <p>Developed the core mechanic of painting the canvas, including color storage management and real-time visual feedback.</p>
+                    </div>
+
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="color: var(--accent-blue);">Power-ups & Hazards</h4>
+                        <p>Designed and programmed Special Paint power-ups and Oil Stain hazards to vary the gameplay loop.</p>
+                    </div>
+
+                    <div style="margin-top: 1.5rem;">
+                        <h4 style="color: var(--accent-blue);">Scoring & UI</h4>
+                        <p>Built the combo-based scoring system and handled the integration of the HUD and UI elements.</p>
+                    </div>
+                </section>
+
+                <section class="content-section reveal">
+                    <h2>Growth & Learning</h2>
+                    <p>
+                        Even as a first project, I managed to optimize the game to run smoothly. This experience was fundamental in learning how to structure complex Unity projects, collaborate with artists and designers, and make independent technical decisions under pressure.
+                    </p>
+                </section>
+                
+                <a href="projects.html" class="btn" style="border: 1px solid var(--glass-border);">← Back to Projects</a>
+            </div>
+
+            <aside class="project-sidebar reveal">
+                <div class="sidebar-section">
+                    <h4>Role</h4>
+                    <p>Solo Programmer</p>
+                </div>
+                <div class="sidebar-section">
+                    <h4>Technology</h4>
+                    <p>Unity, C#</p>
+                </div>
+                <div class="sidebar-section">
+                    <h4>Genre</h4>
+                    <p>Arcade / Puzzle</p>
+                </div>
+                <div class="sidebar-section">
+                    <h4>Key Features</h4>
+                    <ul style="list-style: none; padding: 0; color: var(--text-secondary); font-size: 0.9rem;">
+                        <li>· Creative Painting</li>
+                        <li>· Combo Multipliers</li>
+                        <li>· Dynamic Growth</li>
+                        <li>· Resource Management</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Piero Chianese. Engineering the future of play.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
