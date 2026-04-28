@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Touch-Fu: Battle of Two | Piero Chianese</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">Piero.Dev</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="project-hero" style="background-image: url('assets/images/touch_fu_hero.jpg');">
+        <div class="container">
+            <div class="reveal">
+                <h1 style="font-size: 4.5rem; line-height: 1;">Touch-Fu: <br>Battle of Two</h1>
+                <p style="color: var(--accent-blue); font-weight: 600; margin-top: 1rem;">Unity | Mobile 2D Fighter | Lead Programmer</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="padding-bottom: 8rem;">
+        <div class="project-layout">
+            <div class="project-content">
+                <section class="content-section reveal">
+                    <h2>Description</h2>
+                    <p>
+                        <strong>Touch-Fu: Battle of Two</strong> is a 2D local multiplayer mobile game where two players face off in fast-paced and spectacular battles. Characters fight in a rectangular arena and can win either by knocking out their opponent’s HP or pushing them out of the ring.
+                    </p>
+                    <p>
+                        With attacks, parries, special moves, and unlockable skins, the game aims to provide a competitive experience that is easy to pick up but challenging to master. The project was built under strict mobile constraints: performance optimization (APK < 100MB), 9:16 portrait UI/UX, and a complex progression system.
+                    </p>
+                    
+                    <div style="margin-top: 2rem;">
+                        <a href="https://drive.google.com/file/d/1joDEQV3zCqH0TNj5XcalGoQ5ZAB8m5vy/view" target="_blank" class="btn btn-primary">Download Android APK</a>
+                    </div>
+                </section>
+
+                <section class="content-section reveal">
+                    <h2>Gameplay Demonstration</h2>
+                    <div class="video-container" style="margin-top: 1rem;">
+                        <iframe src="https://www.youtube.com/embed/T3AtmXHK4iI" title="Touch-Fu Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </section>
+
+                <section class="content-section reveal">
+                    <h2>Lead Programmer Role</h2>
+                    <p>
+                        This was my first official experience as a Lead Programmer. I was responsible for the technical direction of the project, managing resources, and ensuring the delivery of a polished competitive experience.
+                    </p>
+                    
+                    <ul style="color: var(--text-secondary); margin-left: 1.5rem; margin-top: 1.5rem; line-height: 2;">
+                        <li>Coordinated development with other programmers to meet deadlines.</li>
+                        <li>Developed core gameplay: movement, combat system, knockback, and special moves.</li>
+                        <li>Managed high-level game flow including best-of-three logic and KO conditions.</li>
+                        <li>Provided technical support to designers and artists for asset integration.</li>
+                        <li>Ensured stable and optimized performance on a wide range of Android devices.</li>
+                    </ul>
+                </section>
+
+                <section class="content-section reveal" style="background: rgba(var(--accent-blue-rgb), 0.1); padding: 2rem; border-radius: 12px; border: 1px solid var(--accent-blue);">
+                    <h2 style="color: var(--accent-blue); margin-bottom: 0.5rem;">Fun Fact</h2>
+                    <p style="color: white; font-style: italic;">
+                        "Katsuhiro Harada, the legendary game director and producer for Bandai Namco (Heiko's creator and producer for the Tekken series), personally tried our game!"
+                    </p>
+                    <div class="local-video-container" style="margin-top: 1.5rem; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.2); background: #000;">
+                        <video controls style="width: 100%; display: block; border-radius: 12px;">
+                            <source src="assets/video/videoken.MOV" type="video/quicktime">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </section>
+                
+                <a href="projects.html" class="btn" style="border: 1px solid var(--glass-border);">← Back to Projects</a>
+            </div>
+
+            <aside class="project-sidebar reveal">
+                <div class="sidebar-section">
+                    <h4>Role</h4>
+                    <p>Lead Programmer</p>
+                </div>
+                <div class="sidebar-section">
+                    <h4>Technology</h4>
+                    <p>Unity (URP), C#, New Input System, Git</p>
+                </div>
+                <div class="sidebar-section">
+                    <h4>Platform</h4>
+                    <p>Android (9:16 Portrait)</p>
+                </div>
+                <div class="sidebar-section">
+                    <h4>Technology Stack</h4>
+                    <ul style="list-style: none; padding: 0; color: var(--text-secondary); font-size: 0.9rem;">
+                        <li>· 2D Physics</li>
+                        <li>· Local Multiplayer</li>
+                        <li>· Shop System</li>
+                        <li>· Daily Rewards</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Piero Chianese. Engineering the future of play.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

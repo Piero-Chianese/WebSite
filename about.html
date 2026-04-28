@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me | Piero Chianese</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .about-section {
+            padding-bottom: 4rem;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: start;
+        }
+        @media (max-width: 992px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+        .highlight-box {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+        .quote {
+            font-style: italic;
+            color: var(--accent-blue);
+            font-size: 1.2rem;
+            margin: 1.5rem 0;
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">Piero.Dev</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="about.html" class="active">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main style="padding-top: 10rem;">
+        <div class="container">
+            <!-- About Me Section -->
+            <section class="about-section">
+                <div class="about-grid">
+                    <div class="reveal">
+                        <h1 style="font-size: 4rem; margin-bottom: 2rem;">About Me</h1>
+                        <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">
+                            Hello, my name is <strong>Piero</strong>, I am 30 years old and I hold a degree in Computer Science.
+                        </p>
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                            Since I was a child, I’ve always had a great passion for technology, especially computer science. This curiosity has driven me to explore the inner workings of software and hardware alike.
+                        </p>
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                            I also have a deep love for <strong>music</strong> — I’ve been playing guitar and piano for years, which I consider an essential outlet for creativity and expression.
+                        </p>
+                        <p style="color: var(--text-secondary);">
+                            Beyond technology and music, I’m a true <strong>motorsport enthusiast</strong>. I love everything related to cars, racing, and high performance. I’m passionate about sim racing and absolutely crazy about Formula 1. I also enjoy the sense of freedom that comes from riding my <strong>yellow motorcycle</strong> — for me, speed, precision, and control perfectly reflect the mindset I apply in both life and programming.
+                        </p>
+                    </div>
+                    <div class="reveal">
+                        <img src="assets/images/piero_profile.png" alt="Piero Chianese" style="width: 100%; border-radius: 12px; border: 1px solid var(--glass-border); box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
+                        <div class="highlight-box">
+                            <h3 style="margin-bottom: 1rem; color: var(--accent-blue);">Education Snapshot</h3>
+                            <ul style="list-style: none; color: var(--text-secondary);">
+                                <li style="margin-bottom: 1rem;">
+                                    <strong>Apple Developer Academy</strong><br>
+                                    Software Design & Innovation
+                                </li>
+                                <li style="margin-bottom: 1rem;">
+                                    <strong>Digital Bros Game Academy</strong><br>
+                                    Specializing in Game Programming (Year 2)
+                                </li>
+                                <li>
+                                    <strong>Degree in Computer Science</strong><br>
+                                    Academic Foundation
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Career Section -->
+            <section class="about-section reveal">
+                <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">My Career</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem;">
+                    <div>
+                        <h4 style="color: var(--accent-purple); margin-bottom: 1rem;">Foundation & Energy Drive</h4>
+                        <p style="color: var(--text-secondary);">
+                            I obtained my computer expert diploma in 2014, earning several PON certifications and the ECDL. My first major role was at <strong>Energy Drive</strong> in Nola, a renewable energy company. I quickly moved from designing photovoltaic systems to managing IT systems, developing internal software, and handling social media presence.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--accent-purple); margin-bottom: 1rem;">IT & Medical Tech (Lefa)</h4>
+                        <p style="color: var(--text-secondary);">
+                            While attending university, I worked at <strong>Lefa</strong> in Naples. I was responsible for repairing software for medical devices like ultrasound scanners and maintaining complex internal networks. This period allowed me to apply <strong>reverse engineering</strong> concepts to understand sophisticated medical equipment.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--accent-purple); margin-bottom: 1rem;">The Path to Game Dev</h4>
+                        <p style="color: var(--text-secondary);">
+                            At the <strong>Apple Developer Academy</strong>, I discovered my true calling. Creating interactive prototypes and combining logic with creativity made me realize that game development is where I belong. Currently, I am refining these skills at <strong>Digital Bros Game Academy</strong> in Milan, focusing on Unity and Unreal Engine.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Characteristics & Innovation -->
+            <section class="about-section reveal">
+                <div class="about-grid">
+                    <div>
+                        <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">Human & Professional</h2>
+                        <div class="quote">
+                            “Two heads are better than one, and four are better than two.”
+                        </div>
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                            I work exceptionally well in teams, building strong professional relationships and valuing collaboration between creative minds.
+                        </p>
+                        <p style="color: var(--text-secondary);">
+                            I have strong abilities in <strong>problem finding, problem setting, and problem solving</strong> — often through creative and unconventional approaches. I am precise and reliable, but I also love pushing my limits.
+                        </p>
+                    </div>
+                    <div>
+                        <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">One More Thing…</h2>
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                            For me, <strong>creativity is the core of innovation</strong>. I always try to look at things from different perspectives, connecting ideas that may seem unrelated at first.
+                        </p>
+                        <p style="color: var(--text-secondary);">
+                            This mindset allows me to discover hidden opportunities and transform them into tangible results. My diverse experiences have shaped the way I approach design, development, and problem-solving.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Career Objectives -->
+            <section class="about-section reveal" style="padding-bottom: 8rem;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">Career Objectives</h2>
+                <p style="color: var(--text-secondary); font-size: 1.2rem; max-width: 800px; margin-bottom: 2rem;">
+                    The future is full of possibilities, and I’m eager to explore them. My primary goal is to <strong>start my own company</strong> dedicated to developing VR experiences and video games.
+                </p>
+                <p style="color: var(--text-secondary); max-width: 800px;">
+                    I’m also deeply interested in <strong>augmented reality</strong> and <strong>automation technologies</strong>, which I believe will play a key role in shaping the future of digital experiences. Combining my passions for technology, creativity, and interactivity is the fuel for my journey.
+                </p>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Piero Chianese. Designed with passion for Game Development.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

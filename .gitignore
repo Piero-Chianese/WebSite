@@ -1,0 +1,29 @@
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+
+# Build and dependencies
+node_modules/
+dist/
+build/
+.cache/
+
+# Gemini / Antigravity data
+.gemini/
+brain/
+knowledge/
+implementation_plan.md
+walkthrough.md
+task.md

@@ -1,0 +1,114 @@
+document.addEventListener('DOMContentLoaded', () => {
+    // Scroll Reveal Animation
+    const observerOptions = {
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => {
+        observer.observe(el);
+    });
+
+    // Active Navigation Link
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll('.nav-links a');
+    
+    navLinks.forEach(link => {
+        const linkPath = link.getAttribute('href');
+        if (currentPath.endsWith(linkPath)) {
+            link.classList.add('active');
+        } else if (currentPath === '/' && linkPath === 'index.html') {
+            link.classList.add('active');
+        }
+    });
+
+    // Smooth Scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Mobile Menu Toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinksContainer = document.querySelector('.nav-links');
+
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            navLinksContainer.classList.toggle('active');
+            
+            // Hamburger Animation
+            const spans = menuToggle.querySelectorAll('span');
+            spans[0].style.transform = navLinksContainer.classList.contains('active') ? 'rotate(45deg) translate(5px, 5px)' : 'none';
+            spans[1].style.opacity = navLinksContainer.classList.contains('active') ? '0' : '1';
+            spans[2].style.transform = navLinksContainer.classList.contains('active') ? 'rotate(-45deg) translate(7px, -7px)' : 'none';
+        });
+    }
+
+    // Close menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinksContainer.classList.remove('active');
+            // Reset hamburger
+            const spans = menuToggle.querySelectorAll('span');
+            spans.forEach(s => s.style.transform = 'none');
+            spans[1].style.opacity = '1';
+        });
+    });
+
+    // Sakura Petals Logic
+    const sakuraContainer = document.querySelector('.sakura-container');
+    if (sakuraContainer) {
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.classList.add('sakura');
+            
+            const size = Math.random() * 10 + 5;
+            petal.style.width = `${size}px`;
+            petal.style.height = `${size}px`;
+            
+            petal.style.left = `${Math.random() * 100}vw`;
+            petal.style.animationDuration = `${Math.random() * 3 + 5}s`;
+            
+            sakuraContainer.appendChild(petal);
+            
+            setTimeout(() => {
+                petal.remove();
+            }, 8000);
+        }
+        
+        setInterval(createPetal, 300);
+    }
+});
+
+// --- Protection against copying ---
+document.addEventListener('contextmenu', event => event.preventDefault());
+
+document.onkeydown = function(e) {
+    // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, Ctrl+S
+    if (e.keyCode == 123 || 
+        (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0))) || 
+        (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) ||
+        (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0))) {
+        return false;
+    }
+};
+
+document.addEventListener('dragstart', function(e) {
+    if (e.target.nodeName === 'IMG') {
+        e.preventDefault();
+    }
+});

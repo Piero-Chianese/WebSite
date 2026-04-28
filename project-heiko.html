@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heiko | Piero Chianese</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">Piero.Dev</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="project-hero" style="background-image: url('assets/images/heiko.png');">
+        <div class="container">
+            <div class="reveal">
+                <h1 style="font-size: 4.5rem; line-height: 1;">Heiko</h1>
+                <p style="color: var(--accent-blue); font-weight: 600; margin-top: 1rem;">Unity | Speedrun Shooter</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="padding-bottom: 8rem;">
+        <div class="project-layout">
+            <div class="project-content">
+                <section class="content-section reveal">
+                    <h2>Update</h2>
+                    <p>
+                        Super happy to share that <strong>Digital Bros Game Academy</strong> has published our student project Heiko on its official itch page!
+                    </p>
+                    <div style="margin-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                         <a href="https://digital-bros-game-academy.itch.io/heiko" target="_blank" class="btn btn-primary">Play on itch.io</a>
+                         <a href="https://drive.google.com/file/d/12xiuM2u5uDD_-g1eoxsPspB5Sbo2UiuX/view" target="_blank" class="btn" style="border: 1px solid var(--accent-blue);">Download Mac Version</a>
+                    </div>
+                </section>
+
+                <section class="content-section reveal">
+                    <h2>Description</h2>
+                    <p>
+                        Heiko is a first-person speedrun shooter developed during an academic Jam with the theme “duality”. The title comes from the Japanese term Heiko (balance), and places the player in the shoes of a warrior suspended between light and shadow.
+                    </p>
+                    <p>
+                        The goal is simple yet challenging: reach the finish line as fast as possible, making full use of the character’s opposing powers.
+                    </p>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/VErPOctbC18" title="Heiko Walkthrough" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </section>
+
+                <section class="content-section reveal">
+                    <h2>Core Mechanic</h2>
+                    <p>The core mechanic revolves around a yin-yang projectile system:</p>
+                    <img src="assets/images/HeikoGif.gif" alt="Heiko Yin-Yang System" style="width: 100%; border-radius: 8px; border: 1px solid var(--glass-border); margin: 1rem 0;">
+                    <ul style="color: var(--text-secondary); margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                        <li><strong>White Shot:</strong> eliminates black enemies</li>
+                        <li><strong>Black Shot:</strong> eliminates white enemies</li>
+                    </ul>
+                    <p>
+                        This creates fast-paced yet thoughtful combat, where every encounter becomes a small puzzle to solve on the fly. The minimalist art direction, based only on black, white, and pink, is inspired by the cherry blossom as a visual metaphor of impermanence.
+                    </p>
+                </section>
+
+                <section class="content-section reveal">
+                    <h2>Game Pillars</h2>
+                    <img src="assets/images/heiko_screenshot_1.jpg" alt="Heiko Gameplay Screenshot" style="width: 100%; border-radius: 8px; border: 1px solid var(--glass-border); margin: 1rem 0;">
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--accent-blue); margin-bottom: 0.5rem;">Speedrun</h4>
+                        <p>Everything pushes the player to go faster—short levels, hidden shortcuts, time trophies, and enemy drop bonuses (dash and bounce).</p>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--accent-blue); margin-bottom: 0.5rem;">Duality</h4>
+                        <p>The heart of the gameplay lies in the opposition between light and shadow. Only by combining both sides synergistically can the player succeed.</p>
+                    </div>
+                </section>
+
+                <section class="content-section reveal">
+                    <h2>Role & Personal Contributions</h2>
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--accent-blue); margin-bottom: 0.5rem;">Core Gameplay</h4>
+                        <p>Implemented the character controller (movement, jump, shooting system). Created the yin-yang shooting system, with logic for the two projectile types and their interaction with enemies. Managed the ammo pickup system and integrated enemy drop bonuses (dash and bounce).</p>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--accent-blue); margin-bottom: 0.5rem;">Feedback</h4>
+                        <p>Implemented visual and audio feedback (kinetic lines for boosts, particle effects for shots and enemy deaths, slow-down indicators, enemy triggered state signals).</p>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--accent-blue); margin-bottom: 0.5rem;">Artistic Support</h4>
+                        <p>Collaborated with the art team on shader and material integration consistent with the minimalist style. Provided continuous technical assistance to artists to streamline asset import and usage in Unity.</p>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--accent-blue); margin-bottom: 0.5rem;">Audio & UI</h4>
+                        <p>Connected gameplay events with diegetic audio and interface elements. Integrated minimal UI to represent ammo and player state.</p>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--accent-blue); margin-bottom: 0.5rem;">Team Support</h4>
+                        <p>Handled rapid bug fixing during the jam. Provided constant support during critical phases, maintaining project stability despite the early departure of two team members.</p>
+                    </div>
+                </section>
+
+                <section class="content-section reveal">
+                    <h2>Summary</h2>
+                    <p>
+                        Heiko was a project that successfully blended aesthetic and mechanical balance. My role focused on giving the prototype technical solidity and ensuring the concept translated into a stable, coherent gameplay experience. I also dedicated significant effort to developing a custom shader that added an extra layer of polish to the game.
+                    </p>
+                </section>
+                
+                <a href="projects.html" class="btn" style="border: 1px solid var(--glass-border);">← Back to Projects</a>
+            </div>
+
+            <aside class="project-sidebar reveal">
+                <div class="sidebar-section">
+                    <h4>Publisher</h4>
+                    <p>Digital Bros Game Academy</p>
+                </div>
+                <div class="sidebar-section">
+                    <h4>Theme</h4>
+                    <p>Duality (Heiko)</p>
+                </div>
+                <div class="sidebar-section">
+                    <h4>Technology</h4>
+                    <p>Unity</p>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Piero Chianese. Published by DBGA.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <div class="sakura-container"></div>
+</body>
+</html>

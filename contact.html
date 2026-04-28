@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Piero Chianese</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+        .contact-card {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-blue);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--accent-blue);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        .contact-card:hover::before {
+            transform: scaleX(1);
+        }
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--accent-blue);
+        }
+        .contact-label {
+            font-size: 1.5rem;
+            font-family: 'Outfit', sans-serif;
+            color: white;
+        }
+        .contact-value {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        .email-card {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, rgba(0, 210, 255, 0.1), rgba(157, 80, 187, 0.1));
+        }
+        @media (max-width: 768px) {
+            .email-card {
+                grid-column: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">Piero.Dev</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="about.html">About</a>
+                <a href="contact.html" class="active">Contact</a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main style="padding-top: 10rem; padding-bottom: 8rem;">
+        <div class="container">
+            <header class="reveal" style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <h1 style="font-size: 4rem; margin-bottom: 1.5rem;">Let's Connect</h1>
+                <p style="font-size: 1.2rem; color: var(--text-secondary);">
+                    Whether you're looking for a collaborator, a developer for your next project, or just want to chat about game dev, feel free to reach out through any of these platforms.
+                </p>
+            </header>
+
+            <div class="contact-grid">
+                <!-- LinkedIn -->
+                <a href="https://it.linkedin.com/in/piero-chianese-12ab38144" target="_blank" class="contact-card reveal">
+                    <div class="contact-icon">🔗</div>
+                    <div class="contact-label">LinkedIn</div>
+                    <div class="contact-value">Professional Network</div>
+                </a>
+
+                <!-- Itch.io -->
+                <a href="https://gamedevdiquartiere.itch.io/" target="_blank" class="contact-card reveal">
+                    <div class="contact-icon">🎮</div>
+                    <div class="contact-label">Itch.io</div>
+                    <div class="contact-value">Game Portfolio</div>
+                </a>
+
+                <!-- Linktree -->
+                <a href="https://linktr.ee/pierochianese" target="_blank" class="contact-card reveal">
+                    <div class="contact-icon">🌳</div>
+                    <div class="contact-label">Linktree</div>
+                    <div class="contact-value">All My Links</div>
+                </a>
+
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/piero_chianese/" target="_blank" class="contact-card reveal">
+                    <div class="contact-icon">📸</div>
+                    <div class="contact-label">Instagram</div>
+                    <div class="contact-value">Personal & Creativity</div>
+                </a>
+
+                <!-- Facebook -->
+                <a href="https://www.facebook.com/piero.chianese.1/" target="_blank" class="contact-card reveal">
+                    <div class="contact-icon">👥</div>
+                    <div class="contact-label">Facebook</div>
+                    <div class="contact-value">Social Connections</div>
+                </a>
+
+                <!-- Email Card -->
+                <a href="mailto:piero.chianese95@gmail.com" class="contact-card reveal email-card">
+                    <div class="contact-icon">✉️</div>
+                    <div class="contact-label">Direct Email</div>
+                    <div class="contact-value">piero.chianese95@gmail.com</div>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Piero Chianese. Engineering the future of play.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinazione Vacanze! | Piero Chianese</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">Piero.Dev</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="project-hero" style="background-image: url('assets/images/destinazione_vacanze.png');">
+        <div class="container">
+            <div class="reveal">
+                <h1 style="font-size: 4.5rem; line-height: 1;">Destinazione Vacanze!</h1>
+                <p style="color: var(--accent-blue); font-weight: 600; margin-top: 1rem;">Unity WebGL | Corporate Project</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="padding-bottom: 8rem;">
+        <div class="project-layout">
+            <div class="project-content">
+                <section class="content-section reveal">
+                    <h2>Description</h2>
+                    <p>
+                        Destinazione Vacanza! is a project developed for the travel agency <strong>Bluvacanze</strong>, designed as a summer game to be integrated into their vacation booking website. The main goal was to increase visitor retention by offering a light and entertaining interactive experience connected to the theme of travel.
+                    </p>
+                    <p>
+                        The game was created as part of an academic project, where I played a key role in technical development.
+                    </p>
+                    <p>
+                        Destinazione Vacanza! is an endless game where the player pilots a hot-air balloon around the globe, landing on iconic landmarks indicated by photographic polaroids. Each correct landing extends the vacation, while mistakes reduce precious time.
+                    </p>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/Iz6UWLD_LC8" title="Destinazione Vacanze! Walkthrough" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div style="margin-top: 1rem;">
+                         <a href="https://gamedevdiquartiere.itch.io/bluvacanze-wip" target="_blank" class="btn btn-primary">Play on itch.io</a>
+                    </div>
+                </section>
+
+                <section class="content-section reveal">
+                    <h2>Gameplay</h2>
+                    <ul style="color: var(--text-secondary); margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                        <li>The player receives a visual hint in the form of a polaroid (e.g., Eiffel Tower, Colosseum).</li>
+                        <li>By rotating the 3D Earth, they must find the correct destination.</li>
+                        <li>The hot-air balloon slowly descends, but a double tap/click allows for a quick landing.</li>
+                        <li>A timer dictates the length of the session: each success adds seconds, each mistake removes them.</li>
+                        <li>At the end of the run, a recap of the reached destinations is displayed.</li>
+                    </ul>
+                </section>
+
+                <section class="content-section reveal">
+                    <h2>Key Features</h2>
+                    <ul style="color: var(--text-secondary); margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                        <li>Interactive 3D globe with 2D landmark sprites.</li>
+                        <li>Controls optimized for both mobile (touch) and desktop (mouse).</li>
+                        <li>Time-based system with landing-related bonuses/maluses.</li>
+                        <li>Polaroid-based interface that enhances the narrative and “touristic” experience.</li>
+                        <li>Visual and audio feedback for perfect landings, errors, and guided tutorials.</li>
+                    </ul>
+                    <p><strong>Platforms:</strong> WebGL (playable in-browser on both desktop and mobile).</p>
+                </section>
+
+                <section class="content-section reveal">
+                    <h2>Personal Contribution</h2>
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--accent-blue); margin-bottom: 0.5rem;">Gameplay Programming</h4>
+                        <p>Balloon descent system and boost mechanic via double tap/click. Distance check between balloon and platform to validate correct or wrong landings.</p>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--accent-blue); margin-bottom: 0.5rem;">User Interaction</h4>
+                        <p>Integration of Unity’s new Input System (mouse and touch). Swipe controls for rotating the 3D Earth. Double tap/click for “rapid landing.”</p>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--accent-blue); margin-bottom: 0.5rem;">World & UI Systems</h4>
+                        <p>Alignment and billboard system for 2D landmark sprites on the globe’s surface. Game menu management (main menu, pause, game over, tutorial).</p>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--accent-blue); margin-bottom: 0.5rem;">Game Manager</h4>
+                        <p>Creation of a centralized GameManager to handle game states (Start, Tutorial, Gameplay, Endgame). Coordination between UI, timer, balloon spawning, and destination progression.</p>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--accent-blue); margin-bottom: 0.5rem;">Feedback & Polish</h4>
+                        <p>Sound effects (AudioMixer + mute toggle). Interactive step-by-step tutorial.</p>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--accent-blue); margin-bottom: 0.5rem;">Technical/Deployment</h4>
+                        <p>Optimization and build for WebGL. Initial analytics setup for session tracking and high scores.</p>
+                    </div>
+                </section>
+                
+                <a href="projects.html" class="btn" style="border: 1px solid var(--glass-border);">← Back to Projects</a>
+            </div>
+
+            <aside class="project-sidebar reveal">
+                <div class="sidebar-section">
+                    <h4>Client</h4>
+                    <p>Bluvacanze</p>
+                </div>
+                <div class="sidebar-section">
+                    <h4>Technology</h4>
+                    <p>Unity WebGL</p>
+                </div>
+                <div class="sidebar-section">
+                    <h4>Platform</h4>
+                    <p>Desktop / Mobile Web</p>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Piero Chianese. Built for Bluvacanze.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
