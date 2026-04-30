@@ -92,6 +92,50 @@ document.addEventListener('DOMContentLoaded', () => {
         
         setInterval(createPetal, 300);
     }
+
+    // Easter Egg: Maze Game Trigger (5 clicks on logo)
+    let logoClicks = 0;
+    let lastClickTime = 0;
+    let clickTimer = null;
+    const logo = document.querySelector('.logo');
+    
+    if (logo) {
+        logo.addEventListener('click', (e) => {
+            const currentTime = Date.now();
+            
+            // Reset if more than 1 second between clicks
+            if (currentTime - lastClickTime > 1000) {
+                logoClicks = 0;
+            }
+            
+            logoClicks++;
+            lastClickTime = currentTime;
+            
+            // Visual feedback
+            logo.style.transition = 'transform 0.1s';
+            logo.style.transform = `scale(${1 + logoClicks * 0.05})`;
+            setTimeout(() => { logo.style.transform = 'scale(1)'; }, 100);
+
+            if (logoClicks >= 5) {
+                e.preventDefault();
+                clearTimeout(clickTimer);
+                logoClicks = 0;
+                if (window.showMazeGame) window.showMazeGame();
+            } else {
+                // If it's the start of a sequence, prevent navigation temporarily
+                e.preventDefault();
+                
+                clearTimeout(clickTimer);
+                clickTimer = setTimeout(() => {
+                    // If no more clicks happened in 250ms and it was just one click, navigate
+                    if (logoClicks === 1) {
+                        window.location.href = logo.href;
+                    }
+                    logoClicks = 0;
+                }, 250);
+            }
+        });
+    }
 });
 
 // --- Protection against copying ---

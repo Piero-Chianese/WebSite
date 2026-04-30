@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/maze-game.css">
 </head>
 <body>
     <nav>
@@ -179,6 +180,39 @@
         </div>
     </footer>
 
+    <div id="maze-game-modal">
+        <div id="maze-game-container">
+            <button id="maze-close-btn"></button>
+            
+            <div id="maze-win-screen">
+                <h2>HAI VINTO!</h2>
+                <p>Tempo finale: <span id="final-time">0.0s</span></p>
+                <button class="win-btn" onclick="resetMazeGame()">Gioca Ancora</button>
+            </div>
+
+            <div class="game-layout">
+                <canvas id="maze" width="350" height="350"></canvas>
+
+                <div class="controls-panel">
+                    <div class="timer-box">
+                        <span class="timer-label">Tempo</span>
+                        <div id="maze-timer">0.0s</div>
+                    </div>
+
+                    <div id="joystick">
+                        <div id="joystick-head"></div>
+                    </div>
+                    
+                    <div id="note">
+                        <strong>PIERO GAME DEV</strong><br>
+                        Trascina il joystick per muoverti!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="js/main.js"></script>
+    <script src="js/maze-game.js"></script>
 </body>
 </html>
