@@ -8,7 +8,7 @@
     --text-secondary: #a0a0a0;
     --glass: rgba(255, 255, 255, 0.05);
     --glass-border: rgba(255, 255, 255, 0.1);
-    
+
     /* Transitions */
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -43,12 +43,15 @@ body::before {
     z-index: -10000 !important;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     font-family: 'Outfit', sans-serif;
     letter-spacing: -0.02em;
 }
 
-main, footer {
+main,
+footer {
     position: relative;
     z-index: 9999;
     background: transparent;
@@ -110,7 +113,8 @@ nav .container {
     color: var(--text-secondary);
 }
 
-.nav-links a:hover, .nav-links a.active {
+.nav-links a:hover,
+.nav-links a.active {
     color: var(--text-primary);
     text-shadow: 0 0 10px var(--accent-blue);
 }
@@ -136,8 +140,10 @@ nav .container {
     height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center; /* Center horizontally */
-    text-align: center;      /* Center text */
+    justify-content: center;
+    /* Center horizontally */
+    text-align: center;
+    /* Center text */
     position: relative;
     overflow: hidden;
     perspective: 2000px;
@@ -159,7 +165,8 @@ nav .container {
     font-weight: 600;
     letter-spacing: 4px;
     text-transform: uppercase;
-    color: var(--accent-blue); /* Changed to brand color */
+    color: var(--accent-blue);
+    /* Changed to brand color */
     margin-bottom: 1rem;
     text-shadow: 0 0 10px rgba(var(--accent-blue-rgb), 0.5);
 }
@@ -171,7 +178,8 @@ nav .container {
     width: 100%;
     height: 100%;
     background: radial-gradient(circle, rgba(10, 10, 20, 0.4) 0%, rgba(10, 10, 20, 0.8) 100%);
-    backdrop-filter: blur(2px); /* Subtle blur to separate planes */
+    backdrop-filter: blur(2px);
+    /* Subtle blur to separate planes */
     z-index: 50;
     pointer-events: none;
 }
@@ -294,10 +302,10 @@ nav .container {
     background-size: cover;
     background-position: center;
     border: 1px solid rgba(255, 255, 255, 0.6);
-    box-shadow: 
-        0 15px 35px rgba(0,0,0,0.6),
-        inset -15px -15px 30px rgba(0,0,0,0.7),
-        inset 10px 10px 30px rgba(255,255,255,0.4);
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.6),
+        inset -15px -15px 30px rgba(0, 0, 0, 0.7),
+        inset 10px 10px 30px rgba(255, 255, 255, 0.4);
     pointer-events: auto;
     cursor: pointer;
     overflow: hidden;
@@ -313,7 +321,7 @@ nav .container {
     left: var(--reflect-x, 15%);
     width: 30%;
     height: 30%;
-    background: radial-gradient(circle, rgba(255,255,255,0.95) 0%, transparent 80%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 0%, transparent 80%);
     border-radius: 50%;
     z-index: 5;
     pointer-events: none;
@@ -334,7 +342,8 @@ nav .container {
     height: 0;
     transform-style: preserve-3d;
     pointer-events: none;
-    z-index: 10; /* Between background and text */
+    z-index: 10;
+    /* Between background and text */
 }
 
 .bubble-orbit-container {
@@ -350,25 +359,66 @@ nav .container {
 }
 
 @keyframes rotateOrbit {
-    from { transform: rotate(0deg) translateX(320px); }
-    to { transform: rotate(360deg) translateX(320px); }
+    from {
+        transform: rotate(0deg) translateX(320px);
+    }
+
+    to {
+        transform: rotate(360deg) translateX(320px);
+    }
 }
 
 /* Individual Orbits - Tilt angles (Nucleus centered) */
-.bubble-1 { transform: rotateX(65deg) rotateZ(0deg); }
-.bubble-2 { transform: rotateX(-65deg) rotateZ(30deg); }
-.bubble-3 { transform: rotateY(75deg) rotateX(20deg); }
-.bubble-4 { transform: rotateY(-75deg) rotateX(-20deg); }
-.bubble-5 { transform: rotateZ(45deg) rotateX(55deg); }
-.bubble-6 { transform: rotateZ(-45deg) rotateX(55deg); }
+.bubble-1 {
+    transform: rotateX(65deg) rotateZ(0deg);
+}
+
+.bubble-2 {
+    transform: rotateX(-65deg) rotateZ(30deg);
+}
+
+.bubble-3 {
+    transform: rotateY(75deg) rotateX(20deg);
+}
+
+.bubble-4 {
+    transform: rotateY(-75deg) rotateX(-20deg);
+}
+
+.bubble-5 {
+    transform: rotateZ(45deg) rotateX(55deg);
+}
+
+.bubble-6 {
+    transform: rotateZ(-45deg) rotateX(55deg);
+}
 
 /* Apply durations */
-.bubble-1 .bubble-orbit-path { animation-duration: 20s; }
-.bubble-2 .bubble-orbit-path { animation-duration: 25s; animation-direction: reverse; }
-.bubble-3 .bubble-orbit-path { animation-duration: 18s; }
-.bubble-4 .bubble-orbit-path { animation-duration: 22s; animation-direction: reverse; }
-.bubble-5 .bubble-orbit-path { animation-duration: 28s; }
-.bubble-6 .bubble-orbit-path { animation-duration: 32s; }
+.bubble-1 .bubble-orbit-path {
+    animation-duration: 20s;
+}
+
+.bubble-2 .bubble-orbit-path {
+    animation-duration: 25s;
+    animation-direction: reverse;
+}
+
+.bubble-3 .bubble-orbit-path {
+    animation-duration: 18s;
+}
+
+.bubble-4 .bubble-orbit-path {
+    animation-duration: 22s;
+    animation-direction: reverse;
+}
+
+.bubble-5 .bubble-orbit-path {
+    animation-duration: 28s;
+}
+
+.bubble-6 .bubble-orbit-path {
+    animation-duration: 32s;
+}
 
 .project-bubble {
     position: relative;
@@ -379,17 +429,18 @@ nav .container {
     background-size: cover;
     background-position: center;
     border: 2px solid rgba(255, 255, 255, 0.8);
-    box-shadow: 
-        0 15px 40px rgba(0,0,0,0.6),
-        inset -15px -15px 35px rgba(0,0,0,0.7),
-        inset 10px 10px 35px rgba(255,255,255,0.4);
-    pointer-events: none; /* Disabled interaction */
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.6),
+        inset -15px -15px 35px rgba(0, 0, 0, 0.7),
+        inset 10px 10px 35px rgba(255, 255, 255, 0.4);
+    pointer-events: none;
+    /* Disabled interaction */
     cursor: default;
     overflow: hidden;
     backface-visibility: hidden;
     transform-style: preserve-3d;
     display: block;
-    
+
     /* BILLBOARD EFFECT: Counteract orbit rotation */
     animation: billboard linear infinite;
     animation-duration: inherit;
@@ -397,18 +448,51 @@ nav .container {
 }
 
 @keyframes billboard {
+
     /* We rotate opposite to orbit and ADD the interactive tilt from JS variables */
-    from { transform: rotate(0deg) rotateX(calc(var(--revX, 0deg) + var(--tilt-x, 0deg))) rotateY(calc(var(--revY, 0deg) + var(--tilt-y, 0deg))); }
-    to { transform: rotate(-360deg) rotateX(calc(var(--revX, 0deg) + var(--tilt-x, 0deg))) rotateY(calc(var(--revY, 0deg) + var(--tilt-y, 0deg))); }
+    from {
+        transform: rotate(0deg) rotateX(calc(var(--revX, 0deg) + var(--tilt-x, 0deg))) rotateY(calc(var(--revY, 0deg) + var(--tilt-y, 0deg)));
+    }
+
+    to {
+        transform: rotate(-360deg) rotateX(calc(var(--revX, 0deg) + var(--tilt-x, 0deg))) rotateY(calc(var(--revY, 0deg) + var(--tilt-y, 0deg)));
+    }
 }
 
 /* Set reverse tilts for each bubble to keep them perfectly upright */
-.bubble-1 .project-bubble { --revX: -65deg; animation-duration: 20s; }
-.bubble-2 .project-bubble { --revX: 65deg; animation-duration: 25s; animation-direction: reverse; }
-.bubble-3 .project-bubble { --revY: -75deg; --revX: -20deg; animation-duration: 18s; }
-.bubble-4 .project-bubble { --revY: 75deg; --revX: 20deg; animation-duration: 22s; animation-direction: reverse; }
-.bubble-5 .project-bubble { --revX: -55deg; animation-duration: 28s; }
-.bubble-6 .project-bubble { --revX: -55deg; animation-duration: 32s; }
+.bubble-1 .project-bubble {
+    --revX: -65deg;
+    animation-duration: 20s;
+}
+
+.bubble-2 .project-bubble {
+    --revX: 65deg;
+    animation-duration: 25s;
+    animation-direction: reverse;
+}
+
+.bubble-3 .project-bubble {
+    --revY: -75deg;
+    --revX: -20deg;
+    animation-duration: 18s;
+}
+
+.bubble-4 .project-bubble {
+    --revY: 75deg;
+    --revX: 20deg;
+    animation-duration: 22s;
+    animation-direction: reverse;
+}
+
+.bubble-5 .project-bubble {
+    --revX: -55deg;
+    animation-duration: 28s;
+}
+
+.bubble-6 .project-bubble {
+    --revX: -55deg;
+    animation-duration: 32s;
+}
 
 .project-bubble:hover {
     box-shadow: 0 0 60px var(--accent-blue), inset 0 0 40px var(--accent-blue);
@@ -416,7 +500,9 @@ nav .container {
 }
 
 @media (max-width: 1200px) {
-    .hero-visuals { display: none; }
+    .hero-visuals {
+        display: none;
+    }
 }
 
 .card:hover {
@@ -650,6 +736,7 @@ footer {
     .project-layout {
         grid-template-columns: 1fr;
     }
+
     .project-sidebar {
         position: static;
         order: -1;
@@ -658,7 +745,8 @@ footer {
 
 .video-container {
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 */
+    padding-bottom: 56.25%;
+    /* 16:9 */
     height: 0;
     overflow: hidden;
     max-width: 100%;
@@ -676,6 +764,7 @@ footer {
     height: 100%;
     border: 0;
 }
+
 .video-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -713,12 +802,15 @@ footer {
         transform: translateY(-10%) rotate(0deg);
         opacity: 0;
     }
+
     10% {
         opacity: 0.7;
     }
+
     90% {
         opacity: 0.7;
     }
+
     100% {
         transform: translateY(110vh) rotate(360deg);
         opacity: 0;
