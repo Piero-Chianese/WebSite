@@ -93,13 +93,14 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(createPetal, 300);
     }
 
-    // Easter Egg: Maze Game Trigger (5 clicks on logo)
+    // Easter Egg: Maze Game Trigger (5 clicks on logo) - ONLY ON HOME PAGE
     let logoClicks = 0;
     let lastClickTime = 0;
     let clickTimer = null;
     const logo = document.querySelector('.logo');
+    const isHomePage = window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('/');
     
-    if (logo) {
+    if (logo && isHomePage) {
         logo.addEventListener('click', (e) => {
             const currentTime = Date.now();
             
@@ -136,6 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
 });
 
 // --- Protection against copying ---
