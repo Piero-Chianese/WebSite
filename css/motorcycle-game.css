@@ -196,12 +196,90 @@
     color: white;
 }
 
+/* Mobile Optimization */
 @media (max-width: 768px) {
-    .game-device {
-        padding: 2rem 1.5rem;
+    .moto-game-page {
+        padding: 1rem;
+        justify-content: flex-start;
+        padding-top: 2rem;
     }
+
+    .game-device {
+        padding: 1.5rem;
+        border-radius: 25px;
+        width: 100%;
+        max-width: 450px;
+    }
+
+    .device-header {
+        margin-bottom: 1.5rem;
+    }
+
+    .lcd-screen {
+        border-width: 6px;
+    }
+
     .device-controls {
-        flex-direction: column;
-        gap: 2rem;
+        margin-top: 2rem;
+        flex-direction: row; /* Keep them side by side on tablets */
+        gap: 1rem;
+    }
+
+    .control-btn {
+        width: 70px;
+        height: 70px;
+        font-size: 1.8rem;
+        touch-action: none;
+    }
+
+    .start-btn {
+        width: 90px;
+        height: 45px;
+        font-size: 0.8rem;
+        touch-action: none;
+    }
+
+    .game-msg h2 {
+        font-size: 1.5rem;
+    }
+
+    .game-msg p {
+        font-size: 0.7rem;
     }
 }
+
+@media (max-width: 480px) {
+    .game-device {
+        padding: 1rem;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+    }
+
+    .device-controls {
+        flex-direction: column; /* Stack controls on phones */
+        align-items: center;
+        gap: 2.5rem;
+    }
+
+    .d-pad {
+        grid-template-columns: repeat(3, 75px);
+        grid-template-rows: repeat(3, 75px);
+    }
+
+    .control-btn {
+        width: 85px;
+        height: 85px;
+    }
+
+    .action-buttons {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .start-btn {
+        width: 120px;
+        height: 50px;
+    }
+}
+

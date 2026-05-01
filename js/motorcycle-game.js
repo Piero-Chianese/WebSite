@@ -34,6 +34,7 @@ class MountainMotoDash {
         
         this.keys = {};
         this.initInput();
+        window.addEventListener('resize', () => this.resize());
         this.loop();
     }
 
@@ -138,6 +139,8 @@ class MountainMotoDash {
     }
 
     draw() {
+        const scale = this.canvas.width / 600; // Base scaling factor
+        
         // Clear LCD
         this.ctx.fillStyle = this.lcdBg;
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
@@ -145,13 +148,13 @@ class MountainMotoDash {
         const centerX = this.canvas.width / 2;
         const horizonY = this.canvas.height * 0.45;
         
-        // --- LAYER 1: ROAD (REFINED PERSPECTIVE) ---
-        const horizonW = 1; // Narrowed to 1px for extreme depth
-        const bottomW = 320;
+        // --- LAYER 1: ROAD ---
+        const horizonW = 1;
+        const bottomW = this.canvas.width * 0.5; // Scale with width
         this.ctx.strokeStyle = this.inkColor;
-        this.ctx.lineWidth = 6;
-        const foregroundX = centerX + this.roadCurvature * 4.5;
-        const distalX = centerX + this.horizonCurvature * 3.8;
+        this.ctx.lineWidth = 6 * scale;
+        const foregroundX = centerX + this.roadCurvature * 4.5 * scale;
+        const distalX = centerX + this.horizonCurvature * 3.8 * scale;
         
         this.ctx.beginPath();
         this.ctx.moveTo(distalX - horizonW, horizonY);
@@ -161,21 +164,20 @@ class MountainMotoDash {
         this.ctx.stroke();
 
         // Central Line
-        this.ctx.setLineDash([40, 40]);
-        this.ctx.lineDashOffset = -this.roadOffset * 4;
+        this.ctx.setLineDash([40 * scale, 40 * scale]);
+        this.ctx.lineDashOffset = -this.roadOffset * 4 * scale;
         this.ctx.beginPath();
         this.ctx.moveTo(distalX, horizonY);
         this.ctx.quadraticCurveTo(foregroundX, this.canvas.height * 0.8, centerX, this.canvas.height);
-        this.ctx.lineWidth = 6;
+        this.ctx.lineWidth = 6 * scale;
         this.ctx.stroke();
         this.ctx.setLineDash([]);
 
         // --- LAYER 2: MOUNTAINS ---
         if (this.bgImg.complete) {
             this.ctx.fillStyle = '#444c38';
-            this.ctx.fillRect(0, horizonY - 140, this.canvas.width, 140);
-            this.ctx.drawImage(this.bgImg, 0, horizonY - 180, this.canvas.width, 220);
-            // Removed fog line for a cleaner cut
+            this.ctx.fillRect(0, horizonY - (140 * scale), this.canvas.width, 140 * scale);
+            this.ctx.drawImage(this.bgImg, 0, horizonY - (180 * scale), this.canvas.width, 220 * scale);
         }
 
         // --- LAYER 3: TREES ---
@@ -183,12 +185,11 @@ class MountainMotoDash {
             const progress = (tree.y - horizonY) / (this.canvas.height - horizonY);
             if (progress < 0) return;
             
-            const roadXAtY = (this.roadCurvature * progress * 6.5) + (this.horizonCurvature * (1 - progress) * 4);
+            const roadXAtY = (this.roadCurvature * progress * 6.5 * scale) + (this.horizonCurvature * (1 - progress) * 4 * scale);
             const roadWidthAtY = horizonW + progress * (bottomW - horizonW);
             
-            const x = centerX + roadXAtY + (tree.side * (roadWidthAtY + 10 + progress * 40));
-            // Increased scaling for more "pop"
-            const size = 40 + Math.pow(progress, 2.5) * 400;
+            const x = centerX + roadXAtY + (tree.side * (roadWidthAtY + (10 * scale) + progress * (40 * scale)));
+            const size = (35 * scale) + Math.pow(progress, 2.5) * (350 * scale);
             
             if (this.treeImg.complete) {
                 this.ctx.drawImage(this.treeImg, x - size/2, tree.y - size, size, size);
@@ -197,35 +198,35 @@ class MountainMotoDash {
 
         // --- LAYER 4: BIKE ---
         const playerY = this.canvas.height * 0.88;
-        const playerX = centerX + (this.roadCurvature * 2.8);
+        const playerX = centerX + (this.roadCurvature * 2.8 * scale);
         this.ctx.save();
         this.ctx.translate(playerX, playerY);
         this.ctx.rotate(this.roadCurvature * 0.04);
         if (this.bikeImg.complete) {
-            const w = 230; const h = 230;
-            this.ctx.drawImage(this.bikeImg, -w/2, -h/2 - 40, w, h);
+            const w = 230 * scale; const h = 230 * scale;
+            this.ctx.drawImage(this.bikeImg, -w/2, -h/2 - (40 * scale), w, h);
         }
         this.ctx.restore();
 
         // --- LAYER 5: HUD ---
         if (this.currentPrompt) {
             const side = this.currentPrompt.side;
-            const hudY = horizonY - 110;
+            const hudY = horizonY - (110 * scale);
             const timePercent = this.currentPrompt.timer / this.currentPrompt.total;
             if ((timePercent > 0.4) || (Math.floor(Date.now() / 400) % 2 === 0)) {
                 this.ctx.fillStyle = this.inkColor;
-                this.ctx.font = '800 52px Outfit, sans-serif';
+                this.ctx.font = `800 ${Math.floor(52 * scale)}px Outfit, sans-serif`;
                 this.ctx.textAlign = 'center';
                 const arrowText = side === -1 ? '◀ LEAN' : 'LEAN ▶';
                 this.ctx.fillText(arrowText, centerX, hudY);
             }
             
-            const barWidth = 240;
+            const barWidth = 240 * scale;
             const segments = 10;
-            const sW = (barWidth - (segments - 1) * 6) / segments;
+            const sW = (barWidth - (segments - 1) * (6 * scale)) / segments;
             for (let i = 0; i < segments; i++) {
                 this.ctx.fillStyle = (i / segments) < timePercent ? this.inkColor : 'rgba(43, 48, 36, 0.1)';
-                this.ctx.fillRect(centerX - barWidth/2 + i * (sW + 6), hudY + 28, sW, 16);
+                this.ctx.fillRect(centerX - barWidth/2 + i * (sW + (6 * scale)), hudY + (28 * scale), sW, 16 * scale);
             }
         }
     }
