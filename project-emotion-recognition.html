@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to create a model based on Emotion Recognition | Piero Chianese</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">Piero.Dev</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="project-hero" style="background-image: url('assets/images/emotion_recognition_hero.png'); background-size: cover; background-position: center;">
+        <div class="container">
+            <div class="reveal">
+                <h1 style="font-size: 3rem; line-height: 1.2;">How to create a model based on Emotion Recognition using the LiDAR sensor behind FaceID</h1>
+                <p style="color: var(--accent-blue); font-weight: 600; margin-top: 1rem;">Machine Learning Research | Piero Chianese & Luca Perrotti</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="padding-bottom: 8rem; max-width: 900px;">
+        <div class="project-content" style="margin-top: 4rem;">
+            
+            <section class="content-section reveal">
+                <p>Our story is about understanding how to use machine learning and use it properly; it all started with the idea to find a way to recognize people’s emotions.</p>
+                
+                <div style="text-align: center; margin: 2rem 0;">
+                    <img src="assets/images/emotion_ai_banner.webp" alt="ARMotion Banner" style="width: 100%; border-radius: 8px;">
+                </div>
+
+                <p style="font-style: italic; margin-top: 2rem;">N.B. that very it’s very difficult to recognise human’s emotions even for people, of course for a machine even more.</p>
+                
+                <p>Our final goal is to create a game based on emotion recognition but, of course, to accomplish this we have to become proficient in machine learning.</p>
+                
+                <p>We started working on the Apple framework CoreML because we decided to use an existing model to do our job (and make our life easier). Throughout CoreML you have access to machine learning in your project and to do this, you have just to implement a .model file and write a few lines of codes. The model we found on the internet was trained with images of people who represent many different emotions such as angriness, happiness, sadness, disgust, and surprise.</p>
+            </section>
+
+            <section class="content-section reveal" style="text-align: center;">
+                <img src="assets/images/emotion_ai_3.png" alt="CoreML Testing" style="width: 100%; border-radius: 8px; margin: 2rem 0;">
+            </section>
+
+            <section class="content-section reveal">
+                <p>We found out that this model was a bit inaccurate and the detection of the emotions was not so coherent with the faces we were trying to do in our testing photos, so this lead us to use another way to understand machine learning and also to become proficient in the creation of our model so we decide to use CreateML</p>
+                
+                <p style="font-weight: 600; color: var(--accent-blue);">CreateML perhaps allows you to create your model.</p>
+                
+                <p>The accuracy problem of the model we found online was most likely because of the training it was submitted to. So we figured out a different way of taking pictures for the model training.</p>
+                
+                <p>The next step was to understand the technology behind FaceID because this is the way we used to scan the faces of people. FaceID can be used to track points of the face and create “face masks”; through a simple tool (ARMotion) that we created, we recorded three videos of three different emotions: happiness, sadness, and normal expression.</p>
+            </section>
+
+            <section class="content-section reveal" style="text-align: center;">
+                <img src="assets/images/emotion_ai_2.png" alt="ARMotion App" style="width: 60%; max-width: 300px; border-radius: 12px; margin: 2rem 0; box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
+            </section>
+
+            <section class="content-section reveal">
+                <p>From these videos, we took out some frames (about 7000) and we trained our model with these photos.</p>
+            </section>
+
+            <section class="content-section reveal" style="text-align: center;">
+                <img src="assets/images/emotion_ai_1.png" alt="Training Accuracy" style="width: 100%; border-radius: 8px; margin: 2rem 0; filter: invert(0.1);">
+            </section>
+
+            <section class="content-section reveal">
+                <p>Using FaceID’s scans the model can adapt its emotion recognition to every people because we used only the given face mask, without the background.</p>
+            </section>
+
+            <section class="content-section reveal" style="text-align: center;">
+                <img src="assets/images/emotion_ai_4.png" alt="Emotion Detection Results" style="width: 100%; border-radius: 8px; margin: 2rem 0;">
+            </section>
+
+            <section class="content-section reveal">
+                <p>The model we created is a bit inaccurate due to the lack of time, but the use of faceID helps our model to be lighter because the model we found on the internet occupied 460Mb more or less while our model 17Kb. For our future implementations, we want to create a more precise model; we understood that the secret to raising the model's precision is using more images from different distances and different angles.</p>
+                
+                <p>We know that there is a lot of potential in ML, you can create basically whatever you want with it, is all about time and learning.</p>
+                
+                <p style="font-weight: 800; margin-top: 4rem; text-align: center; color: var(--accent-blue);">Credits to Piero Chianese</p>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="https://medium.com/@lucaperrotti/from-core-to-create-recognize-emotions-9e2182c0e482" target="_blank" class="btn btn-primary">Read full article on Medium</a>
+                </div>
+            </section>
+
+            <div style="margin-top: 6rem; text-align: center;">
+                <a href="projects.html" class="btn" style="border: 1px solid var(--glass-border);">← Back to Projects</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Piero Chianese. Machine Learning Research.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Capri - Unsolved Ruins | Piero Chianese</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">Piero.Dev</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="project-hero" style="background-image: url('assets/images/project_capri_banner.webp'); background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #fff;">
+        <div class="container">
+            <div class="reveal">
+                <h1 style="font-size: 4.5rem; line-height: 1; color: #000;">Project Capri</h1>
+                <p style="color: var(--accent-blue); font-weight: 600; margin-top: 1rem;">Business Idea | AR & Gamification</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="padding-bottom: 8rem;">
+        <div class="project-layout">
+            <div class="project-content">
+                <section class="content-section reveal">
+                    <h2>The Concept: CAPRI</h2>
+                    <p>
+                        <strong>CAPRI</strong> (Come At Pub Relying on Imagination) was born as a pilot for a business idea aimed at solving the common issue of waiting times in pubs and restaurants. Our research showed that pub-goers are only willing to wait 8 minutes for a drink and 12 minutes for food, while the average wait per party is 23 minutes.
+                    </p>
+                    <p>
+                        To improve this experience, we partnered with <strong>Ruin</strong>, a pub in Caserta, to create <strong>Unsolved Ruins</strong>—an app that transforms waiting time into an engaging adventure.
+                    </p>
+                    
+                    <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <a href="https://testflight.apple.com/join/Fr0haNFL" target="_blank" class="btn btn-primary">Try Unsolved Kitchen (Beta)</a>
+                        <a href="assets/docs/ProjectCapri_Presentation.pdf" target="_blank" class="btn" style="border: 1px solid var(--glass-border);">Download Presentation</a>
+                    </div>
+                </section>
+
+                <section class="content-section reveal">
+                    <h2>Core Experience</h2>
+                    <p>The app guides users through a path of alternating riddles, mini-games, and augmented reality (AR) scenes.</p>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-top: 3rem;">
+                        <div>
+                            <h4 style="color: var(--accent-blue); margin-bottom: 1rem;">Riddles</h4>
+                            <p style="font-size: 0.9rem;">Randomly presented challenges that encourage teamwork. Clues appear if the group gets stuck, ensuring a smooth flow of entertainment.</p>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--accent-blue); margin-bottom: 1rem;">Mini-games</h4>
+                            <p style="font-size: 0.9rem;">Built with SpriteKit, utilizing the iPhone's accelerometer and haptic feedback to create an immersive, tactile experience.</p>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--accent-blue); margin-bottom: 1rem;">AR Scenes</h4>
+                            <p style="font-size: 0.9rem;">Innovative use of AR to frame paintings or walls for clues. Features a custom light-management algorithm for dim pub environments.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section reveal">
+                    <h2>Technical Innovation</h2>
+                    <p>
+                        We successfully integrated <strong>voice recognition</strong> for puzzle solving and <strong>video playback on 3D objects</strong> within AR scenes. These technologies allow for a highly scalable project that can be replicated in museums, art galleries, and other public venues.
+                    </p>
+                </section>
+
+                <section class="content-section reveal">
+                    <h2>Business Model</h2>
+                    <p>
+                        The value proposition focuses on helping entrepreneurs improve customer experience and retention. Revenue is generated through partnership fees and strategic in-app advertising, creating a sustainable ecosystem for both the venue and the platform.
+                    </p>
+                </section>
+                
+                <a href="projects.html" class="btn" style="border: 1px solid var(--glass-border);">← Back to Projects</a>
+            </div>
+
+            <aside class="project-sidebar reveal">
+                <div class="sidebar-section">
+                    <h4>Role</h4>
+                    <p>Backend, Game Designer, Developer</p>
+                </div>
+                <div class="sidebar-section">
+                    <h4>Technologies</h4>
+                    <p>ARKit, SpriteKit, Voice Recognition</p>
+                </div>
+                <div class="sidebar-section">
+                    <h4>Status</h4>
+                    <p>Available at Ruin (Caserta)</p>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Piero Chianese. Project Capri.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

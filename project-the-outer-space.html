@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Outer Space | Piero Chianese</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">Piero.Dev</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="project-hero" style="background-image: url('assets/images/the_outer_space.webp'); background-size: cover; background-position: center;">
+        <div class="container">
+            <div class="reveal">
+                <h1 style="font-size: 4.5rem; line-height: 1;">The Outer Space</h1>
+                <p style="color: var(--accent-blue); font-weight: 600; margin-top: 1rem;">SpriteKit | iOS Strategy Game</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="padding-bottom: 8rem;">
+        <div class="project-layout">
+            <div class="project-content">
+                <section class="content-section reveal">
+                    <h2>Overview</h2>
+                    <p>
+                        <strong>The Outer Space (TOS)</strong> is a mobile strategy game designed for casual gamers looking for engaging entertainment in their free time. Developed in just 5 weeks, the project was a journey from zero knowledge of game development to a fully functional iOS game.
+                    </p>
+                    <p>
+                        In TOS, you play as a rookie spaceship pilot of the Earth’s Royal Guard, sent into the unknown "Outer Space" to extract resources from distant planets and reinforce Earth's defenses against mysterious enemy armies.
+                    </p>
+                    
+                    <div style="margin-top: 2rem;">
+                        <a href="#" class="btn btn-primary">Try the Beta (TestFlight)</a>
+                    </div>
+                </section>
+
+                <section class="content-section reveal">
+                    <h2>Videos</h2>
+                    <div class="video-grid">
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/6KO1RtYIUK0" title="The Outer Space Gameplay" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/Yf5xxHyfwIE" title="The Outer Space Presentation" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section reveal">
+                    <h2>Key Features</h2>
+                    <ul style="color: var(--text-secondary); margin-left: 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <li><strong>4 Challenging Missions:</strong> Diverse objectives and environmental interactions.</li>
+                        <li><strong>48 Spaceship Versions:</strong> Extensive customization for your primary vessel.</li>
+                        <li><strong>Resource Extraction:</strong> Strategic lander deployment on planets.</li>
+                        <li><strong>Dynamic Combat:</strong> Fight ordinary enemy ships and powerful bosses.</li>
+                        <li><strong>Customizable UI:</strong> Switch between free shoot and button modes; left/right stick placement.</li>
+                    </ul>
+                </section>
+
+                <section class="content-section reveal">
+                    <h2>Technical Implementation</h2>
+                    <p>
+                        One of the biggest challenges was translating ideas into a playable game with no prior experience. We utilized <strong>SpriteKit</strong> for core gameplay mechanics, <strong>UIKit</strong> and Storyboards for robust menu systems, and <strong>AVFoundation</strong> for custom-composed music and sound effects.
+                    </p>
+                    <p>
+                        The design follows a colored, flat, and minimalist aesthetic to maintain clarity in the space environment. Every asset—from planets to asteroids—was hand-crafted to ensure a unique visual identity.
+                    </p>
+                </section>
+
+                <section class="content-section reveal">
+                    <h2>Beta Testing & Feedback</h2>
+                    <p>
+                        During the external TestFlight phase, we collected almost 350 sessions. User feedback was instrumental in refining the controls (introducing the shoot button option) and balancing the gameplay. We achieved a stable build with minimal crashes, proving the effectiveness of our technical architecture.
+                    </p>
+                </section>
+
+                <section class="content-section reveal">
+                    <h2>Business Model & Future</h2>
+                    <p>
+                        TOS adopts a <strong>Freemium model</strong>, offering the core experience for free while allowing users to purchase aesthetic customizations and components using both in-game currency and IAP systems.
+                    </p>
+                    <p>
+                        Future updates will include a <strong>Multiplayer mode</strong> via Game Center, a component-mixing system for personalized ships, and a story-driven campaign to further expand the lore of the Earth’s Royal Guard.
+                    </p>
+                </section>
+                
+                <a href="projects.html" class="btn" style="border: 1px solid var(--glass-border);">← Back to Projects</a>
+            </div>
+
+            <aside class="project-sidebar reveal">
+                <div class="sidebar-section">
+                    <h4>Role</h4>
+                    <p>Full Stack Coder, Game Designer, Developer</p>
+                </div>
+                <div class="sidebar-section">
+                    <h4>Duration</h4>
+                    <p>5 Weeks</p>
+                </div>
+                <div class="sidebar-section">
+                    <h4>Technology</h4>
+                    <p>SpriteKit, UIKit, AVFoundation</p>
+                </div>
+                <div class="sidebar-section">
+                    <h4>Platform</h4>
+                    <p>iOS (Mobile)</p>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Piero Chianese. Built with SpriteKit.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

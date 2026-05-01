@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuDog - Healthy Hearing for Dogs | Piero Chianese</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">Piero.Dev</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="project-hero" style="background-color: #fff; text-align: center; padding: 4rem 0;">
+        <div class="container">
+            <div class="reveal">
+                <img src="assets/images/hudog_logo.png" alt="HuDog Logo" style="width: 200px; margin-bottom: 2rem;">
+                <h1 style="font-size: 4.5rem; line-height: 1; color: #000;">HuDog</h1>
+                <p style="color: var(--accent-blue); font-weight: 600; margin-top: 1rem;">Human + Dog | Hearing Health App</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="padding-bottom: 8rem;">
+        <div class="project-layout">
+            <div class="project-content">
+                <section class="content-section reveal">
+                    <h2>Overview</h2>
+                    <p>
+                        <strong>HuDog</strong> (Human + Dog) is an innovative app designed to help dog owners monitor their pet's hearing health. The app provides a localized frequency test and an interactive Hide & Seek game to detect potential hearing issues early.
+                    </p>
+                    <p>
+                        As a <strong>Full Stack Coder</strong>, I was responsible for the app's overall structure and its technical implementation, focusing specifically on high-frequency sound reproduction and iOS speaker optimization.
+                    </p>
+                    
+                    <div style="margin-top: 2rem;">
+                        <a href="assets/docs/HuDog_Presentation.pdf" target="_blank" class="btn btn-primary">Download Project Presentation</a>
+                    </div>
+                </section>
+
+                <section class="content-section reveal">
+                    <h2>The Hearing Test</h2>
+                    <p>
+                        The core of HuDog is a hearing test based on the <strong>BAER report</strong> standards. We researched the maximum frequencies iPhone speakers can reproduce to ensure compatibility with dog hearing tests.
+                    </p>
+                    <p>
+                        The user reproduces specific sounds by interacting with a visual sound wave GIF and submits feedback based on the dog's reactions. The results are then summarized in a card-like report with detailed outcome analysis.
+                    </p>
+                </section>
+
+                <section class="content-section reveal">
+                    <h2>Features & Implementation</h2>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem;">
+                        <div>
+                            <h4 style="color: var(--accent-blue); margin-bottom: 1rem;">Onboarding</h4>
+                            <p style="font-size: 0.9rem;">Introduces key concepts like frequency tests and BAER reports to the user during their first launch.</p>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--accent-blue); margin-bottom: 1rem;">Hide & Seek</h4>
+                            <p style="font-size: 0.9rem;">A playful way to test hearing by hiding the phone and playing animal sounds at specific frequencies.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section reveal">
+                    <h2>Live Demo</h2>
+                    <div class="video-container" style="margin-top: 2rem;">
+                        <iframe src="https://www.youtube.com/embed/H-gVb2PFmPo" title="HuDog Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </section>
+                
+                <a href="projects.html" class="btn" style="border: 1px solid var(--glass-border);">← Back to Projects</a>
+            </div>
+
+            <aside class="project-sidebar reveal">
+                <div class="sidebar-section">
+                    <h4>Role</h4>
+                    <p>Coder Full Stack</p>
+                </div>
+                <div class="sidebar-section">
+                    <h4>Technologies</h4>
+                    <p>AVFoundation, iOS Speakers Research</p>
+                </div>
+                <div class="sidebar-section">
+                    <h4>Standards</h4>
+                    <p>BAER Test Calibration</p>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Piero Chianese. HuDog Project.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
