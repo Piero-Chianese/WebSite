@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mountain Moto Dash | Piero Chianese</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/motorcycle-game.css">
+</head>
+<body class="moto-game-page">
+    
+    <div class="game-device">
+        <div class="device-header">
+            <h1>Mountain Moto Dash</h1>
+        </div>
+
+        <div class="lcd-screen">
+            <div class="lcd-overlay">
+                <div class="score">SCORE: <span id="scoreDisplay">00000</span></div>
+                <div class="hi-score">HI: 12450</div>
+            </div>
+
+            <div id="startOverlay" class="game-msg">
+                <h2>READY?</h2>
+                <p>Press START to begin</p>
+                <p style="font-size: 0.8rem; margin-top: 1rem;">Use Arrows or On-screen buttons</p>
+            </div>
+
+            <div id="gameOverOverlay" class="game-msg" style="display: none;">
+                <h2 style="color: #8b0000;">CRASH!</h2>
+                <p>Final Score: <span id="finalScore">0</span></p>
+                <p style="margin-top: 1rem;">Try Again?</p>
+            </div>
+
+            <canvas id="motoCanvas"></canvas>
+        </div>
+
+        <div class="device-controls">
+            <div class="d-pad">
+                <div></div>
+                <div></div>
+                <div></div>
+                <button id="leftBtn" class="control-btn">←</button>
+                <div></div>
+                <button id="rightBtn" class="control-btn">→</button>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+            <div class="action-buttons">
+                <button id="startBtn" class="start-btn">Start</button>
+            </div>
+        </div>
+    </div>
+
+    <a href="index.html" class="back-home">← Back to Portfolio</a>
+
+    <script src="js/motorcycle-game.js"></script>
+</body>
+</html>

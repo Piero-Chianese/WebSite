@@ -68,7 +68,7 @@
                     <div class="reveal">
                         <h1 style="font-size: 4rem; margin-bottom: 2rem;">About Me</h1>
                         <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">
-                            Hello, my name is <strong>Piero</strong>, I am 30 years old and I hold a degree in Computer Science.
+                            Hello, my name is <strong id="moto-easter-egg" style="cursor: pointer; color: var(--accent-blue); transition: 0.3s;">Piero</strong>, I am 30 years old and I hold a degree in Computer Science.
                         </p>
                         <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
                             Since I was a child, I’ve always had a great passion for technology, especially computer science. This curiosity has driven me to explore the inner workings of software and hardware alike.
@@ -206,6 +206,16 @@
         </div>
     </div>
 
+    <script>
+        // Easter Egg: Mountain Moto Dash
+        document.getElementById('moto-easter-egg').addEventListener('click', function() {
+            // Optional: add a small sound or visual effect before redirecting
+            this.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+                window.location.href = 'motorcycle-game.html';
+            }, 300);
+        });
+    </script>
     <script src="js/main.js"></script>
     <script src="js/maze-game.js"></script>
 </body>
