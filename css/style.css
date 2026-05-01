@@ -359,66 +359,57 @@ nav .container {
 }
 
 @keyframes rotateOrbit {
-    from {
-        transform: rotate(0deg) translateX(320px);
-    }
+    from { transform: rotate(0deg) translateX(340px); }
+    to { transform: rotate(360deg) translateX(340px); }
+}
 
-    to {
-        transform: rotate(360deg) translateX(320px);
-    }
+@keyframes rotateOrbitNear {
+    from { transform: rotate(0deg) translateX(240px); }
+    to { transform: rotate(360deg) translateX(240px); }
+}
+
+@keyframes rotateOrbitFar {
+    from { transform: rotate(0deg) translateX(440px); }
+    to { transform: rotate(360deg) translateX(440px); }
 }
 
 /* Individual Orbits - Tilt angles (Nucleus centered) */
-.bubble-1 {
-    transform: rotateX(65deg) rotateZ(0deg);
-}
-
-.bubble-2 {
-    transform: rotateX(-65deg) rotateZ(30deg);
-}
-
-.bubble-3 {
-    transform: rotateY(75deg) rotateX(20deg);
-}
-
-.bubble-4 {
-    transform: rotateY(-75deg) rotateX(-20deg);
-}
-
-.bubble-5 {
-    transform: rotateZ(45deg) rotateX(55deg);
-}
-
-.bubble-6 {
-    transform: rotateZ(-45deg) rotateX(55deg);
-}
+.bubble-1 { transform: rotateX(65deg) rotateZ(0deg); }
+.bubble-2 { transform: rotateX(-65deg) rotateZ(30deg); }
+.bubble-3 { transform: rotateY(75deg) rotateX(20deg); }
+.bubble-4 { transform: rotateY(-75deg) rotateX(-20deg); }
+.bubble-5 { transform: rotateZ(45deg) rotateX(55deg); }
+.bubble-6 { transform: rotateZ(-45deg) rotateX(55deg); }
+.bubble-7 { transform: rotateX(30deg) rotateY(45deg); }
+.bubble-8 { transform: rotateX(-30deg) rotateY(-45deg); }
+.bubble-9 { transform: rotateY(45deg) rotateZ(30deg); }
+.bubble-10 { transform: rotateY(-45deg) rotateZ(-30deg); }
+.bubble-11 { transform: rotateX(15deg) rotateZ(75deg); }
+.bubble-12 { transform: rotateX(-15deg) rotateZ(-75deg); }
+.bubble-13 { transform: rotateY(20deg) rotateX(80deg); }
+.bubble-14 { transform: rotateY(-20deg) rotateX(-80deg); }
+.bubble-15 { transform: rotateZ(10deg) rotateX(40deg); }
+.bubble-16 { transform: rotateZ(-10deg) rotateX(40deg); }
+.bubble-17 { transform: rotateX(45deg) rotateY(15deg) rotateZ(30deg); }
 
 /* Apply durations */
-.bubble-1 .bubble-orbit-path {
-    animation-duration: 20s;
-}
-
-.bubble-2 .bubble-orbit-path {
-    animation-duration: 25s;
-    animation-direction: reverse;
-}
-
-.bubble-3 .bubble-orbit-path {
-    animation-duration: 18s;
-}
-
-.bubble-4 .bubble-orbit-path {
-    animation-duration: 22s;
-    animation-direction: reverse;
-}
-
-.bubble-5 .bubble-orbit-path {
-    animation-duration: 28s;
-}
-
-.bubble-6 .bubble-orbit-path {
-    animation-duration: 32s;
-}
+.bubble-1 .bubble-orbit-path { animation-duration: 20s; }
+.bubble-2 .bubble-orbit-path { animation-duration: 25s; animation-direction: reverse; }
+.bubble-3 .bubble-orbit-path { animation-duration: 18s; animation: rotateOrbitNear linear infinite 18s; }
+.bubble-4 .bubble-orbit-path { animation-duration: 22s; animation: rotateOrbitNear linear infinite 22s reverse; }
+.bubble-5 .bubble-orbit-path { animation-duration: 28s; animation: rotateOrbitFar linear infinite 28s; }
+.bubble-6 .bubble-orbit-path { animation-duration: 32s; animation: rotateOrbitFar linear infinite 32s; }
+.bubble-7 .bubble-orbit-path { animation-duration: 24s; }
+.bubble-8 .bubble-orbit-path { animation-duration: 26s; animation-direction: reverse; }
+.bubble-9 .bubble-orbit-path { animation-duration: 15s; animation: rotateOrbitNear linear infinite 15s; }
+.bubble-10 .bubble-orbit-path { animation-duration: 19s; animation: rotateOrbitNear linear infinite 19s reverse; }
+.bubble-11 .bubble-orbit-path { animation-duration: 35s; animation: rotateOrbitFar linear infinite 35s; }
+.bubble-12 .bubble-orbit-path { animation-duration: 38s; animation: rotateOrbitFar linear infinite 38s reverse; }
+.bubble-13 .bubble-orbit-path { animation-duration: 21s; }
+.bubble-14 .bubble-orbit-path { animation-duration: 23s; animation-direction: reverse; }
+.bubble-15 .bubble-orbit-path { animation-duration: 30s; animation: rotateOrbitFar linear infinite 30s; }
+.bubble-16 .bubble-orbit-path { animation-duration: 33s; animation: rotateOrbitFar linear infinite 33s reverse; }
+.bubble-17 .bubble-orbit-path { animation-duration: 27s; animation: rotateOrbitMid linear infinite 27s; }
 
 .project-bubble {
     position: relative;
@@ -460,39 +451,23 @@ nav .container {
 }
 
 /* Set reverse tilts for each bubble to keep them perfectly upright */
-.bubble-1 .project-bubble {
-    --revX: -65deg;
-    animation-duration: 20s;
-}
-
-.bubble-2 .project-bubble {
-    --revX: 65deg;
-    animation-duration: 25s;
-    animation-direction: reverse;
-}
-
-.bubble-3 .project-bubble {
-    --revY: -75deg;
-    --revX: -20deg;
-    animation-duration: 18s;
-}
-
-.bubble-4 .project-bubble {
-    --revY: 75deg;
-    --revX: 20deg;
-    animation-duration: 22s;
-    animation-direction: reverse;
-}
-
-.bubble-5 .project-bubble {
-    --revX: -55deg;
-    animation-duration: 28s;
-}
-
-.bubble-6 .project-bubble {
-    --revX: -55deg;
-    animation-duration: 32s;
-}
+.bubble-1 .project-bubble { --revX: -65deg; animation-duration: 20s; }
+.bubble-2 .project-bubble { --revX: 65deg; animation-duration: 25s; animation-direction: reverse; }
+.bubble-3 .project-bubble { --revY: -75deg; --revX: -20deg; animation-duration: 18s; }
+.bubble-4 .project-bubble { --revY: 75deg; --revX: 20deg; animation-duration: 22s; animation-direction: reverse; }
+.bubble-5 .project-bubble { --revX: -55deg; animation-duration: 28s; }
+.bubble-6 .project-bubble { --revX: -55deg; animation-duration: 32s; }
+.bubble-7 .project-bubble { --revX: -30deg; --revY: -45deg; animation-duration: 24s; }
+.bubble-8 .project-bubble { --revX: 30deg; --revY: 45deg; animation-duration: 26s; animation-direction: reverse; }
+.bubble-9 .project-bubble { --revY: -45deg; animation-duration: 15s; }
+.bubble-10 .project-bubble { --revY: 45deg; animation-duration: 19s; animation-direction: reverse; }
+.bubble-11 .project-bubble { --revX: -15deg; animation-duration: 35s; }
+.bubble-12 .project-bubble { --revX: 15deg; animation-duration: 38s; animation-direction: reverse; }
+.bubble-13 .project-bubble { --revY: -20deg; --revX: -80deg; animation-duration: 21s; }
+.bubble-14 .project-bubble { --revY: 20deg; --revX: 80deg; animation-duration: 23s; animation-direction: reverse; }
+.bubble-15 .project-bubble { --revX: -40deg; animation-duration: 30s; }
+.bubble-16 .project-bubble { --revX: -40deg; animation-duration: 33s; animation-direction: reverse; }
+.bubble-17 .project-bubble { --revX: -45deg; --revY: -15deg; animation-duration: 27s; }
 
 .project-bubble:hover {
     box-shadow: 0 0 60px var(--accent-blue), inset 0 0 40px var(--accent-blue);

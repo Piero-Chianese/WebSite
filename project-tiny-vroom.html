@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiny Vroom | Piero Chianese</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">Piero.Dev</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="project-hero" style="background-image: url('assets/images/tiny_vroom_logo.png');">
+        <div class="container">
+            <div class="reveal">
+                <h1 style="font-size: 4.5rem; line-height: 1;">Tiny Vroom</h1>
+                <p style="color: var(--accent-blue); font-weight: 600; margin-top: 1rem;">Unity | Personal Game | Aug 2025 – Present</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="padding-bottom: 8rem;">
+        <div class="project-layout">
+            <div class="project-content">
+                <section class="content-section reveal">
+                    <h2>Overview</h2>
+                    <p>
+                        Tiny Vroom is a fast-paced miniature racing game inspired by the classic <strong>Carrera GO!</strong> slot-car tracks. Developed as a personal project, it blends nostalgia with a modern arcade feel, putting players in control of tiny cars speeding through colorful, cartoon-style circuits.
+                    </p>
+                    <p>
+                        As a solo developer, I am responsible for the entire technical implementation, from the core driving systems to the UI/UX and audio integration. The project is currently at version 0.5 and continues to evolve with frequent updates.
+                    </p>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/Fj-y57Z7_g8" title="Tiny Vroom Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div style="margin-top: 1rem;">
+                         <a href="https://gamedevdiquartiere.itch.io/tiny-vroom" target="_blank" class="btn btn-primary">Play on itch.io</a>
+                    </div>
+                </section>
+
+                <section class="content-section reveal">
+                    <h2>Technical Implementation</h2>
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--accent-blue); margin-bottom: 0.5rem;">Driving & Movement</h4>
+                        <p>Implemented a full driving system featuring spline-based movement combined with physics for a "slot-car" yet dynamic feel. Includes custom turbo, acceleration, and drift behavior.</p>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--accent-blue); margin-bottom: 0.5rem;">Multiplayer & Input</h4>
+                        <p>Robust local multiplayer logic supporting shared-screen races and flexible input handling (Keyboard & Controllers).</p>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--accent-blue); margin-bottom: 0.5rem;">AI Prototypes</h4>
+                        <p>Developed adaptive AI opponents that use track data to adjust their speed and behavior, providing a challenging single-player experience.</p>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: var(--accent-blue); margin-bottom: 0.5rem;">VFX & Audio</h4>
+                        <p>Interactive smoke and particle effects that react to driving style (skids, drifts). Improved engine audio system for better immersion.</p>
+                    </div>
+                </section>
+
+                    <section class="content-section reveal">
+                        <h2>Screenshots</h2>
+                        <div class="video-grid">
+                            <img src="assets/images/tiny_vroom_ss1.png" alt="Tiny Vroom Gameplay 1" class="card-img" style="border-radius: 8px; border: 1px solid var(--glass-border);">
+                            <img src="assets/images/tiny_vroom_ss2.png" alt="Tiny Vroom Gameplay 2" class="card-img" style="border-radius: 8px; border: 1px solid var(--glass-border);">
+                        </div>
+                    </section>
+
+                    <section class="content-section reveal">
+                        <h2>Key Features</h2>
+                    <ul style="color: var(--text-secondary); margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                        <li>Master the throttle to stay on the track and beat lap times.</li>
+                        <li>Local multiplayer head-to-head racing.</li>
+                        <li>Turbo mechanics for high-speed bursts.</li>
+                        <li>HUD with position tracking and best lap system.</li>
+                        <li>Complete settings menu and polished UI/UX.</li>
+                    </ul>
+                </section>
+
+                <a href="projects.html" class="btn" style="border: 1px solid var(--glass-border);">← Back to Projects</a>
+            </div>
+
+            <aside class="project-sidebar reveal">
+                <div class="sidebar-section">
+                    <h4>Role</h4>
+                    <p>Solo Developer</p>
+                </div>
+                <div class="sidebar-section">
+                    <h4>Technology</h4>
+                    <p>Unity</p>
+                </div>
+                <div class="sidebar-section">
+                    <h4>Status</h4>
+                    <p>v0.5 (Ongoing)</p>
+                </div>
+                <div class="sidebar-section">
+                    <h4>Skills</h4>
+                    <p>C#, Physics, AI, UI/UX, Audio</p>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Piero Chianese. Personal Game Project.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
