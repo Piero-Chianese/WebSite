@@ -268,10 +268,15 @@
         <div id="maze-game-container">
             <button id="maze-close-btn"></button>
 
+            <div id="maze-rotate-notice">
+                <div class="rotate-icon"></div>
+                <p>Please rotate your device to landscape to play!</p>
+            </div>
+
             <div id="maze-win-screen">
-                <h2>HAI VINTO!</h2>
-                <p>Tempo finale: <span id="final-time">0.0s</span></p>
-                <button class="win-btn" onclick="resetMazeGame()">Gioca Ancora</button>
+                <h2>YOU WON!</h2>
+                <p>Final Time: <span id="final-time">0.0s</span></p>
+                <button class="win-btn" onclick="resetMazeGame()">Play Again</button>
             </div>
 
             <div class="game-layout">
@@ -279,7 +284,7 @@
 
                 <div class="controls-panel">
                     <div class="timer-box">
-                        <span class="timer-label">Tempo</span>
+                        <span class="timer-label">Time</span>
                         <div id="maze-timer">0.0s</div>
                     </div>
 
@@ -289,7 +294,7 @@
 
                     <div id="note">
                         <strong>PIERO GAME DEV</strong><br>
-                        Trascina il joystick per muoverti!
+                        Hold the joystick to play!
                     </div>
                 </div>
             </div>

@@ -1,8 +1,9 @@
 (function() {
-    console.log("Maze Game Engine v3.2 - Absolute Stability");
+    console.log("Maze Game Engine v3.3 - Continuous Timer");
 
     const pathW = 25, wallW = 10, ballR = 6, maxV = 1.3;
-    let gameActive = false, startTime = 0, prevTime = 0;
+    let isGameRunning = false, isHoldingJoystick = false;
+    let startTime = 0, prevTime = 0;
     let mouseStartX = 0, mouseStartY = 0;
     let accX = 0, accY = 0;
     let ball = { x: 0, y: 0, vx: 0, vy: 0 };
@@ -42,40 +43,79 @@
         finalTimeEl = document.getElementById("final-time");
         gameLayout = document.querySelector(".game-layout");
         
-        if (!modal || modal.dataset.v32) return;
-        document.getElementById("maze-close-btn").onclick = () => { modal.classList.remove('active'); gameActive = false; };
+        if (!modal || modal.dataset.v33) return;
+
+        const releaseJoystick = () => {
+            isHoldingJoystick = false;
+            accX = 0; accY = 0;
+            if (joystickHead) {
+                joystickHead.style.left = "50%";
+                joystickHead.style.top = "50%";
+                joystickHead.style.transform = "translate(-50%, -50%)";
+            }
+            if (canvas) {
+                canvas.style.transform = "rotateX(0deg) rotateY(0deg)";
+            }
+        };
+
+        document.getElementById("maze-close-btn").onclick = () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = ''; 
+            isGameRunning = false;
+            releaseJoystick();
+        };
         
         const startH = (e) => {
             if (winScreen && winScreen.classList.contains('active')) return;
             const t = e.touches ? e.touches[0] : e;
             mouseStartX = t.pageX; mouseStartY = t.pageY;
-            gameActive = true; startTime = Date.now();
-            if (note) note.style.opacity = 0;
-            joystickHead.style.animation = 'none';
-            window.requestAnimationFrame(loop);
+            
+            isHoldingJoystick = true;
+            
+            if (!isGameRunning) {
+                isGameRunning = true;
+                startTime = Date.now();
+                if (note) note.style.opacity = 0;
+                joystickHead.style.animation = 'none';
+                window.requestAnimationFrame(loop);
+            }
         };
+
         joystickHead.addEventListener('mousedown', startH);
-        joystickHead.addEventListener('touchstart', startH);
+        joystickHead.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            startH(e);
+        });
+
+        window.addEventListener('mouseup', releaseJoystick);
+        window.addEventListener('touchend', releaseJoystick);
+
         window.addEventListener('mousemove', handleMove);
-        window.addEventListener('touchmove', (e) => handleMove(e.touches ? e.touches[0] : e));
+        window.addEventListener('touchmove', (e) => {
+            if (isHoldingJoystick) e.preventDefault();
+            handleMove(e.touches ? e.touches[0] : e);
+        }, { passive: false });
+
         window.addEventListener('keydown', (e) => { if (e.key === ' ') reset(); });
-        modal.dataset.v32 = "true";
+        modal.dataset.v33 = "true";
     }
 
     function reset() {
-        gameActive = false; accX = 0; accY = 0; ball.vx = 0; ball.vy = 0;
+        isGameRunning = false; isHoldingJoystick = false;
+        accX = 0; accY = 0; ball.vx = 0; ball.vy = 0;
+        startTime = 0; prevTime = 0;
         ball.x = wallW/2 + pathW/2; ball.y = wallW/2 + pathW/2;
         if (timer) timer.innerText = "0.0s";
         if (canvas) canvas.style.transform = "rotateX(0deg) rotateY(0deg)";
         if (joystickHead) { joystickHead.style.left = "50%"; joystickHead.style.top = "50%"; joystickHead.style.transform = "translate(-50%, -50%)"; joystickHead.style.animation = "maze-glow 0.6s infinite alternate"; }
-        if (note) { note.innerHTML = "<strong>PIERO GAME DEV</strong><br>Trascina il joystick per giocare!"; note.style.opacity = 1; }
+        if (note) { note.innerHTML = "<strong>PIERO GAME DEV</strong><br>HOLD THE JOYSTICK TO PLAY!"; note.style.opacity = 1; }
         if (winScreen) winScreen.classList.remove('active');
         if (gameLayout) gameLayout.classList.remove('blur');
         render();
     }
 
     function handleMove(e) {
-        if (!gameActive || !modal.classList.contains('active')) return;
+        if (!isHoldingJoystick || !modal.classList.contains('active')) return;
         const t = e.touches ? e.touches[0] : e;
         const dx = Math.max(-25, Math.min(25, t.pageX - mouseStartX));
         const dy = Math.max(-25, Math.min(25, t.pageY - mouseStartY));
@@ -84,7 +124,6 @@
             joystickHead.style.transform = `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px))`;
         }
         if (canvas) {
-            // Corrected X-axis inversion
             const rotX = -dy * 0.6;
             const rotY = dx * 0.6;
             canvas.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
@@ -93,10 +132,14 @@
     }
 
     function loop(time) {
-        if (!gameActive || !modal.classList.contains('active')) return;
-        const dt = prevTime ? Math.min(1.5, (time - prevTime) / 16) : 1; prevTime = time;
+        if (!isGameRunning || !modal.classList.contains('active')) return;
+        
+        const dt = prevTime ? Math.min(1.5, (time - prevTime) / 16) : 1; 
+        prevTime = time;
+
         ball.vx = Math.max(-maxV, Math.min(ball.vx + accX * dt, maxV)) * 0.94;
         ball.vy = Math.max(-maxV, Math.min(ball.vy + accY * dt, maxV)) * 0.94;
+        
         let nx = ball.x + ball.vx * dt, ny = ball.y + ball.vy * dt;
 
         walls.forEach(w => {
@@ -113,13 +156,15 @@
                 if (d < ballR + 5) { ball.vx *= -0.4; ball.vy *= -0.4; nx = ball.x; ny = ball.y; }
             }
         });
+        
         ball.x = nx; ball.y = ny;
         render();
+
         const sec = ((Date.now() - startTime) / 1000).toFixed(1);
         if (timer) timer.innerText = sec + "s";
         
         if (Math.sqrt((ball.x - 315)**2 + (ball.y - 300)**2) < 25) {
-            gameActive = false;
+            isGameRunning = false;
             if (winScreen) { winScreen.classList.add('active'); if (finalTimeEl) finalTimeEl.innerText = sec + "s"; }
             if (gameLayout) gameLayout.classList.add('blur');
         } else window.requestAnimationFrame(loop);
@@ -152,6 +197,11 @@
     }
 
     window.resetMazeGame = reset;
-    window.showMazeGame = () => { init(); modal.classList.add('active'); reset(); };
+    window.showMazeGame = () => { 
+        init(); 
+        modal.classList.add('active'); 
+        document.body.style.overflow = 'hidden'; 
+        reset(); 
+    };
     document.addEventListener("DOMContentLoaded", init);
 })();
