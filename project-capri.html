@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
     <nav>
         <div class="container">
@@ -42,69 +40,83 @@
         <div class="project-layout">
             <div class="project-content">
                 <section class="content-section reveal">
-                    <h2>The Concept: CAPRI</h2>
+                    <h2>The Vision: CAPRI</h2>
                     <p>
-                        <strong>CAPRI</strong> (Come At Pub Relying on Imagination) was born as a pilot for a business idea aimed at solving the common issue of waiting times in pubs and restaurants. Our research showed that pub-goers are only willing to wait 8 minutes for a drink and 12 minutes for food, while the average wait per party is 23 minutes.
+                        <strong>CAPRI</strong> (Come At Pub Relying on Imagination) started as a pilot for a business idea designed to revolutionize the hospitality industry. Our goal was to identify a specific market gap: the "dead time" during customer waits in pubs and restaurants.
                     </p>
                     <p>
-                        To improve this experience, we partnered with <strong>Ruin</strong>, a pub in Caserta, to create <strong>Unsolved Ruins</strong>—an app that transforms waiting time into an engaging adventure.
+                        Our research revealed a critical threshold: pub-goers are only willing to wait <strong>8 minutes</strong> for a drink and <strong>12 minutes</strong> for food before their satisfaction drops significantly. With an average wait time of <strong>23 minutes</strong> per party (and nearly 30% waiting over 30 minutes), we saw an opportunity to transform frustration into engagement.
                     </p>
-                    
-                    <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
-                        <a href="https://testflight.apple.com/join/Fr0haNFL" target="_blank" class="btn btn-primary">Try Unsolved Kitchen (Beta)</a>
-                        <a href="assets/docs/ProjectCapri_Presentation.pdf" target="_blank" class="btn" style="border: 1px solid var(--glass-border);">Download Presentation</a>
+                    <p>
+                        We partnered with <strong>Ruin</strong>, a renowned pub in Caserta, to create <strong>Unsolved Ruins</strong>—an immersive app that guides users through a path of riddles, mini-games, and augmented reality scenes.
+                    </p>
+                    <div style="margin-top: 2rem;">
+                        <a href="assets/docs/ProjectCapri_Presentation.pdf" target="_blank" class="btn btn-primary">Download Case Study PDF</a>
                     </div>
                 </section>
 
                 <section class="content-section reveal">
-                    <h2>Core Experience</h2>
-                    <p>The app guides users through a path of alternating riddles, mini-games, and augmented reality (AR) scenes.</p>
+                    <h2>The Experience Path</h2>
                     
-                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-top: 3rem;">
-                        <div>
-                            <h4 style="color: var(--accent-blue); margin-bottom: 1rem;">Riddles</h4>
-                            <p style="font-size: 0.9rem;">Randomly presented challenges that encourage teamwork. Clues appear if the group gets stuck, ensuring a smooth flow of entertainment.</p>
-                        </div>
-                        <div>
-                            <h4 style="color: var(--accent-blue); margin-bottom: 1rem;">Mini-games</h4>
-                            <p style="font-size: 0.9rem;">Built with SpriteKit, utilizing the iPhone's accelerometer and haptic feedback to create an immersive, tactile experience.</p>
-                        </div>
-                        <div>
-                            <h4 style="color: var(--accent-blue); margin-bottom: 1rem;">AR Scenes</h4>
-                            <p style="font-size: 0.9rem;">Innovative use of AR to frame paintings or walls for clues. Features a custom light-management algorithm for dim pub environments.</p>
-                        </div>
+                    <div style="margin-bottom: 3rem;">
+                        <h3 style="color: var(--accent-blue); margin-bottom: 1rem;">1. Strategic Riddles</h3>
+                        <p>
+                            Riddles are the core of the intellectual challenge. Presented randomly, they are designed to be complex enough to encourage <strong>collaboration and teamwork</strong> among friends. To avoid frustration, a smart hint system provides clues after a few seconds if the party is stuck, ensuring a smooth and entertaining flow.
+                        </p>
+                    </div>
+
+                    <div style="margin-bottom: 3rem;">
+                        <h3 style="color: var(--accent-blue); margin-bottom: 1rem;">2. Haptic Mini-games</h3>
+                        <p>
+                            Developed with <strong>SpriteKit</strong>, these mini-games leverage the iPhone's hardware for maximum immersion. We utilized the <strong>accelerometer</strong> for intuitive motion controls and integrated <strong>haptic feedback</strong> so users can literally "feel" the game in their hands. The mechanics (like memory games) are easy to grasp but challenging to master, all while following the visual style of the venue.
+                        </p>
+                    </div>
+
+                    <div style="margin-bottom: 3rem;">
+                        <h3 style="color: var(--accent-blue); margin-bottom: 1rem;">3. AR Innovation</h3>
+                        <p>
+                            The most innovative part of the path involves AR scenes where users frame paintings or walls to reveal hidden clues. 
+                        </p>
+                        <p>
+                            <strong>Technical Challenge:</strong> Dim lighting in pubs is the enemy of AR. We solved this by implementing a <strong>custom light management algorithm</strong> that automatically triggers the flash and adjusts exposure in low-light environments.
+                        </p>
                     </div>
                 </section>
 
                 <section class="content-section reveal">
-                    <h2>Technical Innovation</h2>
+                    <h2>Technical Innovation & Scalability</h2>
                     <p>
-                        We successfully integrated <strong>voice recognition</strong> for puzzle solving and <strong>video playback on 3D objects</strong> within AR scenes. These technologies allow for a highly scalable project that can be replicated in museums, art galleries, and other public venues.
+                        We successfully integrated cutting-edge features:
+                    </p>
+                    <ul style="color: var(--text-secondary); margin-left: 1.5rem; margin-bottom: 2rem;">
+                        <li><strong>Voice Recognition:</strong> Integrated into puzzles to allow for hands-free interaction.</li>
+                        <li><strong>Video Playback on 3D Objects:</strong> Merging static environments with dynamic AR content.</li>
+                        <li><strong>Scalable Architecture:</strong> The concept is replicable beyond pubs, with potential applications in <strong>museums, art galleries, and public exhibits</strong>.</li>
+                    </ul>
+                    <p>
+                        The app is currently available on the App Store and fully playable for customers at Ruin (Caserta).
                     </p>
                 </section>
 
-                <section class="content-section reveal">
-                    <h2>Business Model</h2>
-                    <p>
-                        The value proposition focuses on helping entrepreneurs improve customer experience and retention. Revenue is generated through partnership fees and strategic in-app advertising, creating a sustainable ecosystem for both the venue and the platform.
-                    </p>
-                </section>
-                
                 <a href="projects.html" class="btn" style="border: 1px solid var(--glass-border);">← Back to Projects</a>
             </div>
 
             <aside class="project-sidebar reveal">
                 <div class="sidebar-section">
-                    <h4>Role</h4>
-                    <p>Backend, Game Designer, Developer</p>
+                    <h4>Occupation / Position</h4>
+                    <p>Backend, Game Designer, Game Developer</p>
                 </div>
                 <div class="sidebar-section">
                     <h4>Technologies</h4>
-                    <p>ARKit, SpriteKit, Voice Recognition</p>
+                    <p>ARKit, SpriteKit, Voice Recognition, Light Management Algorithms</p>
+                </div>
+                <div class="sidebar-section">
+                    <h4>Business Model</h4>
+                    <p>Entrepreneur Fees & In-app Advertising</p>
                 </div>
                 <div class="sidebar-section">
                     <h4>Status</h4>
-                    <p>Available at Ruin (Caserta)</p>
+                    <p>Released on App Store</p>
                 </div>
             </aside>
         </div>
@@ -118,5 +130,4 @@
 
     <script src="js/main.js"></script>
 </body>
-
 </html>
