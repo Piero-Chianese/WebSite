@@ -50,6 +50,7 @@
                 <a href="index.html">Home</a>
                 <a href="projects.html">Projects</a>
                 <a href="about.html" class="active">About</a>
+                <a href="cv.html">CV</a>
                 <a href="contact.html">Contact</a>
             </div>
             <div class="menu-toggle">
@@ -60,13 +61,13 @@
         </div>
     </nav>
 
-    <main style="padding-top: 10rem;">
+    <main style="padding-top: 6rem;">
         <div class="container">
             <!-- About Me Section -->
-            <section class="about-section">
+            <section class="about-section" style="padding-top: 0;">
                 <div class="about-grid">
                     <div class="reveal">
-                        <h1 style="font-size: 4rem; margin-bottom: 2rem;">About Me</h1>
+                        <h1 style="font-size: 4rem; margin-top: 0; margin-bottom: 2rem;">About Me</h1>
                         <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">
                             Hello, my name is <strong id="moto-easter-egg" style="cursor: pointer; color: var(--accent-blue); transition: 0.3s;">Piero</strong>, I am 30 years old and I hold a degree in Computer Science.
                         </p>
@@ -93,11 +94,12 @@
                                     <strong>Digital Bros Game Academy</strong><br>
                                     Specializing in Game Programming (Year 2)
                                 </li>
-                                <li>
+                                <li style="margin-bottom: 2rem;">
                                     <strong>Degree in Computer Science</strong><br>
-                                    Academic Foundation
+                                    Ongoing — Thesis Stage (Pegaso / Unisa / Federico II)
                                 </li>
                             </ul>
+                            <a href="cv.html" class="btn btn-primary" style="width: 100%; text-align: center;">View Full CV / Print</a>
                         </div>
                     </div>
                 </div>
@@ -151,6 +153,43 @@
                         <p style="color: var(--text-secondary);">
                             This mindset allows me to discover hidden opportunities and transform them into tangible results. My diverse experiences have shaped the way I approach design, development, and problem-solving.
                         </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Certifications & Credentials Section -->
+            <section class="about-section reveal">
+                <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">Certifications & Credentials</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 3rem; max-width: 800px;">
+                    Beyond my formal education, I am committed to continuous learning and professional growth. Here are some of the certifications and recognitions I've earned along my journey.
+                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin: 0 auto;">
+                    <!-- Apple Academy -->
+                    <div class="highlight-box" style="margin-top: 0; display: flex; flex-direction: column; align-items: center; text-align: center;">
+                        <div style="width: 100%; aspect-ratio: 4/3; background: #fff; border-radius: 8px; margin-bottom: 1.5rem; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 1px solid var(--glass-border);">
+                            <img src="assets/images/apple_teacher_cert.png" alt="Apple Developer Academy Diploma" style="max-width: 90%; max-height: 90%; object-fit: contain;">
+                        </div>
+                        <h4 style="color: var(--accent-blue); margin-bottom: 0.5rem;">Apple Developer Academy</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-secondary);">Software Design & Innovation | 2022</p>
+                    </div>
+
+                    <!-- Apple Teacher -->
+                    <div class="highlight-box" style="margin-top: 0; display: flex; flex-direction: column; align-items: center; text-align: center;">
+                        <div style="width: 100%; aspect-ratio: 4/3; background: #fff; border-radius: 8px; margin-bottom: 1.5rem; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 1px solid var(--glass-border);">
+                            <img src="assets/images/apple_teacher_badge.jpg" alt="Apple Teacher Recognition" style="max-width: 90%; max-height: 90%; object-fit: contain;">
+                        </div>
+                        <h4 style="color: var(--accent-blue); margin-bottom: 0.5rem;">Apple Teacher</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-secondary);">Official Apple Recognition | 2022</p>
+                    </div>
+
+                    <!-- Cisco CCNA -->
+                    <div class="highlight-box" style="margin-top: 0; display: flex; flex-direction: column; align-items: center; text-align: center;">
+                        <div style="width: 100%; aspect-ratio: 4/3; background: #fff; border-radius: 8px; margin-bottom: 1.5rem; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 1px solid var(--glass-border);">
+                            <img src="assets/images/cisco_cert.jpg" alt="Cisco CCNA Certificate" style="max-width: 90%; max-height: 90%; object-fit: contain;">
+                        </div>
+                        <h4 style="color: var(--accent-blue); margin-bottom: 0.5rem;">Cisco CCNA</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-secondary);">Introduction to Networks | 2022</p>
                     </div>
                 </div>
             </section>
