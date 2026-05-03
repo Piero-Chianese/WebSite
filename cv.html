@@ -264,6 +264,82 @@
             .cv-container { grid-template-columns: 1fr; margin-top: 8rem; }
             .cv-sidebar { border-right: none; border-bottom: 1px solid var(--glass-border); }
         }
+
+        /* Hidden elements that appear only on print or when edited */
+        .print-only-data {
+            display: none !important;
+        }
+
+        @media print {
+            .print-only-data {
+                display: block !important;
+            }
+            .section-hidden {
+                display: none !important;
+            }
+            #cv-editor-panel {
+                display: none !important;
+            }
+        }
+
+        /* Admin/Editor Panel Styles */
+        #cv-editor-panel {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10002;
+            background: rgba(20, 20, 20, 0.95);
+            border: 1px solid var(--accent-blue);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            width: 350px;
+            display: none; /* Controlled by JS */
+            backdrop-filter: blur(20px);
+        }
+
+        .editor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 0.5rem;
+        }
+
+        .editor-field {
+            margin-bottom: 1.2rem;
+        }
+
+        .editor-field label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+            font-weight: 700;
+        }
+
+        .editor-field input {
+            width: 100%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--glass-border);
+            padding: 0.6rem;
+            color: white;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+
+        .editor-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+        }
     </style>
 </head>
 <body>
@@ -511,13 +587,56 @@
                         <p class="exp-desc">I love spending my free time playing my beloved musical instruments (piano and guitar) and hiking outdoors along with my trusty motorcycle. I am also a fan of video games and virtual reality, simracing in particular. From time to time I try my hand at creating independent games. I am always looking for new stimuli and my biggest dream is to be able to open a company that deals with VR.</p>
                     </section>
 
-                    <div style="margin-top: 3rem; font-size: 0.7rem; color: var(--text-secondary); line-height: 1.4; border-top: 1px solid var(--glass-border); padding-top: 1.5rem; opacity: 0.6;">
+                    <div id="cv-footer-legal" style="margin-top: 3rem; font-size: 0.7rem; color: var(--text-secondary); line-height: 1.4; border-top: 1px solid var(--glass-border); padding-top: 1.5rem; opacity: 0.6;">
                         I authorize the processing of my personal data present in the CV pursuant to Legislative Decree 30 June 2003, n. 196 "Code regarding the protection of personal data" and art. 13 of the GDPR (EU Regulation 2016/679).
+                    </div>
+
+                    <!-- Hidden Signature Area for Print -->
+                    <div id="print-signature-area" class="print-only-data" style="margin-top: 2rem; border-top: 1px dashed var(--glass-border); padding-top: 1rem;">
+                        <img id="signature-img" src="" alt="Signature" style="max-height: 60px; display: none;">
+                        <p id="signature-name" style="font-family: 'Outfit'; font-weight: 700; margin-top: 0.5rem;"></p>
+                        <p style="font-size: 0.6rem; opacity: 0.5; text-transform: uppercase;">Digital Signature / Firma Digitale</p>
                     </div>
                 </div>
             </div>
         </div>
     </main>
+
+    <!-- Admin Editor Panel -->
+    <div id="cv-editor-panel">
+        <div class="editor-header">
+            <h4 style="margin: 0; color: white;">CV Admin Panel</h4>
+            <span id="close-editor" style="cursor: pointer; font-size: 1.2rem;">✕</span>
+        </div>
+        
+        <div class="editor-field">
+            <label>Phone Number</label>
+            <input type="text" id="input-phone" placeholder="+39 XXX XXXXXXX">
+        </div>
+
+        <div class="editor-field">
+            <label>Signature PNG</label>
+            <input type="file" id="input-sig-file" accept="image/png, image/jpeg">
+        </div>
+
+        <div class="editor-field">
+            <label>Full Name (for signature)</label>
+            <input type="text" id="input-sig-name" placeholder="Piero Chianese">
+        </div>
+
+        <div style="margin-top: 1rem; border-top: 1px solid var(--glass-border); padding-top: 1rem;">
+            <label style="font-size: 0.65rem; color: var(--accent-blue); margin-bottom: 0.8rem; display: block; font-weight: 800;">VISIBILITY</label>
+            <label class="editor-toggle"><input type="checkbox" checked data-section="Hobbies & Interests"> Hobbies</label>
+            <label class="editor-toggle"><input type="checkbox" checked data-section="Certifications & Training"> Certifications</label>
+            <label class="editor-toggle"><input type="checkbox" checked data-section="Articles & Honors"> Honors</label>
+            <label class="editor-toggle"><input type="checkbox" checked data-section="Soft Skills"> Soft Skills</label>
+        </div>
+
+        <button onclick="window.print()" style="width: 100%; margin-top: 1.5rem; padding: 0.8rem; background: linear-gradient(to right, var(--accent-blue), var(--accent-purple)); border: none; border-radius: 8px; color: white; font-weight: 700; cursor: pointer;">
+            GENERATE PDF
+        </button>
+        <p style="text-align: center; font-size: 0.6rem; color: var(--text-secondary); margin-top: 1rem;">Press 'E' again to hide this panel</p>
+    </div>
 
     <button class="print-btn" onclick="window.print()">
         <span style="font-size: 1.2rem;">🖨️</span> Print Full CV to PDF
@@ -530,5 +649,74 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script>
+        // Secret Keyboard Shortcut (E key)
+        const panel = document.getElementById('cv-editor-panel');
+        const closeBtn = document.getElementById('close-editor');
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key.toLowerCase() === 'e' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+                panel.style.display = (panel.style.display === 'block') ? 'none' : 'block';
+            }
+        });
+
+        closeBtn.onclick = () => panel.style.display = 'none';
+
+        // Phone Update
+        const phoneInput = document.getElementById('input-phone');
+        const contactDiv = document.querySelector('.cv-section div[style*="line-height: 1.8"]');
+        
+        phoneInput.oninput = (e) => {
+            let phoneP = document.getElementById('dynamic-phone');
+            if (!phoneP) {
+                phoneP = document.createElement('p');
+                phoneP.id = 'dynamic-phone';
+                phoneP.style.display = 'block'; // Make it visible during edit
+                phoneP.style.color = 'var(--accent-blue)';
+                contactDiv.prepend(phoneP);
+            }
+            phoneP.innerHTML = '📞 ' + e.target.value;
+        };
+
+        // Signature Update
+        const sigFile = document.getElementById('input-sig-file');
+        const sigImg = document.getElementById('signature-img');
+        const sigNameInput = document.getElementById('input-sig-name');
+        const sigNameDisplay = document.getElementById('signature-name');
+        const sigArea = document.getElementById('print-signature-area');
+
+        sigFile.onchange = (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    sigImg.src = event.target.result;
+                    sigImg.style.display = 'block';
+                    sigArea.style.display = 'block'; // Show for preview
+                };
+                reader.readAsDataURL(file);
+            }
+        };
+
+        sigNameInput.oninput = (e) => {
+            sigNameDisplay.innerText = e.target.value;
+            sigArea.style.display = 'block'; // Show for preview
+        };
+
+        // Section Toggling
+        document.querySelectorAll('.editor-toggle input').forEach(checkbox => {
+            checkbox.onchange = (e) => {
+                const sectionName = e.target.getAttribute('data-section');
+                const sections = document.querySelectorAll('.cv-section');
+                sections.forEach(s => {
+                    const title = s.querySelector('.cv-section-title');
+                    if (title && title.innerText.includes(sectionName)) {
+                        if (e.target.checked) s.classList.remove('section-hidden');
+                        else s.classList.add('section-hidden');
+                    }
+                });
+            };
+        });
+    </script>
 </body>
 </html>
