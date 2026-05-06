@@ -1,20 +1,38 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Scroll Reveal Animation
     const observerOptions = {
-        threshold: 0.1
+        threshold: 0.05, 
+        rootMargin: '0px 0px -20px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    document.querySelectorAll('.reveal').forEach(el => {
+    const revealElements = document.querySelectorAll('.reveal');
+    revealElements.forEach(el => {
         observer.observe(el);
     });
+
+    // Instant check for elements already in viewport with smoother timing
+    const triggerVisible = () => {
+        revealElements.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                el.classList.add('active');
+                observer.unobserve(el);
+            }
+        });
+    };
+
+    // Use requestAnimationFrame for the first check to ensure layout is ready
+    requestAnimationFrame(triggerVisible);
+    setTimeout(triggerVisible, 300); // Second check after layout stabilizes
 
     // Active Navigation Link
     const currentPath = window.location.pathname;
