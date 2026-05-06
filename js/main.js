@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(createPetal, 300);
     }
 
-    // Easter Egg: Maze Game Trigger (5 clicks on logo) - ONLY ON HOME PAGE
+    // Easter Egg: Maze Game Trigger (5 clicks on logo)
     let logoClicks = 0;
     let lastClickTime = 0;
     let clickTimer = null;

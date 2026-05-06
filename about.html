@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/maze-game.css">
     <style>
         .about-section {
-            padding-bottom: 4rem;
+            padding: 3rem 0; /* Reduced vertical padding */
         }
         .about-grid {
             display: grid;
@@ -160,42 +160,69 @@
             <!-- Certifications & Credentials Section -->
             <section class="about-section reveal">
                 <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">Certifications & Credentials</h2>
-                <p style="color: var(--text-secondary); margin-bottom: 3rem; max-width: 800px;">
+                <p style="color: var(--text-secondary); margin-bottom: 2rem; max-width: 800px;">
                     Beyond my formal education, I am committed to continuous learning and professional growth. Here are some of the certifications and recognitions I've earned along my journey.
                 </p>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin: 0 auto;">
+
+                <!-- Digital Bros Section -->
+                <div class="reveal" style="margin-bottom: 2.5rem;">
+                    <h3 style="color: var(--accent-blue); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem;">
+                        <span style="background: #fff; border-radius: 4px; padding: 4px; display: flex; align-items: center; justify-content: center;">
+                            <img src="https://www.digitalbrosgameacademy.it/wp-content/themes/dbga-theme/assets/images/favicon.png" onerror="this.src='https://digitalbros.com/favicon.ico'" style="width: 24px; height: 24px;">
+                        </span>
+                        Digital Bros Game Academy
+                    </h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 260px)); gap: 1.5rem;">
+                        <div class="highlight-box" style="margin-top: 0; padding: 1.5rem; display: flex; flex-direction: column; align-items: center; text-align: center; border: 1px solid rgba(255, 215, 0, 0.3); background: var(--glass-bg); border-radius: 12px;">
+                            <div style="width: 100%; aspect-ratio: 4/3; background: #fff; border-radius: 8px; margin-bottom: 1rem; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 1px solid var(--glass-border); cursor: pointer;" onclick="openLightbox('assets/images/dbga_scholarship.jpg')">
+                                <img src="assets/images/dbga_scholarship.jpg" alt="Merit Scholarship" style="max-width: 95%; max-height: 95%; object-fit: contain;">
+                            </div>
+                            <h4 style="color: #ffd700; margin-bottom: 0.3rem; font-size: 1rem;">Merit Scholarship</h4>
+                            <p style="font-size: 0.8rem; color: var(--text-secondary);">Academic Year 2024/2025</p>
+                        </div>
+                        <div class="highlight-box" style="margin-top: 0; padding: 1.5rem; display: flex; flex-direction: column; align-items: center; text-align: center; border: 1px solid rgba(255, 215, 0, 0.3); background: var(--glass-bg); border-radius: 12px;">
+                            <div style="width: 100%; aspect-ratio: 4/3; background: #fff; border-radius: 8px; margin-bottom: 1rem; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 1px solid var(--glass-border); cursor: pointer;" onclick="openLightbox('assets/images/dbga_best_project.jpg')">
+                                <img src="assets/images/dbga_best_project.jpg" alt="Best Project Award" style="max-width: 95%; max-height: 95%; object-fit: contain;">
+                            </div>
+                            <h4 style="color: #ffd700; margin-bottom: 0.3rem; font-size: 1rem;">Best Project: ArtHiss</h4>
+                            <p style="font-size: 0.8rem; color: var(--text-secondary);">December 2024 Milestone</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 2px;">Other Credentials</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 260px)); gap: 1.5rem;">
                     <!-- Apple Academy -->
-                    <div class="highlight-box" style="margin-top: 0; display: flex; flex-direction: column; align-items: center; text-align: center;">
-                        <div style="width: 100%; aspect-ratio: 4/3; background: #fff; border-radius: 8px; margin-bottom: 1.5rem; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 1px solid var(--glass-border);">
+                    <div class="highlight-box" style="margin-top: 0; padding: 1.5rem; display: flex; flex-direction: column; align-items: center; text-align: center; border: 1px solid var(--glass-border); background: var(--glass-bg); border-radius: 12px;">
+                        <div style="width: 100%; aspect-ratio: 4/3; background: #fff; border-radius: 8px; margin-bottom: 1rem; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 1px solid var(--glass-border); cursor: pointer;" onclick="openLightbox('assets/images/apple_teacher_cert.png')">
                             <img src="assets/images/apple_teacher_cert.png" alt="Apple Developer Academy Diploma" style="max-width: 90%; max-height: 90%; object-fit: contain;">
                         </div>
-                        <h4 style="color: var(--accent-blue); margin-bottom: 0.5rem;">Apple Developer Academy</h4>
-                        <p style="font-size: 0.9rem; color: var(--text-secondary);">Software Design & Innovation | 2022</p>
+                        <h4 style="color: var(--accent-blue); margin-bottom: 0.3rem; font-size: 1rem;">Apple Developer Academy</h4>
+                        <p style="font-size: 0.8rem; color: var(--text-secondary);">Software Design & Innovation | 2022</p>
                     </div>
 
                     <!-- Apple Teacher -->
-                    <div class="highlight-box" style="margin-top: 0; display: flex; flex-direction: column; align-items: center; text-align: center;">
-                        <div style="width: 100%; aspect-ratio: 4/3; background: #fff; border-radius: 8px; margin-bottom: 1.5rem; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 1px solid var(--glass-border);">
+                    <div class="highlight-box" style="margin-top: 0; padding: 1.5rem; display: flex; flex-direction: column; align-items: center; text-align: center; border: 1px solid var(--glass-border); background: var(--glass-bg); border-radius: 12px;">
+                        <div style="width: 100%; aspect-ratio: 4/3; background: #fff; border-radius: 8px; margin-bottom: 1rem; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 1px solid var(--glass-border); cursor: pointer;" onclick="openLightbox('assets/images/apple_teacher_badge.jpg')">
                             <img src="assets/images/apple_teacher_badge.jpg" alt="Apple Teacher Recognition" style="max-width: 90%; max-height: 90%; object-fit: contain;">
                         </div>
-                        <h4 style="color: var(--accent-blue); margin-bottom: 0.5rem;">Apple Teacher</h4>
-                        <p style="font-size: 0.9rem; color: var(--text-secondary);">Official Apple Recognition | 2022</p>
+                        <h4 style="color: var(--accent-blue); margin-bottom: 0.3rem; font-size: 1rem;">Apple Teacher</h4>
+                        <p style="font-size: 0.8rem; color: var(--text-secondary);">Official Apple Recognition | 2022</p>
                     </div>
 
                     <!-- Cisco CCNA -->
-                    <div class="highlight-box" style="margin-top: 0; display: flex; flex-direction: column; align-items: center; text-align: center;">
-                        <div style="width: 100%; aspect-ratio: 4/3; background: #fff; border-radius: 8px; margin-bottom: 1.5rem; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 1px solid var(--glass-border);">
+                    <div class="highlight-box" style="margin-top: 0; padding: 1.5rem; display: flex; flex-direction: column; align-items: center; text-align: center; border: 1px solid var(--glass-border); background: var(--glass-bg); border-radius: 12px;">
+                        <div style="width: 100%; aspect-ratio: 4/3; background: #fff; border-radius: 8px; margin-bottom: 1rem; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 1px solid var(--glass-border); cursor: pointer;" onclick="openLightbox('assets/images/cisco_cert.jpg')">
                             <img src="assets/images/cisco_cert.jpg" alt="Cisco CCNA Certificate" style="max-width: 90%; max-height: 90%; object-fit: contain;">
                         </div>
-                        <h4 style="color: var(--accent-blue); margin-bottom: 0.5rem;">Cisco CCNA</h4>
-                        <p style="font-size: 0.9rem; color: var(--text-secondary);">Introduction to Networks | 2022</p>
+                        <h4 style="color: var(--accent-blue); margin-bottom: 0.3rem; font-size: 1rem;">Cisco CCNA</h4>
+                        <p style="font-size: 0.8rem; color: var(--text-secondary);">Introduction to Networks | 2022</p>
                     </div>
                 </div>
             </section>
 
             <!-- Career Objectives -->
-            <section class="about-section reveal" style="padding-bottom: 8rem;">
+            <section class="about-section reveal" style="padding-bottom: 4rem;">
                 <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">Career Objectives</h2>
                 <p style="color: var(--text-secondary); font-size: 1.2rem; max-width: 800px; margin-bottom: 2rem;">
                     The future is full of possibilities, and I’m eager to explore them. My primary goal is to <strong>start my own company</strong> dedicated to developing VR experiences and video games.
@@ -245,17 +272,37 @@
         </div>
     </div>
 
+    <script src="js/main.js"></script>
+    <script src="js/maze-game.js"></script>
     <script>
         // Easter Egg: Mountain Moto Dash
         document.getElementById('moto-easter-egg').addEventListener('click', function() {
-            // Optional: add a small sound or visual effect before redirecting
             this.style.transform = 'scale(1.2)';
             setTimeout(() => {
                 window.location.href = 'motorcycle-game.html';
             }, 300);
         });
+
+        // Lightbox zoom logic
+        function openLightbox(src) {
+            const lb = document.getElementById('lightbox');
+            const img = lb.querySelector('img');
+            img.src = src;
+            lb.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lb = document.getElementById('lightbox');
+            lb.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
     </script>
-    <script src="js/main.js"></script>
-    <script src="js/maze-game.js"></script>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img src="" alt="Certificate Zoom" onclick="event.stopPropagation()">
+    </div>
 </body>
 </html>
