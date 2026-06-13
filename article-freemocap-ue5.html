@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreeMocap to UE5 Pipeline | Piero Chianese</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Outfit:wght@700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/maze-game.css">
+</head>
+
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">Piero.Dev</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="articles.html" class="active">Articles</a>
+                <a href="about.html">About</a>
+                <a href="cv.html">CV</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="project-hero" style="background-image: url('assets/images/mocap_pipeline.png');">
+        <div class="container">
+            <div class="reveal">
+                <h1 style="font-size: 3.5rem; line-height: 1.1; max-width: 800px;">Markerless Mocap on a Budget:<br>FreeMocap to UE5</h1>
+                <p style="color: var(--accent-blue); font-weight: 600; margin-top: 1rem; text-transform: uppercase; letter-spacing: 2px;">
+                    Tech Guide | Mocap & Animation Pipeline
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="padding-bottom: 8rem; padding-top: 4rem;">
+        <div class="project-layout">
+            <div class="project-content">
+                <section class="content-section reveal">
+                    <h2>Introduction</h2>
+                    <p>
+                        For indie game developers, capturing realistic human animations is often a major hurdle. Traditional motion capture (mocap) setups require expensive specialized suits, optical trackers, or studio space. 
+                    </p>
+                    <p>
+                        Enter <strong><a href="https://freemocap.org/" target="_blank" style="color: var(--accent-blue); text-decoration: underline;">FreeMocap</a></strong> (codebase available on <strong><a href="https://github.com/freemocap/freemocap" target="_blank" style="color: var(--accent-blue); text-decoration: underline;">GitHub</a></strong>)—an open-source, markerless motion capture library that tracks human motion in 3D using standard consumer cameras. In this article, I document my pipeline for recording animations with consumer hardware, cleaning them in Blender, and retargeting them to the Unreal Engine 5 Mannequin (Manny).
+                    </p>
+                </section>
+
+                <section class="content-section reveal">
+                    <h2>1. The Recording Setup</h2>
+                    <p>
+                        FreeMocap relies on computer vision algorithms to reconstruct a 3D skeleton from multiple 2D video feeds. Achieving a good result depends heavily on your camera layout and calibration.
+                    </p>
+                    
+                    <h3 style="color: var(--accent-blue); margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1.4rem;">Hardware Configuration</h3>
+                    <ul style="color: var(--text-secondary); margin-left: 1.5rem; margin-bottom: 1.5rem; list-style-type: square;">
+                        <li style="margin-bottom: 0.5rem;">
+                            <strong>Two USB Webcams:</strong> Placed at a 60-to-90-degree angle relative to each other, framing the active capture area. This provides the software with the triangulation data necessary to calculate depth.
+                        </li>
+                        <li style="margin-bottom: 0.5rem;">
+                            <strong>Smartphone (iPhone) Experiment:</strong> For improved accuracy, you can add an iPhone camera to the setup. Linking it alongside standard webcams creates a hybrid system that captures finer movements.
+                        </li>
+                    </ul>
+
+                    <h3 style="color: var(--accent-blue); margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1.4rem;">Calibration & Capture</h3>
+                    <p>
+                        Before recording, you must calibrate the workspace. You hold a checkerboard-pattern calibration grid and move it in front of all cameras. FreeMocap processes these frame synchronizations to map the cameras in virtual 3D space. Once calibrated, you record your performance, ensuring your full body is visible in both feeds.
+                    </p>
+                    <div style="margin: 2rem 0; text-align: center;">
+                        <img src="assets/images/CalibrationImage.png" alt="FreeMocap Calibration Setup" style="border-radius: 8px; border: 1px solid var(--glass-border); max-width: 100%; height: auto; max-height: 450px;">
+                        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.5rem; font-style: italic;">Calibrating the FreeMocap cameras using a checkerboard grid to establish the 3D space.</p>
+                    </div>
+                    <div style="margin: 2rem 0; text-align: center;">
+                        <video controls style="border-radius: 8px; border: 1px solid var(--glass-border); max-width: 100%; height: auto; max-height: 450px; width: 100%;">
+                            <source src="assets/video/CalibrationVideo.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.5rem; font-style: italic;">Video showcasing the live multi-camera calibration capture in FreeMocap.</p>
+                    </div>
+                </section>
+
+                <section class="content-section reveal">
+                    <h2>2. Rigging & Cleaning in Blender</h2>
+                    <p>
+                        The raw motion data exported by FreeMocap can be noisy and jittery. Blender is where we translate this coordinates data into a structured armature and smooth out the animations.
+                    </p>
+
+                    <h3 style="color: var(--accent-blue); margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1.4rem;">Targeting MetaHuman Bones</h3>
+                    <p>
+                        Renaming and matching raw tracker bones to a target game engine skeleton manually is tedious. To solve this, I used the <strong><a href="https://github.com/freemocap/freemocap_blender_addon" target="_blank" style="color: var(--accent-blue); text-decoration: underline;">FreeMocap Blender Addon</a></strong>. This addon automatically sets up a standard <strong>MetaHuman bone structure</strong> over the tracked data. By generating an armature that conforms to standard naming conventions and hierarchy, it saves hours of rigging work and ensures immediate compatibility.
+                    </p>
+
+                    <h3 style="color: var(--accent-blue); margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1.4rem;">Cleaning Keyframe Jitter</h3>
+                    <p>
+                        Markerless mocap data typically suffers from high-frequency noise (jittering). To clean this up:
+                    </p>
+                    <ul style="color: var(--text-secondary); margin-left: 1.5rem; margin-bottom: 1.5rem; list-style-type: decimal;">
+                        <li style="margin-bottom: 0.5rem;">Import the generated armature into Blender's Graph Editor.</li>
+                        <li style="margin-bottom: 0.5rem;">Select the bone channels showing the most noticeable jitter.</li>
+                        <li style="margin-bottom: 0.5rem;">Apply a <strong>Smooth Filter</strong> (Alt+O or via the Graph menu) to filter out the high-frequency micro-movements while keeping the core motion.</li>
+                    </ul>
+                    <p>
+                        This smooths out the animation, making it ready for export as an FBX file.
+                    </p>
+                    <div style="margin: 2rem 0; text-align: center;">
+                        <img src="assets/images/BlenderExample.png" alt="Blender Mocap Cleanup" style="border-radius: 8px; border: 1px solid var(--glass-border); max-width: 100%; height: auto; max-height: 450px;">
+                        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.5rem; font-style: italic;">Cleaning the keyframes and reviewing the MetaHuman skeleton structure in Blender.</p>
+                    </div>
+                </section>
+
+                <section class="content-section reveal">
+                    <h2>3. Importing & Retargeting in Unreal Engine 5</h2>
+                    <p>
+                        Now that we have a cleaned animation file mapped to MetaHuman bones, we import it into Unreal Engine 5 and retarget it to our game's default character mesh.
+                    </p>
+
+                    <h3 style="color: var(--accent-blue); margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1.4rem;">Importing the FBX</h3>
+                    <p>
+                        In UE5, import the FBX file. In the FBX Import Options, choose the MetaHuman skeleton as the target. If you don't have it imported yet, import it as a new skeletal mesh and check the animation checkbox.
+                    </p>
+
+                    <h3 style="color: var(--accent-blue); margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1.4rem;">Retargeting the Animation</h3>
+                    <p>
+                        Once the animation is imported, we need to map it onto the default UE5 Mannequin (<strong>Manny</strong>) and then onto our final custom game character:
+                    </p>
+                    <ol style="color: var(--text-secondary); margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                        <li style="margin-bottom: 0.5rem;"><strong>MetaHuman to Manny:</strong> Since MetaHuman and the UE5 Mannequin (Manny) share highly compatible skeletal structures in Unreal Engine 5, you do not need to create a custom IK Rig or Retargeter from scratch. The MetaHuman animation asset can be retargeted directly to Manny using Unreal's compatible skeleton mapping.</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>Manny to Custom Character:</strong> Next, to map the animation onto the final custom game character, we use a custom-configured <strong>IK Retargeter</strong>. This retargeter is set up with the Manny IK Rig as the Source and the custom character's IK Rig as the Target.</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>Mapping & Export:</strong> Inside this custom IK Retargeter, map the retarget chains (Spine, Limbs, Head, etc.), adjust target offsets to prevent feet sliding or clipping, and export the final animation asset. The animation is now ready to be used on your character!</li>
+                    </ol>
+                    <div class="video-grid" style="margin: 2rem 0;">
+                        <div style="text-align: center;">
+                            <video controls style="border-radius: 8px; border: 1px solid var(--glass-border); max-width: 100%; height: auto; max-height: 350px; width: 100%;">
+                                <source src="assets/video/UnrealAnimation.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.5rem; font-style: italic;">Raw preview of the retargeted animation on the UE5 Manny skeleton.</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <video controls style="border-radius: 8px; border: 1px solid var(--glass-border); max-width: 100%; height: auto; max-height: 350px; width: 100%;">
+                                <source src="assets/video/FinalExample.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.5rem; font-style: italic;">The final retargeted animation running in Unreal Engine 5 on the custom character skeleton.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-section reveal">
+                    <h2>Summary & Best Practices</h2>
+                    <p>
+                        Using FreeMocap, Blender, and UE5, you can construct a zero-cost motion capture pipeline that produces usable, realistic animations for prototyping or final production. For the best results:
+                    </p>
+                    <ul style="color: var(--text-secondary); margin-left: 1.5rem; margin-bottom: 1.5rem; list-style-type: square;">
+                        <li style="margin-bottom: 0.5rem;"><strong>Clothing Contrast:</strong> Wear form-fitting clothes that contrast heavily with your background. Avoid dark clothes in a dark room.</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>Lighting:</strong> Ensure even lighting across the room. Harsh shadows can confuse the computer vision algorithms.</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>Occlusion Warning:</strong> Pay extreme attention to body part visibility. If a camera's line of sight to a limb is blocked (occluded) and no other camera is framing that specific part during a movement, the tracking algorithm will fail to triangulate, resulting in a completely glitched or broken animation.</li>
+                    </ul>
+
+                    <h3 style="color: var(--accent-blue); margin-top: 2rem; margin-bottom: 0.5rem; font-size: 1.4rem;">Looking Ahead</h3>
+                    <p>
+                        This dual-camera pipeline serves as an accessible starting point. Moving forward, I plan to conduct further deep dives experimenting with improved and more complex configurations, utilizing a higher count of synchronized cameras to refine tracking accuracy and eliminate occlusions entirely.
+                    </p>
+                    <p>
+                        While I might have made some mistakes or skipped certain optimizations along the way, and there are surely aspects that could be polished or done better, I believe this pipeline serves as a solid and practical starting point for indie developers looking to explore markerless motion capture on a budget.
+                    </p>
+                    <p style="font-weight: 800; margin-top: 4rem; text-align: center; color: var(--accent-blue);">
+                        Written by Piero Chianese
+                    </p>
+                    <p style="font-size: 0.95rem; color: var(--text-secondary); text-align: center; margin-top: 0.5rem; font-style: italic;">
+                        Character model created by <strong>Alessandra Bianchi</strong>. Special thanks to the <a href="https://freemocap.org/" target="_blank" style="color: var(--accent-blue); text-decoration: underline;">FreeMocap</a> developers and community for creating and maintaining this incredible open-source project.
+                    </p>
+                </section>
+
+                <div style="margin-top: 2rem;">
+                    <a href="articles.html" class="btn" style="border: 1px solid var(--glass-border);">← Back to Articles</a>
+                </div>
+            </div>
+
+            <aside class="project-sidebar reveal">
+                <div class="sidebar-section">
+                    <h4>Category</h4>
+                    <p>Technical Art / Animation</p>
+                </div>
+                <div class="sidebar-section">
+                    <h4>Software</h4>
+                    <p><a href="https://freemocap.org/" target="_blank" style="color: var(--accent-blue); text-decoration: underline;">FreeMocap</a>, Blender, Unreal Engine 5</p>
+                </div>
+                <div class="sidebar-section">
+                    <h4>Hardware</h4>
+                    <p>2x Webcams, 1x iPhone (Optional)</p>
+                </div>
+                <div class="sidebar-section">
+                    <h4>Rig Types</h4>
+                    <p>MetaHuman Skeleton, UE5 Manny</p>
+                </div>
+             </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Piero Chianese. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="maze-game-modal">
+        <div id="maze-game-container">
+            <button id="maze-close-btn"></button>
+
+            <div id="maze-win-screen">
+                <h2>YOU WIN!</h2>
+                <p>Final Time: <span id="final-time">0.0s</span></p>
+                <button class="win-btn" onclick="resetMazeGame()">Play Again</button>
+            </div>
+
+            <div class="game-layout">
+                <canvas id="maze" width="350" height="350"></canvas>
+
+                <div class="controls-panel">
+                    <div class="timer-box">
+                        <span class="timer-label">Time</span>
+                        <div id="maze-timer">0.0s</div>
+                    </div>
+
+                    <div id="joystick">
+                        <div id="joystick-head"></div>
+                    </div>
+
+                    <div id="note">
+                        <strong>PIERO GAME DEV</strong><br>
+                        Trascina il joystick per muoverti!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/maze-game.js"></script>
+</body>
+
+</html>
