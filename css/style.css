@@ -461,6 +461,10 @@ nav .container {
     transform: rotateX(45deg) rotateY(15deg) rotateZ(30deg);
 }
 
+.bubble-18 {
+    transform: rotateX(-45deg) rotateY(-15deg) rotateZ(-30deg);
+}
+
 /* Apply durations */
 .bubble-1 .bubble-orbit-path {
     animation-duration: 20s;
@@ -541,7 +545,12 @@ nav .container {
 
 .bubble-17 .bubble-orbit-path {
     animation-duration: 27s;
-    animation: rotateOrbitMid linear infinite 27s;
+    animation: rotateOrbit linear infinite 27s;
+}
+
+.bubble-18 .bubble-orbit-path {
+    animation-duration: 29s;
+    animation: rotateOrbit linear infinite 29s reverse;
 }
 
 .project-bubble {
@@ -681,6 +690,13 @@ nav .container {
     --revX: -45deg;
     --revY: -15deg;
     animation-duration: 27s;
+}
+
+.bubble-18 .project-bubble {
+    --revX: 45deg;
+    --revY: 15deg;
+    animation-duration: 29s;
+    animation-direction: reverse;
 }
 
 .project-bubble:hover {

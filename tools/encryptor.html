@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSite Page Encryptor | Offline Tool</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: rgba(17, 25, 40, 0.65);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --accent-blue: #3b82f6;
+            --accent-green: #10b981;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Outfit', sans-serif;
+            margin: 0;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        body::before, body::after {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            filter: blur(150px);
+            z-index: 0;
+            opacity: 0.12;
+            pointer-events: none;
+        }
+        body::before {
+            background: var(--accent-blue);
+            top: -10%;
+            left: -10%;
+        }
+        body::after {
+            background: #da5b82;
+            bottom: -10%;
+            right: -10%;
+        }
+
+        .container {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 3rem;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55);
+            z-index: 10;
+        }
+
+        h1 {
+            margin-top: 0;
+            font-size: 2.25rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.025em;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.75rem;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        input[type="password"], input[type="file"] {
+            width: 100%;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        input[type="password"] {
+            padding: 0.9rem 1.2rem;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.03);
+            color: #fff;
+            font-size: 1.05rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        input[type="password"]:focus {
+            border-color: var(--accent-blue);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.25);
+        }
+
+        .file-input-wrapper {
+            position: relative;
+            border: 2px dashed rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.01);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .file-input-wrapper:hover {
+            border-color: var(--accent-blue);
+            background: rgba(59, 130, 246, 0.03);
+        }
+        .file-input-wrapper input[type="file"] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+        .file-input-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        .file-input-text strong {
+            color: var(--accent-blue);
+        }
+
+        .btn-encrypt {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--accent-blue) 0%, #1d4ed8 100%);
+            color: #fff;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+            margin-top: 2rem;
+        }
+
+        .btn-encrypt:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+            filter: brightness(1.1);
+        }
+
+        .btn-encrypt:active {
+            transform: translateY(0);
+        }
+
+        .status-msg {
+            margin-top: 1.25rem;
+            font-size: 0.9rem;
+            text-align: center;
+            display: none;
+            padding: 0.75rem;
+            border-radius: 8px;
+        }
+        .status-msg.success {
+            display: block;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            color: var(--accent-green);
+        }
+        .status-msg.error {
+            display: block;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            color: #f87171;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Page Encryptor</h1>
+        <p class="subtitle">Select your raw HTML page, choose a password, and encrypt it completely offline using AES-256-CBC.</p>
+        
+        <form id="encryptForm">
+            <div class="form-group">
+                <label>1. Select Raw HTML Source</label>
+                <div class="file-input-wrapper">
+                    <input type="file" id="sourceFile" accept=".html" required>
+                    <div class="file-input-text" id="fileText">
+                        Drag and drop your <strong>.raw.html</strong> file here, or click to browse.
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">2. Encryption Password</label>
+                <input type="password" id="password" required placeholder="Enter password to secure the page" minlength="4">
+            </div>
+
+            <button type="submit" class="btn-encrypt">
+                Encrypt & Download protected file
+            </button>
+        </form>
+
+        <div id="status" class="status-msg"></div>
+    </div>
+
+    <script>
+        const sourceFileInput = document.getElementById('sourceFile');
+        const fileText = document.getElementById('fileText');
+        const encryptForm = document.getElementById('encryptForm');
+        const statusDiv = document.getElementById('status');
+
+        sourceFileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                fileText.innerHTML = `Selected file: <strong style="color: #fff;">\h{e.target.files[0].name}</strong>`;
+            } else {
+                fileText.innerHTML = `Drag and drop your <strong>.raw.html</strong> file here, or click to browse.`;
+            }
+        });
+
+        // Template supporting AES-CBC decryption
+        const getTemplate = (encryptedData, saltHex, ivHex) => `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Still Hear | Private Project</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: #0b0f19;
+            color: #f3f4f6;
+            font-family: 'Outfit', sans-serif;
+            margin: 0;
+            padding: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before, body::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: 0;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+        body::before {
+            background: #3b82f6;
+            top: 10%;
+            left: 10%;
+        }
+        body::after {
+            background: #da5b82;
+            bottom: 10%;
+            right: 10%;
+        }
+
+        .login-card {
+            background: rgba(17, 25, 40, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 3rem 2.5rem;
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            z-index: 10;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .login-card:hover {
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+        .login-card h2 {
+            margin-top: 0;
+            font-size: 2.25rem;
+            color: #fff;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.025em;
+            background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .login-card p {
+            color: #9ca3af;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+        }
+        .input-group {
+            margin-bottom: 1.75rem;
+            text-align: left;
+        }
+        .input-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #9ca3af;
+            margin-bottom: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .input-wrapper {
+            position: relative;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.03);
+            color: #fff;
+            font-size: 1.05rem;
+            box-sizing: border-box;
+            outline: none;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+        .input-group input:focus {
+            border-color: #3b82f6;
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.25);
+        }
+        .error-msg {
+            color: #f87171;
+            font-size: 0.85rem;
+            margin-top: 0.6rem;
+            display: none;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .btn-submit {
+            width: 100%;
+            padding: 0.9rem;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: #fff;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+            filter: brightness(1.1);
+        }
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+        .btn-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+        
+        .spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .shake {
+            animation: shake 0.4s ease-in-out;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-8px); }
+            40%, 80% { transform: translateX(8px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-card" id="loginCard">
+        <h2>Still Hear</h2>
+        <p>This project is currently confidential. Please enter the decryption password to view details.</p>
+        <form id="passwordForm">
+            <div class="input-group">
+                <label for="password">Enter Password</label>
+                <div class="input-wrapper">
+                    <input type="password" id="password" required placeholder="••••••••" autocomplete="current-password" autofocus>
+                </div>
+                <div class="error-msg" id="errorMsg">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    Incorrect password. Please try again.
+                </div>
+            </div>
+            <button type="submit" class="btn-submit" id="submitBtn">
+                <span id="btnText">Unlock Project Details</span>
+                <div class="spinner" id="btnSpinner"></div>
+            </button>
+        </form>
+    </div>
+
+    <script>
+        const encryptedData = "\${encryptedData}";
+        const saltHex = "\${saltHex}";
+        const ivHex = "\${ivHex}";
+
+        function hexToBytes(hex) {
+            const bytes = new Uint8Array(hex.length / 2);
+            for (let i = 0; i < bytes.length; i++) {
+                bytes[i] = parseInt(hex.substr(i * 2, 2), 16);
+            }
+            return bytes;
+        }
+
+        function base64ToBytes(base64) {
+            const binary = atob(base64);
+            const bytes = new Uint8Array(binary.length);
+            for (let i = 0; i < binary.length; i++) {
+                bytes[i] = binary.charCodeAt(i);
+            }
+            return bytes;
+        }
+
+        async function decryptContent(password) {
+            const salt = hexToBytes(saltHex);
+            const iv = hexToBytes(ivHex);
+            const ciphertext = base64ToBytes(encryptedData);
+
+            const encoder = new TextEncoder();
+            const passwordBytes = encoder.encode(password);
+            
+            const baseKey = await crypto.subtle.importKey(
+                "raw",
+                passwordBytes,
+                "PBKDF2",
+                false,
+                ["deriveKey"]
+            );
+
+            const aesKey = await crypto.subtle.deriveKey(
+                {
+                    name: "PBKDF2",
+                    salt: salt,
+                    iterations: 100000,
+                    hash: "SHA-256"
+                },
+                baseKey,
+                {
+                    name: "AES-CBC",
+                    length: 256
+                },
+                false,
+                ["decrypt"]
+            );
+
+            const decryptedBytes = await crypto.subtle.decrypt(
+                {
+                    name: "AES-CBC",
+                    iv: iv
+                },
+                aesKey,
+                ciphertext
+            );
+
+            const decoder = new TextDecoder();
+            return decoder.decode(decryptedBytes);
+        }
+
+        document.getElementById('passwordForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const passwordInput = document.getElementById('password');
+            const password = passwordInput.value;
+            const errorMsg = document.getElementById('errorMsg');
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            const btnSpinner = document.getElementById('btnSpinner');
+            const loginCard = document.getElementById('loginCard');
+
+            errorMsg.style.display = 'none';
+            btnText.style.display = 'none';
+            btnSpinner.style.display = 'block';
+            submitBtn.disabled = true;
+            loginCard.classList.remove('shake');
+
+            try {
+                const decryptedHTML = await decryptContent(password);
+                document.open();
+                document.write(decryptedHTML);
+                document.close();
+            } catch (err) {
+                console.error("Decryption failed:", err);
+                setTimeout(() => {
+                    btnSpinner.style.display = 'none';
+                    btnText.style.display = 'block';
+                    submitBtn.disabled = false;
+                    errorMsg.style.display = 'flex';
+                    loginCard.classList.add('shake');
+                    passwordInput.value = '';
+                    passwordInput.focus();
+                }, 400);
+            }
+        });
+    </script>
+</body>
+</html>\`;
+
+        function bytesToHex(bytes) {
+            return Array.from(bytes).map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        function bytesToBase64(bytes) {
+            let binary = '';
+            const len = bytes.byteLength;
+            for (let i = 0; i < len; i++) {
+                binary += String.fromCharCode(bytes[i]);
+            }
+            return window.btoa(binary);
+        }
+
+        encryptForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const file = sourceFileInput.files[0];
+            const password = document.getElementById('password').value;
+
+            statusDiv.style.display = 'none';
+            statusDiv.className = 'status-msg';
+
+            if (!file) {
+                showError("Please select an HTML file to encrypt.");
+                return;
+            }
+
+            try {
+                const reader = new FileReader();
+                reader.onload = async function(event) {
+                    try {
+                        const plaintext = event.target.result;
+                        const encoder = new TextEncoder();
+                        const plaintextBytes = encoder.encode(plaintext);
+
+                        const salt = window.crypto.getRandomValues(new Uint8Array(16));
+                        const iv = window.crypto.getRandomValues(new Uint8Array(16)); // 16 bytes for CBC
+
+                        const passwordBytes = encoder.encode(password);
+                        const baseKey = await window.crypto.subtle.importKey(
+                            "raw",
+                            passwordBytes,
+                            "PBKDF2",
+                            false,
+                            ["deriveKey"]
+                        );
+
+                        const aesKey = await window.crypto.subtle.deriveKey(
+                            {
+                                name: "PBKDF2",
+                                salt: salt,
+                                iterations: 100000,
+                                hash: "SHA-256"
+                            },
+                            baseKey,
+                            {
+                                name: "AES-CBC",
+                                length: 256
+                            },
+                            false,
+                            ["encrypt"]
+                        );
+
+                        const encryptedBuffer = await window.crypto.subtle.encrypt(
+                            {
+                                name: "AES-CBC",
+                                iv: iv
+                            },
+                            aesKey,
+                            plaintextBytes
+                        );
+
+                        const encryptedBytes = new Uint8Array(encryptedBuffer);
+                        const base64Ciphertext = bytesToBase64(encryptedBytes);
+                        const hexSalt = bytesToHex(salt);
+                        const hexIv = bytesToHex(iv);
+
+                        const outputHTML = getTemplate(base64Ciphertext, hexSalt, hexIv);
+
+                        const blob = new Blob([outputHTML], { type: 'text/html;charset=utf-8' });
+                        const link = document.createElement('a');
+                        link.href = URL.createObjectURL(blob);
+                        let downloadName = file.name.replace('.raw.html', '.html');
+                        if (downloadName === file.name) {
+                            downloadName = 'project-still-hear.html';
+                        }
+                        link.download = downloadName;
+                        link.click();
+
+                        showSuccess(`File encrypted successfully! Downloading \${downloadName}...`);
+                    } catch (err) {
+                        console.error(err);
+                        showError(`Encryption processing failed: \${err.message}`);
+                    }
+                };
+                reader.readAsText(file);
+            } catch (err) {
+                console.error(err);
+                showError(`File reading failed: \${err.message}`);
+            }
+        });
+
+        function showError(msg) {
+            statusDiv.textContent = msg;
+            statusDiv.classList.add('error');
+        }
+
+        function showSuccess(msg) {
+            statusDiv.textContent = msg;
+            statusDiv.classList.add('success');
+        }
+    </script>
+</body>
+</html>
