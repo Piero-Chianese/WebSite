@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://piero-chianese.github.io/WebSite/sitemap.xml
