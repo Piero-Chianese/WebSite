@@ -146,14 +146,31 @@
                         <strong>Still Hear</strong> is a <strong style="color: var(--accent-blue);">cinematic 2.5D side-scroller puzzle/stealth adventure game</strong> (inspired by titles like <em>Little Nightmares</em> and <em>Inside</em>) developed in <strong style="color: var(--accent-blue);">Unreal Engine 5.5</strong>.
                     </p>
 
-                    <div class="video-embed-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 12px; border: 1px solid var(--glass-border); margin: 2rem 0; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-                        <iframe 
-                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
-                            src="https://www.youtube.com/embed/wtbhxZ7Auto" 
-                            title="Still Hear - Official Trailer" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen>
-                        </iframe>
+                    <div class="video-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                        <div>
+                            <h4 style="color: var(--accent-blue); margin-bottom: 0.5rem; font-size: 0.95rem;">🎬 Official Trailer</h4>
+                            <div class="video-embed-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 12px; border: 1px solid var(--glass-border); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                                <iframe 
+                                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+                                    src="https://www.youtube.com/embed/wtbhxZ7Auto" 
+                                    title="Still Hear - Official Trailer" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--accent-blue); margin-bottom: 0.5rem; font-size: 0.95rem;">🎮 Full Gameplay Playthrough</h4>
+                            <div class="video-embed-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 12px; border: 1px solid var(--glass-border); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                                <iframe 
+                                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+                                    src="https://www.youtube.com/embed/JePdUvYDKWA" 
+                                    title="Still Hear - Full Gameplay Playthrough" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                        </div>
                     </div>
 
                     <p>
@@ -174,6 +191,10 @@
                         <a href="https://drive.google.com/file/d/1Y7wRnHTGld3OT5xOb9t3I6wggA5FYWoz/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn" style="border: 1px solid var(--accent-blue); display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem;">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.25rem;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
                             Download (macOS)
+                        </a>
+                        <a href="https://youtu.be/JePdUvYDKWA" target="_blank" rel="noopener noreferrer" class="btn" style="border: 1px solid rgba(255, 68, 68, 0.4); color: #ff6b6b; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 0.25rem;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                            Full Playthrough
                         </a>
                         <span class="btn" style="border: 1px solid rgba(218, 91, 130, 0.4); color: rgba(218, 91, 130, 0.6); display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; opacity: 0.6; cursor: not-allowed; pointer-events: none; user-select: none;">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.25rem;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
@@ -959,6 +980,36 @@ return FGuid::NewDeterministicGuid(StablePath);</code></pre>
                     </details>
                 </section>
 
+                <section class="content-section reveal">
+                    <h2>Extra Work & Personal Initiatives: Porting Experiments (macOS & iOS)</h2>
+                    <p>
+                        Beyond the primary PC/Windows target, I independently led cross-platform porting initiatives to test the versatility, pipeline adaptability, and mobile rendering scalability of <strong>Still Hear</strong> in Unreal Engine 5.5:
+                    </p>
+                    <ul style="color: var(--text-secondary); margin-left: 1.5rem; margin-bottom: 1.5rem; line-height: 1.8;">
+                        <li><strong style="color: var(--accent-blue);">Native macOS Port:</strong> Compiled, packaged, and verified full project builds for Apple Silicon and Intel Mac architectures using native Apple Metal graphics APIs.</li>
+                        <li><strong style="color: var(--accent-blue);">Mobile Prototype (iPhone 11 / iOS):</strong> Configured native Bluetooth controller / gamepad support (via iOS Enhanced Input), adjusted HUD/UI scaling for mobile screen aspect ratios, and profiled mobile Metal rendering to verify that lighting, physics, and streaming run smoothly at 60fps on real mobile hardware.</li>
+                    </ul>
+
+                    <div style="margin-top: 2rem;">
+                        <h4 style="color: var(--accent-blue); margin-bottom: 0.75rem; font-size: 1rem;">📱 Mobile Gameplay Test on iPhone 11</h4>
+                        <div class="video-embed-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 720px; border-radius: 12px; border: 1px solid var(--glass-border); box-shadow: 0 10px 30px rgba(0,0,0,0.5); margin: 0 auto 1.5rem auto;">
+                            <iframe 
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+                                src="https://www.youtube.com/embed/f8_Jhr357Dc" 
+                                title="Still Hear - Mobile Test on iPhone 11" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div style="text-align: center;">
+                            <a href="https://youtu.be/f8_Jhr357Dc" target="_blank" rel="noopener noreferrer" class="btn" style="border: 1px solid rgba(56, 189, 248, 0.4); color: #38bdf8; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; font-size: 0.9rem;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.25rem;"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                                Watch Mobile Test on YouTube
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
                 <a href="projects.html" class="btn" style="border: 1px solid var(--glass-border);">← Back to Projects</a>
             </div>
 
@@ -974,6 +1025,10 @@ return FGuid::NewDeterministicGuid(StablePath);</code></pre>
                 <div class="sidebar-section">
                     <h4>Project Type</h4>
                     <p>Team Project (Vertical Slice)</p>
+                </div>
+                <div class="sidebar-section">
+                    <h4>Platforms</h4>
+                    <p>PC (Windows), macOS, iOS (iPhone 11 Mobile Test)</p>
                 </div>
                 <div class="sidebar-section">
                     <h4>Status</h4>
