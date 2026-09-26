@@ -4,341 +4,797 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV | Piero Chianese - Game Programmer</title>
+    <meta name="description" content="Curriculum Vitae of Piero Chianese, Game Programmer specializing in Unreal Engine 5 (C++) and Unity (C#).">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <style>
         :root {
-            --cv-sidebar-width: 320px;
+            --accent-blue: #00d2ff;
+            --accent-purple: #9d50bb;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --bg-card: #141414;
+            --bg-dark: #0a0a0a;
+            --glass-border: rgba(255, 255, 255, 0.1);
         }
 
-        .cv-container {
-            max-width: 1100px;
-            margin: 8rem auto 3rem;
-            display: grid;
-            grid-template-columns: var(--cv-sidebar-width) 1fr;
+        /* Screen Wrapper */
+        .cv-wrapper {
+            max-width: 1050px;
+            margin: 7.5rem auto 4rem;
+            padding: 0 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .cv-page-card {
             background: var(--bg-card);
             border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border-radius: 14px;
+            padding: 2.2rem 2.5rem;
+            box-shadow: 0 20px 45px rgba(0,0,0,0.5);
+            position: relative;
         }
 
-        .cv-sidebar {
-            background: rgba(255, 255, 255, 0.02);
-            padding: 2rem;
-            border-right: 1px solid var(--glass-border);
-        }
-
-        .cv-main {
-            padding: 2.5rem;
-            background: rgba(10, 10, 10, 0.1);
-        }
-
-        .cv-section {
-            margin-bottom: 1.5rem;
-            padding: 0; /* Override global section padding */
-        }
-
-        .cv-section:last-child {
-            margin-bottom: 0;
-        }
-
-        .cv-section-title {
-            font-size: 1.2rem;
-            color: var(--accent-blue);
-            margin-bottom: 1rem;
+        /* CV Top Header */
+        .cv-header-block {
             display: flex;
             align-items: center;
-            gap: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
+            gap: 1.8rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--accent-blue);
+            margin-bottom: 1.8rem;
         }
 
-        .cv-section-title::after {
+        .cv-avatar-frame {
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--accent-blue);
+            box-shadow: 0 8px 24px rgba(0, 210, 255, 0.25);
+            flex-shrink: 0;
+        }
+
+        .cv-avatar-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .cv-header-info {
+            flex: 1;
+        }
+
+        .cv-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.1;
+            margin-bottom: 0.25rem;
+        }
+
+        .cv-role {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .cv-contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.6rem 1.4rem;
+            font-size: 0.84rem;
+            color: var(--text-secondary);
+        }
+
+        .cv-contact-row a {
+            color: var(--accent-blue) !important;
+            font-weight: 600;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            transition: all 0.2s ease;
+        }
+
+        .cv-contact-row a:hover {
+            color: #ffffff !important;
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.8);
+        }
+
+        .cv-badge-highlight {
+            background: linear-gradient(135deg, rgba(0, 210, 255, 0.15), rgba(157, 80, 187, 0.15));
+            border: 1px solid var(--accent-blue);
+            padding: 0.25rem 0.65rem;
+            border-radius: 6px;
+            color: #ffffff !important;
+            font-weight: 700 !important;
+            text-decoration: none !important;
+        }
+
+        .cv-badge-highlight:hover {
+            background: linear-gradient(135deg, rgba(0, 210, 255, 0.3), rgba(157, 80, 187, 0.3));
+        }
+
+        /* 2-Column Grid Body */
+        .cv-grid-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2.2rem;
+            align-items: start;
+        }
+
+        .cv-col-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.6rem;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        .cv-col-main {
+            display: flex;
+            flex-direction: column;
+            gap: 1.6rem;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        /* Section Title */
+        .cv-sec-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 0.35rem;
+        }
+
+        .cv-sec-title::after {
             content: '';
             flex: 1;
             height: 1px;
             background: linear-gradient(to right, var(--glass-border), transparent);
         }
 
-        .experience-item {
-            margin-bottom: 1.2rem;
+        /* Experience, Education & Project Item */
+        .cv-item {
+            margin-bottom: 1.15rem;
             position: relative;
-            padding-left: 1.5rem;
-            border-left: 1px solid var(--glass-border);
         }
 
-        .experience-item:last-child {
+        .cv-item:last-child {
             margin-bottom: 0;
         }
 
-        .experience-item::before {
-            content: '';
-            position: absolute;
-            left: -4px;
-            top: 0;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--accent-purple);
-            border: 1px solid var(--bg-card);
-        }
-
-        .exp-header {
+        .cv-item-header {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            margin-bottom: 0.4rem;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.4rem;
+            margin-bottom: 0.25rem;
         }
 
-        .exp-title {
-            font-weight: 700;
-            font-size: 1.15rem;
-            color: var(--text-primary);
-        }
-
-        .exp-company {
-            color: var(--accent-blue);
-            font-weight: 600;
+        .cv-item-title {
             font-size: 0.95rem;
+            font-weight: 700;
+            color: #ffffff;
         }
 
-        .exp-location {
-            font-size: 0.8rem;
+        .cv-item-date {
+            font-size: 0.75rem;
             color: var(--text-secondary);
-            font-style: italic;
-        }
-
-        .exp-date {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            background: var(--glass);
-            padding: 0.15rem 0.6rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.15rem 0.5rem;
             border-radius: 4px;
             border: 1px solid var(--glass-border);
+            white-space: nowrap;
         }
 
-        .exp-desc {
+        .cv-item-sub {
+            color: var(--accent-blue);
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .cv-item-desc {
             color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.6;
+            font-size: 0.83rem;
+            line-height: 1.5;
         }
 
-        .bullet-list {
+        .cv-bullets {
             list-style: none;
-            margin-top: 0.5rem;
+            padding-left: 0;
+            margin-top: 0.35rem;
         }
 
-        .bullet-list li {
+        .cv-bullets li {
             position: relative;
-            padding-left: 1rem;
+            padding-left: 0.9rem;
             margin-bottom: 0.3rem;
             color: var(--text-secondary);
-            font-size: 0.85rem;
+            font-size: 0.83rem;
+            line-height: 1.45;
         }
 
-        .bullet-list li::before {
+        .cv-bullets li::before {
             content: '•';
             position: absolute;
             left: 0;
             color: var(--accent-blue);
         }
 
-        .skill-tag {
+        /* Skill Tags */
+        .skill-group {
+            margin-bottom: 0.8rem;
+        }
+
+        .skill-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .skill-group-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--text-secondary);
+            margin-bottom: 0.35rem;
+            letter-spacing: 0.5px;
+        }
+
+        .skill-pill {
             display: inline-block;
-            padding: 0.3rem 0.6rem;
-            background: var(--glass);
+            padding: 0.25rem 0.5rem;
+            background: rgba(255, 255, 255, 0.04);
             border: 1px solid var(--glass-border);
             border-radius: 4px;
-            margin: 0.2rem;
             font-size: 0.75rem;
-            color: var(--text-primary);
+            color: #ffffff;
+            margin: 0.15rem 0.15rem 0.15rem 0;
         }
 
-        .language-table {
+        .skill-pill.primary {
+            border-color: var(--accent-blue);
+            background: rgba(0, 210, 255, 0.08);
+            font-weight: 600;
+        }
+
+        .cv-lang-item {
+            font-size: 0.82rem;
+            color: #ffffff;
+            margin-bottom: 0.35rem;
+        }
+
+        /* Language Table */
+        .lang-table {
             width: 100%;
-            font-size: 0.75rem;
-            border-collapse: collapse;
-            margin-top: 0.5rem;
+            font-size: 0.78rem;
             color: var(--text-secondary);
+            border-collapse: collapse;
+            margin-top: 0.4rem;
         }
 
-        .language-table th {
-            text-align: left;
-            padding: 0.4rem;
+        .lang-table th, .lang-table td {
+            padding: 0.3rem 0.4rem;
             border-bottom: 1px solid var(--glass-border);
+        }
+
+        .lang-table th {
             color: var(--accent-blue);
+            text-align: left;
         }
 
-        .language-table td {
-            padding: 0.4rem;
-            border-bottom: 1px solid var(--glass-border);
+        .cv-header-name-p2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #ffffff;
         }
 
-        .print-btn {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            z-index: 10001;
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
-            background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
-            color: white;
+        .cv-sig-name {
+            font-family: 'Outfit', sans-serif;
             font-weight: 700;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            display: flex;
+            color: #ffffff;
+            font-size: 0.88rem;
+        }
+
+        /* Clickable Link Indicator */
+        a.cv-active-link {
+            color: var(--accent-blue) !important;
+            font-weight: 600;
+            text-decoration: underline;
+            text-underline-offset: 2.5px;
+            display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            transition: var(--transition);
+            gap: 0.25rem;
+            transition: all 0.2s ease;
         }
 
-        @media print {
-            nav, footer, .print-btn { display: none !important; }
-            
-            body { 
-                background-color: #0a0a0a !important; 
-                color: #ffffff !important;
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-            }
-
-            .cv-container {
-                margin: 0 !important;
-                box-shadow: none !important;
-                border: none !important;
-                width: 100% !important;
-                max-width: none !important;
-                background-color: #141414 !important;
-                display: grid !important;
-                grid-template-columns: 240px 1fr !important; /* Reduced sidebar width for more main content space */
-                color: #ffffff !important;
-            }
-
-            .cv-sidebar {
-                background-color: rgba(255, 255, 255, 0.02) !important;
-                border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
-            }
-
-            .cv-main {
-                background-color: rgba(10, 10, 10, 0.1) !important;
-            }
-
-            .exp-title, .exp-company, .language-table th, .cv-section-title {
-                color: #00d2ff !important;
-            }
-
-            .exp-desc, .bullet-list li, .contact-item, .exp-location, .language-table td {
-                color: #a0a0a0 !important;
-            }
-
-            .skill-tag, .exp-date {
-                background-color: rgba(255, 255, 255, 0.05) !important;
-                border: 1px solid rgba(255, 255, 255, 0.1) !important;
-                color: #ffffff !important;
-            }
-
-            .cv-section-title::after {
-                display: block !important;
-                background: linear-gradient(to right, rgba(255, 255, 255, 0.1), transparent) !important;
-            }
-
-            .experience-item, .cv-section {
-                page-break-inside: avoid;
-                break-inside: avoid;
-            }
-
-            * {
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-                color-adjust: exact !important;
-            }
+        a.cv-active-link:hover {
+            color: #ffffff !important;
         }
 
-        @media (max-width: 992px) {
-            .cv-container { grid-template-columns: 1fr; margin-top: 8rem; }
-            .cv-sidebar { border-right: none; border-bottom: 1px solid var(--glass-border); }
-        }
 
-        /* Hidden elements that appear only on print or when edited */
-        .print-only-data {
-            display: none !important;
-        }
-
-        @media print {
-            .print-only-data {
-                display: block !important;
-            }
-            .section-hidden {
-                display: none !important;
-            }
-            #cv-editor-panel {
-                display: none !important;
-            }
-        }
-
-        /* Admin/Editor Panel Styles */
+        /* Editor Modal (Secret Trigger: Press 'E') */
         #cv-editor-panel {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 10002;
-            background: rgba(20, 20, 20, 0.95);
+            background: rgba(18, 18, 18, 0.98);
             border: 1px solid var(--accent-blue);
             padding: 2rem;
             border-radius: 16px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-            width: 350px;
-            display: none; /* Controlled by JS */
-            backdrop-filter: blur(20px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.85);
+            width: 380px;
+            display: none;
+            backdrop-filter: blur(25px);
         }
 
         .editor-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             border-bottom: 1px solid var(--glass-border);
             padding-bottom: 0.5rem;
         }
 
         .editor-field {
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
         }
 
         .editor-field label {
             display: block;
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             color: var(--accent-blue);
             text-transform: uppercase;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.3rem;
             font-weight: 700;
         }
 
-        .editor-field input {
+        .editor-field input, .editor-field select {
             width: 100%;
-            background: rgba(255,255,255,0.05);
+            background: rgba(255,255,255,0.06);
             border: 1px solid var(--glass-border);
             padding: 0.6rem;
             color: white;
             border-radius: 6px;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
         }
 
         .editor-toggle {
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            font-size: 0.85rem;
-            margin-bottom: 0.5rem;
+            font-size: 0.82rem;
+            margin-bottom: 0.45rem;
             cursor: pointer;
             color: var(--text-secondary);
+        }
+
+        /* Hidden data only visible in print or preview */
+        .print-signature-box {
+            display: none;
+            margin-top: 1rem;
+            border-top: 1px dashed var(--glass-border);
+            padding-top: 0.6rem;
+        }
+
+        /* Responsive on small screens */
+        @media screen and (max-width: 900px) {
+            .cv-grid-layout { grid-template-columns: 1fr; gap: 2rem; }
+            .cv-header-block { flex-direction: column; text-align: center; }
+            .cv-contact-row { justify-content: center; }
+            .cv-page-card { padding: 1.5rem; }
+        }
+
+        /* ==========================================================================
+           PRINT STYLES: EXACT 2-PAGE CALIBRATED VECTOR PDF WITH CLICKABLE LINKS
+           ========================================================================== */
+        @page {
+            size: A4 portrait;
+            margin: 7mm 9mm 7mm 9mm;
+        }
+
+        @media print {
+            nav, footer, .floating-action-bar, #cv-editor-panel {
+                display: none !important;
+            }
+
+            /* Kill fixed overlays that cause black screens in Safari/WebKit */
+            body::before, body::after, *::before, *::after {
+                background-image: none !important;
+            }
+            body::before, body::after {
+                display: none !important;
+                content: none !important;
+            }
+            main, footer {
+                position: static !important;
+                z-index: auto !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                user-select: text !important;
+                -webkit-user-select: text !important;
+                opacity: 1 !important;
+                transform: none !important;
+                animation: none !important;
+                transition: none !important;
+                box-shadow: none !important;
+                text-shadow: none !important;
+            }
+
+            body {
+                background: #0a0a0a !important;
+                color: #ffffff !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                font-size: 7.2pt !important;
+                line-height: 1.3 !important;
+            }
+
+            /* Container and Page Breaks */
+            .cv-wrapper {
+                max-width: none !important;
+                width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                display: block !important;
+            }
+
+            .cv-page-card {
+                background: transparent !important;
+                border: none !important;
+                border-radius: 0 !important;
+                box-shadow: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                height: auto !important;
+                min-height: 0 !important;
+            }
+
+            .cv-page-card.cv-page-1 {
+                page-break-after: always !important;
+                break-after: page !important;
+            }
+
+            .cv-page-card.cv-page-2 {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+                padding-top: 1mm !important;
+            }
+
+            .cv-header-block {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                text-align: left !important;
+                padding-bottom: 2mm !important;
+                margin-bottom: 2mm !important;
+                gap: 12px !important;
+                border-bottom: 1.8px solid #00d2ff !important;
+            }
+
+            .cv-avatar-frame {
+                width: 62px !important;
+                height: 62px !important;
+                border-width: 2px !important;
+                overflow: hidden !important;
+                border-radius: 50% !important;
+                flex-shrink: 0 !important;
+                border-color: #00d2ff !important;
+            }
+
+            .cv-avatar-img {
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: cover !important;
+                display: block !important;
+            }
+
+            .cv-name {
+                font-size: 16pt !important;
+                line-height: 1 !important;
+                margin-bottom: 1px !important;
+                color: #ffffff !important;
+            }
+
+            .cv-role {
+                font-size: 8.5pt !important;
+                margin-bottom: 2px !important;
+                color: #00d2ff !important;
+                letter-spacing: 1.2px !important;
+            }
+
+            .cv-contact-row {
+                font-size: 6.8pt !important;
+                gap: 2px 10px !important;
+                color: #a0a0a0 !important;
+                justify-content: flex-start !important;
+            }
+
+            .cv-grid-layout {
+                display: grid !important;
+                grid-template-columns: 195px 1fr !important;
+                gap: 5mm !important;
+                align-items: start !important;
+            }
+
+            .cv-col-sidebar {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 2.2mm !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+
+            .cv-col-main {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 2.2mm !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+
+            .cv-sec-title {
+                font-size: 8pt !important;
+                margin-bottom: 1.2mm !important;
+                padding-bottom: 0.5mm !important;
+                color: #00d2ff !important;
+                letter-spacing: 0.8px !important;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+            }
+
+            .cv-sec-title::after {
+                display: none !important;
+            }
+
+            .cv-item {
+                margin-bottom: 1.2mm !important;
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+
+            .cv-item-header {
+                margin-bottom: 0.5px !important;
+                gap: 2px !important;
+            }
+
+            .cv-item-title {
+                font-size: 7.8pt !important;
+                color: #ffffff !important;
+            }
+
+            .cv-item-date {
+                font-size: 6.2pt !important;
+                padding: 1px 3.5px !important;
+                background: rgba(255, 255, 255, 0.05) !important;
+                border: 1px solid rgba(255, 255, 255, 0.1) !important;
+                color: #a0a0a0 !important;
+            }
+
+            .cv-item-sub {
+                font-size: 7pt !important;
+                margin-bottom: 0.5mm !important;
+                color: #00d2ff !important;
+            }
+
+            .cv-item-desc {
+                font-size: 6.8pt !important;
+                line-height: 1.25 !important;
+                color: #a5a5a5 !important;
+            }
+
+            .cv-bullets {
+                margin-top: 0.5mm !important;
+            }
+
+            .cv-bullets li {
+                font-size: 6.6pt !important;
+                line-height: 1.22 !important;
+                margin-bottom: 0.5mm !important;
+                padding-left: 6px !important;
+                color: #a5a5a5 !important;
+            }
+
+            .skill-group {
+                margin-bottom: 1.2mm !important;
+            }
+
+            .skill-group-label {
+                font-size: 6.2pt !important;
+                margin-bottom: 0.5mm !important;
+                color: #a0a0a0 !important;
+            }
+
+            .skill-pill {
+                font-size: 6.2pt !important;
+                padding: 1px 3.5px !important;
+                margin: 0.5px !important;
+                background: rgba(255, 255, 255, 0.05) !important;
+                border: 1px solid rgba(255, 255, 255, 0.1) !important;
+                color: #ffffff !important;
+            }
+
+            .skill-pill.primary {
+                border-color: #00d2ff !important;
+                background: rgba(0, 210, 255, 0.1) !important;
+                color: #ffffff !important;
+            }
+
+            .cv-lang-item {
+                font-size: 7.2pt !important;
+                color: #ffffff !important;
+                margin-bottom: 0.5mm !important;
+            }
+
+            .lang-table {
+                font-size: 6.6pt !important;
+                margin-top: 0.5mm !important;
+            }
+
+            .lang-table th, .lang-table td {
+                padding: 1px 2px !important;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+            }
+
+            .lang-table th {
+                color: #00d2ff !important;
+            }
+
+            .lang-table td {
+                color: #a5a5a5 !important;
+            }
+
+            .cv-header-name-p2 {
+                font-family: 'Outfit', sans-serif !important;
+                font-size: 11pt !important;
+                font-weight: 800 !important;
+                color: #ffffff !important;
+            }
+
+            .cv-sig-name {
+                font-family: 'Outfit', sans-serif !important;
+                font-weight: 700 !important;
+                color: #ffffff !important;
+                font-size: 7.8pt !important;
+            }
+
+            a.cv-active-link,
+            .cv-contact-row a {
+                color: #00d2ff !important;
+                text-decoration: underline !important;
+                text-underline-offset: 1.5px !important;
+                font-weight: 700 !important;
+                pointer-events: auto !important;
+            }
+
+            .cv-badge-highlight {
+                background: rgba(0, 210, 255, 0.1) !important;
+                border: 1px solid #00d2ff !important;
+                color: #00d2ff !important;
+                padding: 1px 4px !important;
+                border-radius: 3px !important;
+            }
+
+            .print-signature-box {
+                display: block !important;
+            }
+
+            .section-hidden {
+                display: none !important;
+            }
+
+            /* ==========================================================================
+               LIGHT THEME OVERRIDES (100% High Contrast on White)
+               ========================================================================== */
+            body.print-theme-light {
+                background: #ffffff !important;
+                color: #0f172a !important;
+            }
+
+            body.print-theme-light .cv-page-card {
+                background: #ffffff !important;
+                color: #0f172a !important;
+            }
+
+            body.print-theme-light .cv-header-block {
+                border-bottom-color: #0284c7 !important;
+            }
+
+            body.print-theme-light .cv-avatar-frame {
+                border-color: #0284c7 !important;
+            }
+
+            body.print-theme-light .cv-name, 
+            body.print-theme-light .cv-header-name-p2,
+            body.print-theme-light .cv-sig-name,
+            body.print-theme-light .cv-item-title,
+            body.print-theme-light .cv-lang-item {
+                color: #0f172a !important;
+            }
+
+            body.print-theme-light .cv-role,
+            body.print-theme-light .cv-sec-title,
+            body.print-theme-light .cv-item-sub,
+            body.print-theme-light .lang-table th {
+                color: #0284c7 !important;
+            }
+
+            body.print-theme-light .cv-sec-title {
+                border-bottom-color: #cbd5e1 !important;
+            }
+
+            body.print-theme-light .cv-item-desc,
+            body.print-theme-light .cv-bullets li,
+            body.print-theme-light .cv-contact-row,
+            body.print-theme-light .skill-group-label,
+            body.print-theme-light .lang-table td {
+                color: #334155 !important;
+            }
+
+            body.print-theme-light a.cv-active-link,
+            body.print-theme-light .cv-contact-row a {
+                color: #0284c7 !important;
+            }
+
+            body.print-theme-light .cv-badge-highlight {
+                background: #e0f2fe !important;
+                border-color: #0284c7 !important;
+                color: #0369a1 !important;
+            }
+
+            body.print-theme-light .skill-pill {
+                background: #f1f5f9 !important;
+                border-color: #cbd5e1 !important;
+                color: #0f172a !important;
+            }
+
+            body.print-theme-light .skill-pill.primary {
+                background: #e0f2fe !important;
+                border-color: #0284c7 !important;
+                color: #0369a1 !important;
+                font-weight: 700 !important;
+            }
+
+            body.print-theme-light .cv-item-date {
+                background: #f1f5f9 !important;
+                border-color: #cbd5e1 !important;
+                color: #475569 !important;
+            }
+
+            body.print-theme-light .lang-table th,
+            body.print-theme-light .lang-table td {
+                border-bottom-color: #e2e8f0 !important;
+            }
         }
     </style>
 </head>
@@ -361,309 +817,434 @@
     </nav>
 
     <main>
-        <div class="container">
-            <div class="cv-container reveal">
-                <!-- Sidebar -->
-                <aside class="cv-sidebar">
-                    <div style="text-align: center; margin-bottom: 3rem;">
-                        <img src="assets/images/piero_profile.png" alt="Piero Chianese" style="width: 160px; height: 160px; border-radius: 50%; object-fit: cover; border: 4px solid var(--accent-blue); margin-bottom: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.4);">
-                        <h1 style="font-size: 2.2rem; margin-bottom: 0.5rem; font-family: 'Outfit';">Piero Chianese</h1>
-                        <p style="color: var(--accent-blue); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem;">Game Programmer (Generalist)</p>
+        <div class="cv-wrapper">
+            <!-- ================= PAGE 1 ================= -->
+            <div class="cv-page-card cv-page-1">
+                <header class="cv-header-block">
+                    <div class="cv-avatar-frame">
+                        <img src="assets/images/piero_profile.png" alt="Piero Chianese" class="cv-avatar-img">
+                    </div>
+                    <div class="cv-header-info">
+                        <h1 class="cv-name">Piero Chianese</h1>
+                        <div class="cv-role">Game Programmer (Generalist) — Freelance / B2B</div>
+                        <div class="cv-contact-row">
+                            <span>📍 Caserta, Italy</span>
+                            <span>💼 P.IVA (Regime Forfettario)</span>
+                            <span>🚗 License: A, B</span>
+                            <span id="dynamic-phone" style="display:none;"></span>
+                            <span id="dynamic-piva" style="display:none;"></span>
+                            <a href="mailto:piero.chianese95@gmail.com">📧 piero.chianese95@gmail.com</a>
+                            <a href="https://piero-chianese.github.io/WebSite/" target="_blank" class="cv-badge-highlight">🌐 Portfolio: piero-chianese.github.io/WebSite ↗</a>
+                            <a href="https://www.linkedin.com/in/piero-chianese-12ab38144/" target="_blank">🔗 LinkedIn ↗</a>
+                            <a href="https://github.com/Pieroscovic" target="_blank">🐙 GitHub ↗</a>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="cv-grid-layout">
+                    <!-- Page 1 Left Sidebar -->
+                    <div class="cv-col-sidebar">
+                        <!-- Digital Skills -->
+                        <div class="cv-section-block" data-sec="skills">
+                            <div class="cv-sec-title">Digital Skills</div>
+                            <div class="skill-group">
+                                <div class="skill-group-label" style="color: var(--accent-blue);">Primary Expertise</div>
+                                <span class="skill-pill primary">Unreal Engine 5 & C++</span>
+                                <span class="skill-pill primary">Unity & C#</span>
+                            </div>
+                            <div class="skill-group">
+                                <div class="skill-group-label">Programming & Systems</div>
+                                <span class="skill-pill">C++11/17/20</span>
+                                <span class="skill-pill">C#</span>
+                                <span class="skill-pill">Swift</span>
+                                <span class="skill-pill">Python</span>
+                                <span class="skill-pill">Java</span>
+                                <span class="skill-pill">SQL</span>
+                                <span class="skill-pill">SAP-ABAP</span>
+                                <span class="skill-pill">Networking</span>
+                                <span class="skill-pill">Windows</span>
+                            </div>
+                            <div class="skill-group">
+                                <div class="skill-group-label" style="color: var(--accent-blue);">VCS, Shaders & Tools</div>
+                                <span class="skill-pill primary">Git</span>
+                                <span class="skill-pill primary">GitHub</span>
+                                <span class="skill-pill primary">Perforce (P4)</span>
+                                <span class="skill-pill">Fork</span>
+                                <span class="skill-pill">Diversion</span>
+                                <span class="skill-pill">HLSL / Shader Graph</span>
+                            </div>
+                            <div class="skill-group">
+                                <div class="skill-group-label">Web Technologies</div>
+                                <span class="skill-pill">HTML</span>
+                                <span class="skill-pill">CSS</span>
+                                <span class="skill-pill">JavaScript</span>
+                                <span class="skill-pill">React</span>
+                                <span class="skill-pill">SpringBoot</span>
+                            </div>
+                        </div>
+
+                        <!-- Languages -->
+                        <div class="cv-section-block" data-sec="languages">
+                            <div class="cv-sec-title">Languages</div>
+                            <div class="cv-lang-item"><strong>ITALIAN:</strong> Native Language</div>
+                            <div class="cv-lang-item"><strong>ENGLISH:</strong> Working Proficiency (B2)</div>
+                            <table class="lang-table">
+                                <tr><th>Skill</th><th>Level</th></tr>
+                                <tr><td>Listening / Reading</td><td>B2</td></tr>
+                                <tr><td>Writing / Oral Production</td><td>B2</td></tr>
+                            </table>
+                        </div>
+
+                        <!-- Soft Skills -->
+                        <div class="cv-section-block" data-sec="soft-skills">
+                            <div class="cv-sec-title">Soft Skills</div>
+                            <p class="cv-item-desc">
+                                Cross-disciplinary teamwork, Agile & Scrum methodologies, rapid interactive prototyping, analytical problem solving, evaluation of technical debt, fast learner of complex toolchains. Developed at Apple Developer Academy & DBGA.
+                            </p>
+                        </div>
+
+                        <!-- Articles & Honors (Page 1) -->
+                        <div class="cv-section-block" data-sec="honors">
+                            <div class="cv-sec-title">Articles & Honors</div>
+                            <div class="cv-item">
+                                <div class="cv-item-title" style="font-size: 0.88rem;">Emotion Recognition (LiDAR)</div>
+                                <p class="cv-item-desc">Research on emotion recognition via iPhone FaceID LiDAR sensor (2022). Co-authored with Luca Perrotti.</p>
+                                <a href="https://medium.com/@lucaperrotti/from-core-to-create-recognize-emotions-9e2182c0e482" target="_blank" class="cv-active-link" style="font-size: 0.76rem;">Read on Medium ↗</a>
+                            </div>
+                            <div class="cv-item">
+                                <div class="cv-item-title" style="font-size: 0.88rem;">Apple Teacher Certified</div>
+                                <p class="cv-item-desc">Professional educator & tech certification issued by Apple (07/2022).</p>
+                                <a href="https://www.linkedin.com/posts/piero-chianese-12ab38144_appleteacher-appleteacher-apple-activity-6953076348403732480-XjG_?utm_source=share&utm_medium=member_desktop" target="_blank" class="cv-active-link" style="font-size: 0.76rem;">View Recognition on LinkedIn ↗</a>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="cv-section">
-                        <h3 class="cv-section-title" style="font-size: 1rem;">Contact</h3>
-                        <div style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.8;">
-                            <p>📍 Milan, Italy</p>
-                            <p>🚗 Driving License: A, B</p>
-                            <p>📧 <a href="mailto:piero.chianese95@gmail.com">piero.chianese95@gmail.com</a></p>
-                            <p>🌐 <a href="https://piero-chianese.github.io/WebSite/projects.html" target="_blank">Portfolio Website</a></p>
-                            <p>🔗 <a href="https://www.linkedin.com/in/piero-chianese-12ab38144/" target="_blank">LinkedIn Profile</a></p>
-                            <p>🐙 <a href="https://github.com/Pieroscovic" target="_blank">GitHub Profile</a></p>
+                    <!-- Page 1 Right Main Content -->
+                    <div class="cv-col-main">
+                        <!-- Work Experience -->
+                        <div class="cv-section-block" data-sec="experience">
+                            <div class="cv-sec-title">Work Experience</div>
+                            
+                            <div class="cv-item">
+                                <div class="cv-item-header">
+                                    <span class="cv-item-title">Freelance Game Programmer (Generalist)</span>
+                                    <span class="cv-item-date">03/2026 – Present</span>
+                                </div>
+                                <div class="cv-item-sub">Attic Studio (Main Client) | Milan, Italy (Remote)</div>
+                                <p class="cv-item-desc">Providing B2B game programming services under Partita IVA (Regime Forfettario). C++ developer across Unreal Engine 5 titles, engineering gameplay systems, rendering setup, UI, and technical architecture.</p>
+                            </div>
+
+                            <div class="cv-item">
+                                <div class="cv-item-header">
+                                    <span class="cv-item-title">Software Repair Technician (Electromedical)</span>
+                                    <span class="cv-item-date">08/2017 – 08/2019</span>
+                                </div>
+                                <div class="cv-item-sub">Lefa s.r.l. | Naples, Italy</div>
+                                <p class="cv-item-desc">Restoration and repair of software for electromedical equipment and management of company network. Reverse engineering applied to understand complex medical ultrasound devices.</p>
+                            </div>
+
+                            <div class="cv-item">
+                                <div class="cv-item-header">
+                                    <span class="cv-item-title">Technician & IT Support</span>
+                                    <span class="cv-item-date">01/2016 – 10/2016</span>
+                                </div>
+                                <div class="cv-item-sub">Energy Drive s.r.l. | Nola, Italy</div>
+                                <ul class="cv-bullets">
+                                    <li>Photovoltaic systems design & installation verification; internal IT network & systems administration.</li>
+                                    <li>Technical feasibility inspections, R&D engineering collaboration, and client order management.</li>
+                                </ul>
+                            </div>
+
+                            <div class="cv-item">
+                                <div class="cv-item-header">
+                                    <span class="cv-item-title">Counter Service & Customer Care</span>
+                                    <span class="cv-item-date">08/2019 – 08/2021</span>
+                                </div>
+                                <div class="cv-item-sub">Malto Reale | Caserta, Italy</div>
+                                <p class="cv-item-desc">Customer management, fast-paced service coordination, and specialized beverage care.</p>
+                            </div>
+                        </div>
+
+                        <!-- Featured Game Projects on Portfolio -->
+                        <div class="cv-section-block" data-sec="featured-projects">
+                            <div class="cv-sec-title">Featured Projects & Systems Architecture</div>
+                            
+                            <div class="cv-item">
+                                <div class="cv-item-header">
+                                    <span class="cv-item-title">Still Hear — 2.5D Cinematic Puzzle Stealth</span>
+                                    <span class="cv-item-date">UE 5.5 / C++</span>
+                                </div>
+                                <p class="cv-item-desc">Atmospheric 2.5D puzzle stealth adventure (inspired by <em>Inside</em> & <em>Little Nightmares</em>). Core C++ generalist programmer across major systems:</p>
+                                <ul class="cv-bullets">
+                                    <li><strong>Gameplay Ability System (GAS):</strong> Implemented GAS for attributes, sound waves, and player/companion abilities.</li>
+                                    <li><strong>Save & Streaming Subsystems:</strong> Built asynchronous save serialization (<code>USaveSubsystem</code>) and dynamic scene streaming / checkpoint loops (<code>ASceneManager</code>).</li>
+                                    <li><strong>Audio Engine & Tooling:</strong> Persistent tag-driven audio manager (<code>UGameAudioSubsystem</code>), custom FlowGraph C++ nodes, and Editor Utility Widgets (<code>EUW_SaveDebug</code>).</li>
+                                </ul>
+                                <a href="https://piero-chianese.github.io/WebSite/project-still-hear.html" target="_blank" class="cv-active-link" style="font-size: 0.76rem;">Explore Technical Architecture & Deep Dives ↗</a>
+                            </div>
+
+                            <div class="cv-item">
+                                <div class="cv-item-header">
+                                    <span class="cv-item-title">Touch-Fu: Battle of Two — 2D Competitive Fighter</span>
+                                    <span class="cv-item-date">Unity / C#</span>
+                                </div>
+                                <p class="cv-item-desc"><strong>Lead Programmer:</strong> Directed technical architecture for a fast-paced 2D mobile fighter (Android, &lt;100MB). Built combat system, hitboxes, knockback, parry/special moves, and match state flow. Playtested and praised by <strong>Katsuhiro Harada</strong> (Executive Producer of <em>Tekken</em>, Bandai Namco).</p>
+                                <a href="https://piero-chianese.github.io/WebSite/project-touch-fu.html" target="_blank" class="cv-active-link" style="font-size: 0.76rem;">View Project on Portfolio ↗</a>
+                            </div>
+
+                            <div class="cv-item">
+                                <div class="cv-item-header">
+                                    <span class="cv-item-title">Tiny Vroom — Slot-Car Racer & VR Vision</span>
+                                    <span class="cv-item-date">Unity / C# / FMOD</span>
+                                </div>
+                                <p class="cv-item-desc"><strong>Solo Developer:</strong> Slot-car racer with spline-based driving physics, drift dynamics, FMOD interactive audio, local multiplayer, and adaptive track AI. Currently developing the <strong>Meta Quest 3 VR</strong> immersive edition.</p>
+                                <a href="https://piero-chianese.github.io/WebSite/project-tiny-vroom.html" target="_blank" class="cv-active-link" style="font-size: 0.76rem;">View Project on Portfolio ↗</a>
+                            </div>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <div class="cv-section">
-                        <h3 class="cv-section-title" style="font-size: 1rem;">Languages</h3>
-                        <p style="font-size: 0.9rem; color: var(--text-primary);"><strong>ITALIAN:</strong> Mother tongue</p>
-                        <p style="font-size: 0.9rem; color: var(--text-primary); margin-top: 0.5rem;"><strong>ENGLISH:</strong></p>
-                        <table class="language-table">
-                            <tr><th>Skill</th><th>Level</th></tr>
-                            <tr><td>Listening</td><td>B2</td></tr>
-                            <tr><td>Reading</td><td>B2</td></tr>
-                            <tr><td>Writing</td><td>B2</td></tr>
-                            <tr><td>Oral Prod.</td><td>B2</td></tr>
-                            <tr><td>Oral Inter.</td><td>B2</td></tr>
-                        </table>
-                    </div>
-
-                    <div class="cv-section">
-                        <h3 class="cv-section-title" style="font-size: 1rem;">Digital Skills</h3>
-                        <div style="margin-bottom: 1.2rem;">
-                            <p style="font-size: 0.75rem; text-transform: uppercase; color: var(--accent-blue); margin-bottom: 0.6rem; font-weight: 800; letter-spacing: 1px;">Primary Expertise</p>
-                            <span class="skill-tag" style="border-color: var(--accent-blue); background: rgba(0, 210, 255, 0.05);">Unreal Engine & C++</span>
-                            <span class="skill-tag" style="border-color: var(--accent-purple); background: rgba(168, 85, 247, 0.05);">Unity & C#</span>
-                        </div>
-                        <div style="margin-bottom: 1.2rem;">
-                            <p style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.5rem; font-weight: 700;">Programming & Systems</p>
-                            <span class="skill-tag">Swift</span>
-                            <span class="skill-tag">Java</span>
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">SQL</span>
-                            <span class="skill-tag">SAP-ABAP</span>
-                            <span class="skill-tag">Networking</span>
-                            <span class="skill-tag">Windows</span>
-                        </div>
-                        <div style="margin-bottom: 1.2rem;">
-                            <p style="font-size: 0.75rem; text-transform: uppercase; color: var(--accent-blue); margin-bottom: 0.5rem; font-weight: 700;">Version Control & Tools</p>
-                            <span class="skill-tag" style="border-color: rgba(59, 130, 246, 0.4);">Git</span>
-                            <span class="skill-tag" style="border-color: rgba(59, 130, 246, 0.4);">GitHub</span>
-                            <span class="skill-tag" style="border-color: rgba(59, 130, 246, 0.4);">Perforce (P4)</span>
-                            <span class="skill-tag">Fork</span>
-                            <span class="skill-tag">Diversion</span>
-                        </div>
+            <!-- ================= PAGE 2 ================= -->
+            <div class="cv-page-card cv-page-2">
+                <header class="cv-header-block" style="padding-bottom: 0.8rem; margin-bottom: 1.2rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; flex-wrap: wrap; gap: 0.5rem;">
                         <div>
-                            <p style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.5rem; font-weight: 700;">Web Tech</p>
-                            <span class="skill-tag">HTML</span>
-                            <span class="skill-tag">CSS</span>
-                            <span class="skill-tag">Javascript</span>
-                            <span class="skill-tag">SpringBoot</span>
-                            <span class="skill-tag">React</span>
+                            <span class="cv-header-name-p2">Piero Chianese</span>
+                            <span style="font-size: 0.82rem; color: var(--accent-blue); font-weight: 700; text-transform: uppercase; margin-left: 0.8rem;">Curriculum Vitae — Page 2</span>
+                        </div>
+                        <div class="cv-contact-row">
+                            <a href="https://piero-chianese.github.io/WebSite/" target="_blank" class="cv-badge-highlight">🌐 piero-chianese.github.io/WebSite ↗</a>
+                            <a href="https://piero-chianese.github.io/WebSite/projects.html" target="_blank">🎮 All Projects ↗</a>
+                            <a href="mailto:piero.chianese95@gmail.com">📧 piero.chianese95@gmail.com</a>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="cv-grid-layout">
+                    <!-- Page 2 Left Sidebar -->
+                    <div class="cv-col-sidebar">
+                        <!-- Additional Projects -->
+                        <div class="cv-section-block" data-sec="additional-projects">
+                            <div class="cv-sec-title">Commercial & Game Jam Projects</div>
+                            
+                            <div class="cv-item">
+                                <div class="cv-item-header">
+                                    <span class="cv-item-title">Destinazione Vacanze! — WebGL Game</span>
+                                    <span class="cv-item-date">Unity / WebGL</span>
+                                </div>
+                                <p class="cv-item-desc">Commissioned by travel agency <strong>Bluvacanze</strong> to boost retention via interactive 3D globe navigation. Discussed on an official <strong>Spotify podcast</strong> on travel gamification.</p>
+                                <a href="https://piero-chianese.github.io/WebSite/project-destinazione-vacanze.html" target="_blank" class="cv-active-link" style="font-size: 0.74rem;">View on Portfolio ↗</a>
+                            </div>
+
+                            <div class="cv-item">
+                                <div class="cv-item-header">
+                                    <span class="cv-item-title">Tears of Ash — Psychological Horror</span>
+                                    <span class="cv-item-date">UE5 / C++</span>
+                                </div>
+                                <p class="cv-item-desc">P.T.-inspired psychological horror created for HorrorJam 2k24. Atmospheric tension, dynamic lighting, clue investigation, and spatialized audio.</p>
+                                <a href="https://piero-chianese.github.io/WebSite/project-tears-of-ash.html" target="_blank" class="cv-active-link" style="font-size: 0.74rem;">View on Portfolio ↗</a>
+                            </div>
+
+                            <div class="cv-item">
+                                <div class="cv-item-header">
+                                    <span class="cv-item-title">GreenRoute — Eco-Driving Sim</span>
+                                    <span class="cv-item-date">UE5</span>
+                                </div>
+                                <p class="cv-item-desc">Interactive marketing game developed for a car-sharing service campaign. Features urban traffic simulation, CO2 scoring, and real-time eco feedback.</p>
+                                <a href="https://piero-chianese.github.io/WebSite/project-greenroute.html" target="_blank" class="cv-active-link" style="font-size: 0.74rem;">View on Portfolio ↗</a>
+                            </div>
+                        </div>
+
+                        <!-- Hobbies & Interests -->
+                        <div class="cv-section-block" data-sec="hobbies">
+                            <div class="cv-sec-title">Hobbies & Interests</div>
+                            <p class="cv-item-desc">
+                                Passionate musician (guitar & piano for 10+ years). Formula 1 and sim racing enthusiast with high-end telemetry setups. Motorcyclist passionate about vehicle physics and control. Active indie game prototyping with a vision for future VR studio development.
+                            </p>
+                        </div>
+
+                        <!-- Legal & Signature -->
+                        <div class="cv-section-block" data-sec="legal">
+                            <div class="cv-sec-title">Legal & Verification</div>
+                            <p style="font-size: 0.68rem; color: var(--text-secondary); line-height: 1.35; opacity: 0.75;">
+                                I authorize the processing of my personal data present in the CV pursuant to Legislative Decree 30 June 2003, n. 196 and art. 13 of the GDPR (EU Regulation 2016/679).
+                            </p>
+                            <div id="print-signature-area" class="print-signature-box">
+                                <img id="signature-img" src="" alt="Signature" style="max-height: 48px; display: none; margin-bottom: 4px;">
+                                <span id="signature-name" class="cv-sig-name">Piero Chianese</span>
+                                <div style="font-size: 0.62rem; color: var(--text-secondary); text-transform: uppercase;">Digital Signature / Firma Digitale</div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="cv-section">
-                        <h3 class="cv-section-title" style="font-size: 1rem;">Soft Skills</h3>
-                        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
-                            Managing multi-ethnic groups, sense of organization, time management, effective communication, and a strong problem-solving aptitude developed at Apple Academy. Curiosity and propensity to learn new technologies.
-                        </p>
-                    </div>
-                </aside>
+                    <!-- Page 2 Right Main Content -->
+                    <div class="cv-col-main">
+                        <!-- Education -->
+                        <div class="cv-section-block" data-sec="education">
+                            <div class="cv-sec-title">Education & Academic Foundation</div>
 
-                <!-- Main Content -->
-                <div class="cv-main">
-                    <section class="cv-section">
-                        <h3 class="cv-section-title">Work Experience</h3>
-                        
-                        <div class="experience-item">
-                            <div class="exp-header">
-                                <span class="exp-title">Game Programmer (Generalist)</span>
-                                <span class="exp-date">03/2026 – Present</span>
+                            <div class="cv-item">
+                                <div class="cv-item-header">
+                                    <span class="cv-item-title">Digital Bros Game Academy — Game Programming</span>
+                                    <span class="cv-item-date">09/2024 – 07/2026</span>
+                                </div>
+                                <div class="cv-item-sub">Digital Bros | Milan, Italy</div>
+                                <ul class="cv-bullets">
+                                    <li><strong>2-Year Professional Course (720 hours)</strong> in Game Programming.</li>
+                                    <li>Advanced C# (Unity 3D) and C++11+ (Unreal Engine 5). HLSL graphics programming & Shader Graph.</li>
+                                    <li>Gameplay AI agent behaviors, audio pipelines (FMOD & Unity Audio), multiplayer & networking.</li>
+                                    <li><strong>Awards:</strong> Best Project Award (Dec 2024) & Merit Scholarship (AY 2024/2025).</li>
+                                    <li><a href="https://piero-chianese.github.io/WebSite/assets/docs/DBGA_Attestato_Competenza_Chianese.pdf" target="_blank" class="cv-active-link">View Official Certificate of Competence (PDF) 📄 ↗</a></li>
+                                </ul>
                             </div>
-                            <div class="exp-company">Attic Studio</div>
-                            <div class="exp-location">Milan, Italy</div>
-                            <p class="exp-desc">C++ developer on multiple titles built in Unreal Engine 5. Work spans gameplay systems, rendering pipeline setup, UI implementation, and engine configuration. Responsible for core architecture decisions and technical direction within a small team.</p>
-                        </div>
 
-                        <div class="experience-item">
-                            <div class="exp-header">
-                                <span class="exp-title">Software Repair Technician (Electromedical)</span>
-                                <span class="exp-date">08/2017 – 08/2019</span>
+                            <div class="cv-item">
+                                <div class="cv-item-header">
+                                    <span class="cv-item-title">Bachelor's Degree in Computer Science</span>
+                                    <span class="cv-item-date">2026</span>
+                                </div>
+                                <div class="cv-item-sub">Pegaso Università (Naples & Salerno foundation)</div>
+                                <p class="cv-item-desc">Algorithms, Data Structures, Operating Systems, Computer Architecture, Discrete Mathematics.</p>
                             </div>
-                            <div class="exp-company">Lefa s.r.l.</div>
-                            <div class="exp-location">Naples, Italy</div>
-                            <p class="exp-desc">Restoration and repair of software for electromedical equipment and management of the company network.</p>
-                        </div>
 
-                        <div class="experience-item">
-                            <div class="exp-header">
-                                <span class="exp-title">Technician & IT Support</span>
-                                <span class="exp-date">01/2016 – 10/2016</span>
+                            <div class="cv-item">
+                                <div class="cv-item-header">
+                                    <span class="cv-item-title">Apple Developer Academy</span>
+                                    <span class="cv-item-date">09/2021 – 06/2022</span>
+                                </div>
+                                <div class="cv-item-sub">Apple | Naples, Italy</div>
+                                <p class="cv-item-desc">Software Design & Innovation, OOP & Design Patterns, Swift/SwiftUI, Design Thinking (HCI), rapid prototyping, and business modeling.</p>
                             </div>
-                            <div class="exp-company">Energy Drive s.r.l.</div>
-                            <div class="exp-location">Nola, Italy</div>
-                            <p class="exp-desc">Design, installation, and verification of photovoltaic systems, and IT technician.</p>
-                            <ul class="bullet-list">
-                                <li>Inspections for the feasibility verification of plant sizing;</li>
-                                <li>Support of the construction management during the installation phase of the systems;</li>
-                                <li>Collaboration with the engineering group for the R&D of new products and project implementation;</li>
-                                <li>Management and control of orders and assistance to after-sales management;</li>
-                                <li>Management of computer software and internal network.</li>
-                            </ul>
-                        </div>
 
-                        <div class="experience-item">
-                            <div class="exp-header">
-                                <span class="exp-title">Waiter</span>
-                                <span class="exp-date">08/2019 – 08/2021</span>
+                            <div class="cv-item">
+                                <div class="cv-item-header">
+                                    <span class="cv-item-title">Computer Technician Diploma</span>
+                                    <span class="cv-item-date">09/2009 – 06/2014</span>
+                                </div>
+                                <div class="cv-item-sub">ITIS-LS "F. Giordani" | Caserta, Italy</div>
+                                <p class="cv-item-desc">Computer Science (TurboPascal, C, Databases), hardware architectures, networking, analog and digital electronics.</p>
                             </div>
-                            <div class="exp-company">Malto Reale</div>
-                            <div class="exp-location">Caserta, Italy</div>
-                            <p class="exp-desc">Counter service and customer management. Specialized care of the beer service.</p>
                         </div>
-                    </section>
 
-                    <section class="cv-section">
-                        <h3 class="cv-section-title">Education</h3>
-
-                        <div class="experience-item">
-                            <div class="exp-header">
-                                <span class="exp-title">Digital Bros Game Academy — Game Programming</span>
-                                <span class="exp-date">09/2024 – 07/2026</span>
+                        <!-- Certifications & Training -->
+                        <div class="cv-section-block" data-sec="certifications">
+                            <div class="cv-sec-title">Certifications & Vocational Training</div>
+                            
+                            <div class="cv-item">
+                                <div class="cv-item-header">
+                                    <span class="cv-item-title">Certificate of Competence in Game Programming</span>
+                                    <span class="cv-item-date">07/2026</span>
+                                </div>
+                                <p class="cv-item-desc">Official 2-year vocational diploma issued by Digital Bros Game Academy (Milan). <a href="https://piero-chianese.github.io/WebSite/assets/docs/DBGA_Attestato_Competenza_Chianese.pdf" target="_blank" class="cv-active-link" style="font-size: 0.72rem;">View Official Certificate (PDF) ↗</a></p>
                             </div>
-                            <div class="exp-company">Digital Bros | Milan, Italy</div>
-                            <ul class="bullet-list">
-                                <li><strong>2-Year Professional Course (720 hours)</strong> in Game Programming;</li>
-                                <li>Core development in <strong>C# (Unity 3D)</strong> and <strong>C++11+ (Unreal Engine 5)</strong>;</li>
-                                <li>Shading language (HLSL) & Shader Graph graphics programming;</li>
-                                <li>Gameplay AI systems and Agent behaviors;</li>
-                                <li>Audio engine integration (Unity Audio & FMOD);</li>
-                                <li>Multiplayer and networking systems in Unity3D;</li>
-                                <li>Cross-disciplinary teamwork, Agile workflows, and evaluation of technical debt;</li>
-                                <li><strong>AWARD:</strong> Best Project Award for "ArtHiss / Progetto Snake" (Dec 2024);</li>
-                                <li><strong>MERIT:</strong> Digital Bros Merit Scholarship (AY 2024/2025);</li>
-                                <li><a href="assets/docs/DBGA_Attestato_Competenza_Chianese.pdf" target="_blank" style="color: var(--accent-blue); font-weight: 600;">View Official Certificate of Competence (PDF) 📄</a></li>
-                            </ul>
-                        </div>
 
-                        <div class="experience-item">
-                            <div class="exp-header">
-                                <span class="exp-title">Bachelor's Degree in Computer Science</span>
-                                <span class="exp-date">2026</span>
+                            <div class="cv-item">
+                                <div class="cv-item-header">
+                                    <span class="cv-item-title">General Worker Safety Training (D.Lgs 81/2008)</span>
+                                    <span class="cv-item-date">04/2024</span>
+                                </div>
+                                <p class="cv-item-desc">Issued by Gi Group | Credential ID: 438685. <a href="https://www.cboxiqc.com/assertions/9DB8F8AB-A74A-4788-84C4-C2F6522EFAE0" target="_blank" class="cv-active-link" style="font-size: 0.72rem;">Verify Credential Online ↗</a></p>
                             </div>
-                            <div class="exp-company">Pegaso Università</div>
-                            <p class="exp-desc">Academic path including Università Federico II (Naples) and Università di Salerno.</p>
-                        </div>
 
-                        <div class="experience-item">
-                            <div class="exp-header">
-                                <span class="exp-title">Apple Developer Academy</span>
-                                <span class="exp-date">09/2021 – 06/2022</span>
+                            <div class="cv-item">
+                                <div class="cv-item-header">
+                                    <span class="cv-item-title">Full-Stack Java React Crash Course (240h)</span>
+                                    <span class="cv-item-date">2024</span>
+                                </div>
+                                <p class="cv-item-desc">Java, Spring Boot, React, SQL, and REST APIs end-to-end development.</p>
                             </div>
-                            <div class="exp-company">Apple | Naples, Italy</div>
-                            <p class="exp-desc">Focus on soft skills, teamwork, and project management.</p>
-                            <p style="font-size: 0.85rem; color: var(--text-primary); margin-top: 0.5rem;"><strong>Programming:</strong> OOP concepts, Design Patterns, Swift language.</p>
-                            <p style="font-size: 0.85rem; color: var(--text-primary);"><strong>Design (HCI):</strong> Design Thinking, Rapid prototyping, QoE patterns.</p>
-                            <p style="font-size: 0.85rem; color: var(--text-primary);"><strong>Business:</strong> Market strategies, Intellectual property, Business modeling.</p>
-                        </div>
 
-                        <div class="experience-item">
-                            <div class="exp-header">
-                                <span class="exp-title">Computer Technician Diploma</span>
-                                <span class="exp-date">09/2009 – 06/2014</span>
+                            <div class="cv-item">
+                                <div class="cv-item-header">
+                                    <span class="cv-item-title">SAP ABAP Programming Course (192h)</span>
+                                    <span class="cv-item-date">2024</span>
+                                </div>
+                                <p class="cv-item-desc">Data Dictionary, Tables, Structures, Queries, ALV, and business logic manipulation.</p>
                             </div>
-                            <div class="exp-company">ITIS-LS "F. Giordani" | Caserta, Italy</div>
-                            <ul class="bullet-list">
-                                <li><strong>Computer Science:</strong> Turbopascal, C, Database management;</li>
-                                <li><strong>Systems:</strong> Hardware, Processors, PC construction, Networks;</li>
-                                <li><strong>Electronics:</strong> Analog and digital.</li>
-                            </ul>
-                        </div>
-                    </section>
 
-                    <section class="cv-section">
-                        <h3 class="cv-section-title">Certifications & Training</h3>
-                        <div class="experience-item">
-                            <div class="exp-header"><span class="exp-title">Certificate of Competence in Game Programming</span><span class="exp-date">07/2026</span></div>
-                            <p class="exp-desc">Official 2-year vocational diploma (720 hours) issued by Digital Bros Game Academy (Milan), covering Unity/C#, Unreal Engine 5/C++, HLSL shaders, AI, networking, and industry masterclasses.</p>
-                            <a href="assets/docs/DBGA_Attestato_Competenza_Chianese.pdf" target="_blank" style="font-size: 0.8rem; color: var(--accent-blue);">View Official Certificate (PDF)</a>
-                        </div>
-                        <div class="experience-item">
-                            <div class="exp-header"><span class="exp-title">Best Project Award (ArtHiss)</span><span class="exp-date">12/2024</span></div>
-                            <p class="exp-desc">Awarded by Digital Bros Game Academy for technical excellence and project execution.</p>
-                        </div>
-                        <div class="experience-item">
-                            <div class="exp-header"><span class="exp-title">Digital Bros Merit Scholarship</span><span class="exp-date">2024</span></div>
-                            <p class="exp-desc">Awarded for academic excellence and technical merit in Game Programming.</p>
-                        </div>
-                        <div class="experience-item">
-                            <div class="exp-header"><span class="exp-title">General Worker Safety Training (D.Lgs 81/2008)</span><span class="exp-date">04/2024</span></div>
-                            <p class="exp-desc">Issued by Gi Group | Credential ID: 438685</p>
-                            <a href="https://www.cboxiqc.com/assertions/9DB8F8AB-A74A-4788-84C4-C2F6522EFAE0" target="_blank" style="font-size: 0.8rem; color: var(--accent-blue);">Verify Credential</a>
-                        </div>
-                        <div class="experience-item">
-                            <div class="exp-header"><span class="exp-title">Java React Crash Course</span><span class="exp-date">2024</span></div>
-                            <p class="exp-desc">240-hour intensive course: HTML, CSS, JS, SQL, Java, Spring Boot, and React. Created an end-to-end web app.</p>
-                        </div>
-                        <div class="experience-item">
-                            <div class="exp-header"><span class="exp-title">SAP ABAP Course</span><span class="exp-date">2024</span></div>
-                            <p class="exp-desc">192-hour course: Dictionary, Tables, Structures, Queries, ALV, and data manipulation.</p>
-                        </div>
-                        <div class="experience-item">
-                            <div class="exp-header"><span class="exp-title">Cisco CCNA: Intro to Networks</span><span class="exp-date">2022</span></div>
-                            <p class="exp-desc">IP addressing, Ethernet, Switch/Router configuration, and network access.</p>
-                        </div>
-                        <div class="experience-item">
-                            <div class="exp-header"><span class="exp-title">Green Economy: PV Designer</span><span class="exp-date">2016</span></div>
-                            <p class="exp-desc">Renewable Energy, electrical system design, CAD, and business management.</p>
-                        </div>
-                        <div class="experience-item">
-                            <div class="exp-header"><span class="exp-title">ECDL & Fondamenti di Informatica (PON)</span><span class="exp-date">2009</span></div>
-                            <p class="exp-desc">Operating systems, computer use, and web design basics.</p>
-                        </div>
-                    </section>
+                            <div class="cv-item">
+                                <div class="cv-item-header">
+                                    <span class="cv-item-title">Cisco CCNA: Introduction to Networks</span>
+                                    <span class="cv-item-date">2022</span>
+                                </div>
+                                <p class="cv-item-desc">IP addressing, routing, Ethernet switching, and network architectures.</p>
+                            </div>
 
-                    <section class="cv-section">
-                        <h3 class="cv-section-title">Articles & Honors</h3>
-                        <div style="margin-bottom: 1.2rem;">
-                            <p style="font-size: 0.95rem; color: var(--text-primary);"><strong>Emotion Recognition Research:</strong> "How to create a model based on Emotion Recognition using the LiDAR sensor behind FaceID" [2022]. Co-authored with Luca Perrotti.</p>
-                            <a href="https://medium.com/@lucaperrotti/from-core-to-create-recognize-emotions-9e2182c0e482" target="_blank" style="font-size: 0.85rem; color: var(--accent-blue);">Read on Medium</a>
+                            <div class="cv-item">
+                                <div class="cv-item-header">
+                                    <span class="cv-item-title">Green Economy: PV Designer</span>
+                                    <span class="cv-item-date">2016</span>
+                                </div>
+                                <p class="cv-item-desc">Electrical system design, CAD modeling, and renewable energy engineering.</p>
+                            </div>
+
+                            <div class="cv-item">
+                                <div class="cv-item-header">
+                                    <span class="cv-item-title">ECDL & Fondamenti di Informatica (PON)</span>
+                                    <span class="cv-item-date">2009</span>
+                                </div>
+                                <p class="cv-item-desc">Operating systems, hardware architectures, networks, and computer science basics.</p>
+                            </div>
                         </div>
-                        <div style="margin-bottom: 1.2rem;">
-                            <p style="font-size: 0.95rem; color: var(--text-primary);"><strong>Apple Teacher:</strong> Certified by Apple [13/07/2022].</p>
-                            <a href="https://www.linkedin.com/posts/piero-chianese-12ab38144_appleteacher-appleteacher-apple-activity-6953076348403732480-XjG_?utm_source=share&utm_medium=member_desktop" target="_blank" style="font-size: 0.85rem; color: var(--accent-blue);">View Recognition</a>
-                        </div>
-                    </section>
-
-                    <section class="cv-section">
-                        <h3 class="cv-section-title">Hobbies & Interests</h3>
-                        <p class="exp-desc">I love spending my free time playing my beloved musical instruments (piano and guitar) and hiking outdoors along with my trusty motorcycle. I am also a fan of video games and virtual reality, simracing in particular. From time to time I try my hand at creating independent games. I am always looking for new stimuli and my biggest dream is to be able to open a company that deals with VR.</p>
-                    </section>
-
-                    <div id="cv-footer-legal" style="margin-top: 3rem; font-size: 0.7rem; color: var(--text-secondary); line-height: 1.4; border-top: 1px solid var(--glass-border); padding-top: 1.5rem; opacity: 0.6;">
-                        I authorize the processing of my personal data present in the CV pursuant to Legislative Decree 30 June 2003, n. 196 "Code regarding the protection of personal data" and art. 13 of the GDPR (EU Regulation 2016/679).
-                    </div>
-
-                    <!-- Hidden Signature Area for Print -->
-                    <div id="print-signature-area" class="print-only-data" style="margin-top: 2rem; border-top: 1px dashed var(--glass-border); padding-top: 1rem;">
-                        <img id="signature-img" src="" alt="Signature" style="max-height: 60px; display: none;">
-                        <p id="signature-name" style="font-family: 'Outfit'; font-weight: 700; margin-top: 0.5rem;"></p>
-                        <p style="font-size: 0.6rem; opacity: 0.5; text-transform: uppercase;">Digital Signature / Firma Digitale</p>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- Admin Editor Panel -->
+    <!-- Secret Admin Editor Panel (Trigger: Press 'E') -->
     <div id="cv-editor-panel">
         <div class="editor-header">
-            <h4 style="margin: 0; color: white;">CV Admin Panel</h4>
-            <span id="close-editor" style="cursor: pointer; font-size: 1.2rem;">✕</span>
+            <h4 style="margin: 0; color: white;">⚙️ CV Export & Print Options</h4>
+            <span id="close-editor" style="cursor: pointer; font-size: 1.2rem;" onclick="toggleEditorPanel()">✕</span>
         </div>
         
         <div class="editor-field">
-            <label>Phone Number</label>
-            <input type="text" id="input-phone" placeholder="+39 XXX XXXXXXX">
+            <label>Phone Number (Included in Header)</label>
+            <input type="text" id="input-phone" placeholder="+39 3XX XXXXXXX">
         </div>
 
         <div class="editor-field">
-            <label>Signature PNG</label>
+            <label>Partita IVA Number (Optional, Header)</label>
+            <input type="text" id="input-piva" placeholder="IT12345678901">
+        </div>
+
+        <div class="editor-field">
+            <label>Signature PNG (Optional)</label>
             <input type="file" id="input-sig-file" accept="image/png, image/jpeg">
         </div>
 
         <div class="editor-field">
-            <label>Full Name (for signature)</label>
+            <label>Signature Name</label>
             <input type="text" id="input-sig-name" placeholder="Piero Chianese">
         </div>
 
-        <div style="margin-top: 1rem; border-top: 1px solid var(--glass-border); padding-top: 1rem;">
-            <label style="font-size: 0.65rem; color: var(--accent-blue); margin-bottom: 0.8rem; display: block; font-weight: 800;">VISIBILITY</label>
-            <label class="editor-toggle"><input type="checkbox" checked data-section="Hobbies & Interests"> Hobbies</label>
-            <label class="editor-toggle"><input type="checkbox" checked data-section="Certifications & Training"> Certifications</label>
-            <label class="editor-toggle"><input type="checkbox" checked data-section="Articles & Honors"> Honors</label>
-            <label class="editor-toggle"><input type="checkbox" checked data-section="Soft Skills"> Soft Skills</label>
+        <div class="editor-field">
+            <label>Print Color Theme</label>
+            <select id="select-print-theme" onchange="updatePrintTheme(this.value)">
+                <option value="dark">Dark Modern (Default)</option>
+                <option value="light">Light Paper / ATS Friendly</option>
+            </select>
         </div>
 
-        <button onclick="window.print()" style="width: 100%; margin-top: 1.5rem; padding: 0.8rem; background: linear-gradient(to right, var(--accent-blue), var(--accent-purple)); border: none; border-radius: 8px; color: white; font-weight: 700; cursor: pointer;">
-            GENERATE PDF
-        </button>
-        <p style="text-align: center; font-size: 0.6rem; color: var(--text-secondary); margin-top: 1rem;">Press 'E' again to hide this panel</p>
-    </div>
+        <div style="margin-top: 0.8rem; border-top: 1px solid var(--glass-border); padding-top: 0.8rem;">
+            <label style="font-size: 0.65rem; color: var(--accent-blue); margin-bottom: 0.6rem; display: block; font-weight: 800;">TOGGLE SECTIONS FOR EXPORT</label>
+            <label class="editor-toggle"><input type="checkbox" checked data-section="hobbies"> Hobbies & Interests</label>
+            <label class="editor-toggle"><input type="checkbox" checked data-section="additional-projects"> Additional Games</label>
+            <label class="editor-toggle"><input type="checkbox" checked data-section="certifications"> Certifications</label>
+            <label class="editor-toggle"><input type="checkbox" checked data-section="honors"> Articles & Honors</label>
+            <label class="editor-toggle"><input type="checkbox" checked data-section="soft-skills"> Soft Skills</label>
+        </div>
 
-    <button class="print-btn" onclick="window.print()">
-        <span style="font-size: 1.2rem;">🖨️</span> Print Full CV to PDF
-    </button>
+        <button onclick="window.print()" style="width: 100%; margin-top: 1.2rem; padding: 0.8rem; background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple)); border: none; border-radius: 8px; color: white; font-weight: 700; cursor: pointer; box-shadow: 0 8px 20px rgba(0, 210, 255, 0.3);">
+            🖨️ PRINT / EXPORT TO PDF
+        </button>
+        <a href="assets/docs/CV_Piero_Chianese.pdf" download="CV_Piero_Chianese.pdf" style="display: block; text-align: center; margin-top: 0.6rem; color: var(--accent-blue); font-size: 0.75rem; text-decoration: underline;">
+            📥 Scarica PDF Standard (Non Personalizzato)
+        </a>
+        <p style="text-align: center; font-size: 0.65rem; color: var(--text-secondary); margin-top: 0.8rem;">Press 'E' to open/close this panel anytime</p>
+    </div>
 
     <footer>
         <div class="container">
@@ -673,32 +1254,41 @@
 
     <script src="js/main.js"></script>
     <script>
-        // Secret Keyboard Shortcut (E key)
         const panel = document.getElementById('cv-editor-panel');
-        const closeBtn = document.getElementById('close-editor');
+        
+        function toggleEditorPanel() {
+            panel.style.display = (panel.style.display === 'block') ? 'none' : 'block';
+        }
 
+        // Secret Keyboard Shortcut (E key)
         document.addEventListener('keydown', (e) => {
-            if (e.key.toLowerCase() === 'e' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
-                panel.style.display = (panel.style.display === 'block') ? 'none' : 'block';
+            if (e.key.toLowerCase() === 'e' && !['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) {
+                toggleEditorPanel();
             }
         });
 
-        closeBtn.onclick = () => panel.style.display = 'none';
-
         // Phone Update
         const phoneInput = document.getElementById('input-phone');
-        const contactDiv = document.querySelector('.cv-section div[style*="line-height: 1.8"]');
-        
+        const dynamicPhone = document.getElementById('dynamic-phone');
         phoneInput.oninput = (e) => {
-            let phoneP = document.getElementById('dynamic-phone');
-            if (!phoneP) {
-                phoneP = document.createElement('p');
-                phoneP.id = 'dynamic-phone';
-                phoneP.style.display = 'block'; // Make it visible during edit
-                phoneP.style.color = 'var(--accent-blue)';
-                contactDiv.prepend(phoneP);
+            if (e.target.value.trim().length > 0) {
+                dynamicPhone.innerHTML = '📞 ' + e.target.value.trim();
+                dynamicPhone.style.display = 'inline';
+            } else {
+                dynamicPhone.style.display = 'none';
             }
-            phoneP.innerHTML = '📞 ' + e.target.value;
+        };
+
+        // P.IVA Update
+        const pivaInput = document.getElementById('input-piva');
+        const dynamicPiva = document.getElementById('dynamic-piva');
+        pivaInput.oninput = (e) => {
+            if (e.target.value.trim().length > 0) {
+                dynamicPiva.innerHTML = '🆔 P.IVA: ' + e.target.value.trim();
+                dynamicPiva.style.display = 'inline';
+            } else {
+                dynamicPiva.style.display = 'none';
+            }
         };
 
         // Signature Update
@@ -715,28 +1305,34 @@
                 reader.onload = (event) => {
                     sigImg.src = event.target.result;
                     sigImg.style.display = 'block';
-                    sigArea.style.display = 'block'; // Show for preview
+                    sigArea.style.display = 'block';
                 };
                 reader.readAsDataURL(file);
             }
         };
 
         sigNameInput.oninput = (e) => {
-            sigNameDisplay.innerText = e.target.value;
-            sigArea.style.display = 'block'; // Show for preview
+            sigNameDisplay.innerText = e.target.value.trim() || 'Piero Chianese';
+            sigArea.style.display = 'block';
         };
+
+        // Theme Toggle (Light / Dark)
+        function updatePrintTheme(theme) {
+            if (theme === 'light') {
+                document.body.classList.add('print-theme-light');
+            } else {
+                document.body.classList.remove('print-theme-light');
+            }
+        }
 
         // Section Toggling
         document.querySelectorAll('.editor-toggle input').forEach(checkbox => {
             checkbox.onchange = (e) => {
                 const sectionName = e.target.getAttribute('data-section');
-                const sections = document.querySelectorAll('.cv-section');
-                sections.forEach(s => {
-                    const title = s.querySelector('.cv-section-title');
-                    if (title && title.innerText.includes(sectionName)) {
-                        if (e.target.checked) s.classList.remove('section-hidden');
-                        else s.classList.add('section-hidden');
-                    }
+                const targetBlocks = document.querySelectorAll(`[data-sec="${sectionName}"]`);
+                targetBlocks.forEach(b => {
+                    if (e.target.checked) b.classList.remove('section-hidden');
+                    else b.classList.add('section-hidden');
                 });
             };
         });
